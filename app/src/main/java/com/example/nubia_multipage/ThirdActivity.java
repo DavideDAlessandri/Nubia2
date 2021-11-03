@@ -20,5 +20,6 @@ public class ThirdActivity extends AppCompatActivity {
         txtMarquee = (TextView) findViewById(R.id.marqueeText);
         txtMarquee.setSelected(true);
 
+
     }
 }
