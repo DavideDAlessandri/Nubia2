@@ -17,39 +17,52 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="TODO"
-            android:rotation="90"
-            android:src="@drawable/rossini_logo_200x178"
-            android:translationY="230dp" />
-
         <Button
             android:id="@+id/backPage"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/ehsmb"
             android:rotation="90"
             android:text="Back"
-            android:translationX="40dp"
-            android:translationY="80dp" />
+            android:textSize="25sp"
+            android:translationX="60dp"
+            android:translationY="15dp" />
 
         <ImageView
             android:id="@+id/color"
-            android:layout_width="match_parent"
-            android:layout_height="175dp"
-            android:translationY="440dp"
-            app:srcCompat="@android:color/background_dark" />
+            android:layout_width="640dp"
+            android:layout_height="match_parent"
+            android:rotation="90"
+            android:src="@drawable/statusbar_blue"
+            android:translationX="-255dp"
+            android:translationY="0dp" />
 
-        <Button
-            android:id="@+id/thirdPageTwo"
+        <TextView
+            android:id="@+id/marqueeText"
+            android:layout_width="715dp"
+            android:layout_height="400dp"
+            android:layout_marginLeft="-468dp"
+            android:ellipsize="marquee"
+            android:fontFamily="@font/ehsmb"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:padding="2dp"
+            android:rotation="90"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text="Rossini rossini rossini"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="65sp"
+            android:translationY="80dp" />
+
+        <pl.droidsonroids.gif.GifImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:rotation="90"
-            android:text="Pg.3"
-            android:translationX="-10dp"
-            android:translationY="80dp" />
+            android:src="@drawable/gif_robot"
+            android:translationY="275dp"
+            android:translationX="10dp"
+            android:rotation="90" />
 
 
     </FrameLayout>

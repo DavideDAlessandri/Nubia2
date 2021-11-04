@@ -20,7 +20,6 @@ import java.net.Socket;
 public class SecondActivity extends AppCompatActivity {
 
     private Button backPage;
-    private Button thirdPage;
     ImageView color;
 
     Thread Thread1 = null;
@@ -33,11 +32,13 @@ public class SecondActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         setContentView(R.layout.second_layout);
+        TextView txtMarquee;
 
         color=(ImageView) findViewById(R.id.color);
-        thirdPage=findViewById(R.id.thirdPageTwo);
         backPage=findViewById(R.id.backPage);
 
+        txtMarquee = (TextView) findViewById(R.id.marqueeText);
+        txtMarquee.setSelected(true);
 
         //communication
         Thread1 = new Thread(new SecondActivity.Thread1());
@@ -45,13 +46,6 @@ public class SecondActivity extends AppCompatActivity {
 
 
         //Page changing
-        thirdPage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                changeActivityThree();
-            }
-        });
-
         backPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,9 +98,10 @@ public class SecondActivity extends AppCompatActivity {
 
     private void changeColor(String message){
 
-        int redColor = getResources().getIdentifier("@drawable/red",null,this.getPackageName());
-        int greenColor = getResources().getIdentifier("@drawable/green",null,this.getPackageName());
-        int yellowColor = getResources().getIdentifier("@drawable/yellow",null,this.getPackageName());
+        int redColor = getResources().getIdentifier("@drawable/statusbar_red",null,this.getPackageName());
+        int greenColor = getResources().getIdentifier("@drawable/statusbar_green",null,this.getPackageName());
+        int yellowColor = getResources().getIdentifier("@drawable/statusbar_yellow",null,this.getPackageName());
+        int blueColor = getResources().getIdentifier("@drawable/statusbar_blue",null,this.getPackageName());
 
         if(message.equals("red")){
             color.setImageResource(redColor);
@@ -118,6 +113,9 @@ public class SecondActivity extends AppCompatActivity {
 
         if(message.equals("yellow")){
             color.setImageResource(yellowColor);
+        }
+        if(message.equals("blue")){
+            color.setImageResource(blueColor);
         }
     }
 
