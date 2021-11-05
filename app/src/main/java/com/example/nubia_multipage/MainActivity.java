@@ -21,6 +21,10 @@ public class MainActivity extends AppCompatActivity {
 
     private Button secondPage;
     private Button thirdPage;
+    private Button fourthPage;
+    Thread Thread1 = null;
+    String SERVER_IP = "192.168.1.2";
+    int SERVER_PORT = 8080;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         secondPage=findViewById(R.id.secondPage);
         thirdPage = findViewById(R.id.thirdPage);
+        fourthPage=findViewById(R.id.fourthPage);
 
         secondPage.setOnClickListener(new View.OnClickListener() {      //Click change page
             @Override
@@ -41,21 +46,79 @@ public class MainActivity extends AppCompatActivity {
 
         thirdPage.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {                               //Click connect server
+            public void onClick(View v) {
                 changeActivityThree();
             }
         });
 
+        fourthPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeActivityFour();
+            }
+        });
+
+        //communication
+        Thread1 = new Thread(new MainActivity.Thread1());
+        Thread1.start();
+
+    }
+
+    private PrintWriter output;
+    private BufferedReader input;
+    class Thread1 implements Runnable {                                //Server connection
+        public void run() {
+            Socket socket;
+            try {
+                socket = new Socket(SERVER_IP, SERVER_PORT);           //connection server ip / port
+                output = new PrintWriter(socket.getOutputStream());
+                input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                new Thread(new MainActivity.Thread2()).start();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    class Thread2 implements Runnable {                             //Server message reader
+        @Override
+        public void run() {
+            while (true) {
+                try {
+                    final String message = input.readLine();
+                    if (message!= null) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                if(message.equals("go")){
+                                    changeActivityTwo();
+                                }
+                            }
+                        });
+                    } else {
+                        Thread1 = new Thread(new MainActivity.Thread1());
+                        Thread1.start();
+                        return;
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
 
-    private void changeActivityTwo(){                                      //Click change page
+    private void changeActivityTwo(){                                        //Click change page
         Intent intent = new Intent(this,SecondActivity.class);
         startActivity(intent);
     }
 
     private void changeActivityThree(){                                      //Click change page
         Intent intent = new Intent(this,ThirdActivity.class);
+        startActivity(intent);
+    }
+
+    private void changeActivityFour(){                                       //Click change page
+        Intent intent = new Intent(this,FourthActivity.class);
         startActivity(intent);
     }
 

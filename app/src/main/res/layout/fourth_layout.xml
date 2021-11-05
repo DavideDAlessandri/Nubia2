@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:keepScreenOn="true">>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+
+        <Button
+            android:id="@+id/backButton"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/ehsmb"
+            android:rotation="90"
+            android:text="Back"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="25sp"
+            android:translationX="22dp"
+            android:translationY="175dp" />
+
+        <Button
+            android:id="@+id/sendData"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ehsmb"
+            android:layout_gravity="center"
+            android:rotation="90"
+            android:text="send"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="25sp"
+            android:translationX="-22dp"
+            android:translationY="175dp" />
+
+        <SeekBar
+            android:id="@+id/seekBarOne"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:backgroundTint="#FFFFFF"
+            android:foregroundTint="#FFFFFF"
+            android:indeterminateTint="#FFFFFF"
+            android:progressBackgroundTint="#FFFFFF"
+            android:progressTint="#FFFFFF"
+            android:rotation="90"
+            android:thumbTint="#FFFFFF"
+            android:translationY="-220dp"
+            android:translationX="-35dp"/>
+
+        <TextView
+            android:id="@+id/percOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ehsmb"
+            android:text="0%"
+            android:layout_gravity="center"
+            android:rotation="90"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="24sp"
+            android:translationY="-220dp"
+            android:translationX="-15dp"/>
+
+        <TextView
+            android:id="@+id/speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ehsmb"
+            android:text="speed"
+            android:layout_gravity="center"
+            android:rotation="90"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="30sp"
+            android:translationY="-220dp"
+            android:translationX="25dp"/>
+
+        <SeekBar
+            android:id="@+id/seekBarTwo"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:backgroundTint="#FFFFFF"
+            android:foregroundTint="#FFFFFF"
+            android:indeterminateTint="#FFFFFF"
+            android:progressBackgroundTint="#FFFFFF"
+            android:progressTint="#FFFFFF"
+            android:rotation="90"
+            android:thumbTint="#FFFFFF"
+            android:translationX="-35dp"
+            android:translationY="-95dp" />
+
+        <TextView
+            android:id="@+id/percTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ehsmb"
+            android:text="0%"
+            android:layout_gravity="center"
+            android:rotation="90"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="24sp"
+            android:translationY="-95dp"
+            android:translationX="-15dp"/>
+
+        <TextView
+            android:id="@+id/torque"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ehsmb"
+            android:text="torque"
+            android:layout_gravity="center"
+            android:rotation="90"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="30sp"
+            android:translationY="-95dp"
+            android:translationX="25dp"/>
+
+        <Switch
+            android:id="@+id/switch2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/ehsmb"
+            android:rotation="90"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="24sp"
+            android:thumbTint="#FFFFFF"
+            android:trackTint="@drawable/track"
+            android:translationX="-35dp"
+            android:translationY="25dp" />
+
+        <TextView
+            android:id="@+id/onOff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ehsmb"
+            android:text="off/on"
+            android:layout_gravity="center"
+            android:rotation="90"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="15sp"
+            android:translationY="25dp"
+            android:translationX="-9dp"/>
+
+        <TextView
+            android:id="@+id/mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ehsmb"
+            android:text="mode"
+            android:layout_gravity="center"
+            android:rotation="90"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="30sp"
+            android:translationY="25dp"
+            android:translationX="25dp"/>
+
+    </FrameLayout>
+
+</LinearLayout>

@@ -19,8 +19,8 @@ import java.net.Socket;
 
 public class SecondActivity extends AppCompatActivity {
 
-    private Button backPage;
     ImageView color;
+    ImageView gif;
 
     Thread Thread1 = null;
     String SERVER_IP = "192.168.1.2";
@@ -32,26 +32,15 @@ public class SecondActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         setContentView(R.layout.second_layout);
-        TextView txtMarquee;
 
         color=(ImageView) findViewById(R.id.color);
-        backPage=findViewById(R.id.backPage);
-
-        txtMarquee = (TextView) findViewById(R.id.marqueeText);
-        txtMarquee.setSelected(true);
+        gif=(ImageView) findViewById(R.id.gif);
 
         //communication
         Thread1 = new Thread(new SecondActivity.Thread1());
         Thread1.start();
 
-
-        //Page changing
-        backPage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        changeColor("blue");
 
         }
 
@@ -98,24 +87,44 @@ public class SecondActivity extends AppCompatActivity {
 
     private void changeColor(String message){
 
+        TextView txtMarquee;
+        txtMarquee = (TextView) findViewById(R.id.marqueeText);
+
         int redColor = getResources().getIdentifier("@drawable/statusbar_red",null,this.getPackageName());
         int greenColor = getResources().getIdentifier("@drawable/statusbar_green",null,this.getPackageName());
         int yellowColor = getResources().getIdentifier("@drawable/statusbar_yellow",null,this.getPackageName());
         int blueColor = getResources().getIdentifier("@drawable/statusbar_blue",null,this.getPackageName());
+        int gifRobot = getResources().getIdentifier("@drawable/gif_robot",null,this.getPackageName());
+        int gifEye = getResources().getIdentifier("@drawable/gif_eye",null,this.getPackageName());
 
         if(message.equals("red")){
             color.setImageResource(redColor);
+            gif.setImageResource(gifRobot);
+            txtMarquee.setText("Errore Errore Errore");
+            txtMarquee.setSelected(true);
         }
 
         if(message.equals("green")){
             color.setImageResource(greenColor);
+            gif.setImageResource(0);
+            txtMarquee.setText("Verde Verde Verde");
+            txtMarquee.setSelected(true);
         }
 
         if(message.equals("yellow")){
             color.setImageResource(yellowColor);
+            gif.setImageResource(gifEye);
+            txtMarquee.setText("Giallo Giallo Giallo");
+            txtMarquee.setSelected(true);
         }
         if(message.equals("blue")){
             color.setImageResource(blueColor);
+            gif.setImageResource(0);
+            txtMarquee.setText("Test test test test");
+            txtMarquee.setSelected(true);
+        }
+        if(message.equals("back")){
+            finish();
         }
     }
 

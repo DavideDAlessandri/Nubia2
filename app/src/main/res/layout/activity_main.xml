@@ -18,28 +18,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="TODO"
-            android:rotation="90"
-            android:src="@drawable/rossini_logo_200x178"
-            android:translationY="230dp" />
-
         <Button
             android:id="@+id/secondPage"
-
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:fontFamily="@font/ehsmb"
-            android:textSize="25sp"
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/ehsmb"
+            android:layout_gravity="center"
             android:rotation="90"
             android:text="Pg.2"
-            android:translationX="40dp"
-            android:translationY="80dp" />
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="25sp"
+            android:translationX="22dp"
+            android:translationY="-175dp" />
 
         <Button
             android:id="@+id/thirdPage"
@@ -47,18 +39,53 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/ehsmb"
+            android:layout_gravity="center"
             android:rotation="90"
             android:text="Pg.3"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
             android:textSize="25sp"
-            android:translationX="-10dp"
-            android:translationY="80dp" />
+            android:translationX="-22dp"
+            android:translationY="-175dp" />
 
         <pl.droidsonroids.gif.GifImageView
+            android:layout_width="250dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:rotation="90"
+            android:src="@drawable/gif_circle"
+            android:translationX="0dp"
+            android:translationY="0dp" />
+
+        <Button
+            android:id="@+id/fourthPage"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/gif_robot"
-            android:translationY="210dp"
-            android:rotation="90" />
+            android:fontFamily="@font/ehsmb"
+            android:layout_gravity="center"
+            android:rotation="90"
+            android:text="Pg.4"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="25sp"
+            android:translationX="22dp"
+            android:translationY="175dp" />
+
+        <Button
+            android:id="@+id/pageFive"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ehsmb"
+            android:layout_gravity="center"
+            android:rotation="90"
+            android:text="Pg.5"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="25sp"
+            android:translationX="-22dp"
+            android:translationY="175dp" />
 
     </FrameLayout>
 
