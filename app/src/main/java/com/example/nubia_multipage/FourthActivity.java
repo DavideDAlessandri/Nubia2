@@ -1,5 +1,6 @@
 package com.example.nubia_multipage;
 
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -46,6 +47,9 @@ public class FourthActivity extends AppCompatActivity {
         backButton= findViewById(R.id.backButton);
         sendButton=findViewById(R.id.sendData);
         switchOne= findViewById(R.id.switchOne);
+
+        backButton.setPaintFlags(backButton.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        sendButton.setPaintFlags(sendButton.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
 
         seekBarOne.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {

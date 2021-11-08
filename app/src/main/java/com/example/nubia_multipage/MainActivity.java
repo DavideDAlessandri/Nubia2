@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private Button secondPage;
     private Button thirdPage;
     private Button fourthPage;
+    private  Button fifthPage;
     Thread Thread1 = null;
     String SERVER_IP = "192.168.1.2";
     int SERVER_PORT = 8080;
@@ -36,6 +38,12 @@ public class MainActivity extends AppCompatActivity {
         secondPage=findViewById(R.id.secondPage);
         thirdPage = findViewById(R.id.thirdPage);
         fourthPage=findViewById(R.id.fourthPage);
+        fifthPage=findViewById(R.id.fifthPage);
+
+        secondPage.setPaintFlags(secondPage.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);       //underline button
+        thirdPage.setPaintFlags(thirdPage.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        fourthPage.setPaintFlags(fourthPage.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        fifthPage.setPaintFlags(fifthPage.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
         secondPage.setOnClickListener(new View.OnClickListener() {      //Click change page
             @Override
@@ -55,6 +63,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 changeActivityFour();
+            }
+        });
+
+        fifthPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeActivityFive();
             }
         });
 
@@ -119,6 +134,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void changeActivityFour(){                                       //Click change page
         Intent intent = new Intent(this,FourthActivity.class);
+        startActivity(intent);
+    }
+
+    private void changeActivityFive(){
+        Intent intent = new Intent(this,FifthActivity.class);
         startActivity(intent);
     }
 

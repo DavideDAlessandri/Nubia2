@@ -21,59 +21,61 @@
         <Button
             android:id="@+id/secondPage"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/ehsmb"
+            android:layout_width="268dp"
+            android:layout_height="113dp"
             android:layout_gravity="center"
+            android:backgroundTint="#000000"
+            android:fontFamily="@font/ehsmb"
             android:rotation="90"
-            android:text="Pg.2"
+            android:text="Run"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:textSize="25sp"
             android:translationX="22dp"
-            android:translationY="-175dp" />
+            android:translationY="-160dp" />
 
         <Button
             android:id="@+id/thirdPage"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
+            android:layout_width="186dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/ehsmb"
             android:layout_gravity="center"
+            android:fontFamily="@font/ehsmb"
             android:rotation="90"
-            android:text="Pg.3"
+            android:text="Text"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:textSize="25sp"
             android:translationX="-22dp"
-            android:translationY="-175dp" />
+            android:translationY="-160dp" />
 
         <pl.droidsonroids.gif.GifImageView
             android:layout_width="250dp"
-            android:layout_height="150dp"
+            android:layout_height="154dp"
             android:layout_gravity="center"
             android:rotation="90"
             android:src="@drawable/gif_circle"
             android:translationX="0dp"
-            android:translationY="0dp" />
+            android:translationY="0dp"
+            />
 
         <Button
             android:id="@+id/fourthPage"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
+            android:layout_width="213dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/ehsmb"
             android:layout_gravity="center"
+            android:fontFamily="@font/ehsmb"
             android:rotation="90"
-            android:text="Pg.4"
+            android:text="Settings"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:textSize="25sp"
             android:translationX="22dp"
-            android:translationY="175dp" />
+            android:translationY="160dp" />
 
         <Button
-            android:id="@+id/pageFive"
+            android:id="@+id/fifthPage"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -85,7 +87,7 @@
             android:textColorHint="#FFFFFF"
             android:textSize="25sp"
             android:translationX="-22dp"
-            android:translationY="175dp" />
+            android:translationY="160dp" />
 
         <TextView
             android:id="@+id/textView"
