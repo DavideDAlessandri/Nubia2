@@ -135,7 +135,7 @@
             android:translationX="25dp"/>
 
         <Switch
-            android:id="@+id/switch2"
+            android:id="@+id/switchOne"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

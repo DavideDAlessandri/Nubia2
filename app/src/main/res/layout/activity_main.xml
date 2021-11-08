@@ -87,6 +87,30 @@
             android:translationX="-22dp"
             android:translationY="175dp" />
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ehsmb"
+            android:text="Rossini"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FDFDFD"
+            android:layout_gravity="center"
+            android:translationY="-290dp"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ehsmb"
+            android:text="SUPSI"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FDFDFD"
+            android:layout_gravity="center"
+            android:translationY="290dp"
+            android:textSize="24sp" />
+
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

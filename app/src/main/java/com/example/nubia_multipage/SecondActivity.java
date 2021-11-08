@@ -33,8 +33,8 @@ public class SecondActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.second_layout);
 
-        color=(ImageView) findViewById(R.id.color);
-        gif=(ImageView) findViewById(R.id.gif);
+        color= findViewById(R.id.color);
+        gif= findViewById(R.id.gif);
 
         //communication
         Thread1 = new Thread(new SecondActivity.Thread1());
@@ -88,7 +88,7 @@ public class SecondActivity extends AppCompatActivity {
     private void changeColor(String message){
 
         TextView txtMarquee;
-        txtMarquee = (TextView) findViewById(R.id.marqueeText);
+        txtMarquee = findViewById(R.id.marqueeText);
 
         int redColor = getResources().getIdentifier("@drawable/statusbar_red",null,this.getPackageName());
         int greenColor = getResources().getIdentifier("@drawable/statusbar_green",null,this.getPackageName());
@@ -96,6 +96,7 @@ public class SecondActivity extends AppCompatActivity {
         int blueColor = getResources().getIdentifier("@drawable/statusbar_blue",null,this.getPackageName());
         int gifRobot = getResources().getIdentifier("@drawable/gif_robot",null,this.getPackageName());
         int gifEye = getResources().getIdentifier("@drawable/gif_eye",null,this.getPackageName());
+
 
         if(message.equals("red")){
             color.setImageResource(redColor);
