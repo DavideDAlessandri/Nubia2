@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -20,10 +19,10 @@ import java.net.Socket;
 @SuppressLint("SetTextI18n")
 public class MainActivity extends AppCompatActivity {
 
-    private Button secondPage;
-    private Button thirdPage;
-    private Button fourthPage;
-    private  Button fifthPage;
+    Button secondPage;
+    Button thirdPage;
+    Button fourthPage;
+    Button fifthPage;
     Thread Thread1 = null;
     String SERVER_IP = "192.168.1.2";
     int SERVER_PORT = 8080;

@@ -17,7 +17,7 @@ public class ThirdActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.third_layout);
 
-        txtMarquee = (TextView) findViewById(R.id.marqueeText);
+        txtMarquee = findViewById(R.id.marqueeText);
         txtMarquee.setSelected(true);
 
 
