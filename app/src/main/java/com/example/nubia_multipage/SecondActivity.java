@@ -2,7 +2,12 @@ package com.example.nubia_multipage;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,6 +23,8 @@ public class SecondActivity extends AppCompatActivity {
 
     ImageView color;
     ImageView gif;
+    FrameLayout layout;
+
 
     Thread Thread1 = null;
     String SERVER_IP = "192.168.1.2";
@@ -38,6 +45,15 @@ public class SecondActivity extends AppCompatActivity {
         Thread1.start();
 
         changeColor("blue");
+
+        layout=findViewById(R.id.layout2);
+
+        layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         }
 
@@ -100,6 +116,13 @@ public class SecondActivity extends AppCompatActivity {
             gif.setImageResource(gifRobot);
             txtMarquee.setText("Errore Errore Errore");
             txtMarquee.setSelected(true);
+
+            Animation animation = new AlphaAnimation(1, 0); //to change visibility from visible to invisible
+            animation.setDuration(1000); //1 second duration for each animation cycle
+            animation.setInterpolator(new LinearInterpolator());
+            animation.setRepeatCount(Animation.INFINITE); //repeating indefinitely
+            animation.setRepeatMode(Animation.REVERSE); //animation will start from end point once ended.
+            color.startAnimation(animation); //to start animation
         }
 
         if(message.equals("green")){
@@ -107,6 +130,7 @@ public class SecondActivity extends AppCompatActivity {
             gif.setImageResource(0);
             txtMarquee.setText("Verde Verde Verde");
             txtMarquee.setSelected(true);
+            color.clearAnimation();
         }
 
         if(message.equals("yellow")){
@@ -114,12 +138,14 @@ public class SecondActivity extends AppCompatActivity {
             gif.setImageResource(gifEye);
             txtMarquee.setText("Giallo Giallo Giallo");
             txtMarquee.setSelected(true);
+            color.clearAnimation();
         }
         if(message.equals("blue")){
             color.setImageResource(blueColor);
             gif.setImageResource(0);
             txtMarquee.setText("Test test test test");
             txtMarquee.setSelected(true);
+            color.clearAnimation();
         }
         if(message.equals("back")){
             finish();

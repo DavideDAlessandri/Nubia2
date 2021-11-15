@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
+    android:backgroundTint="#000000"
+    android:foregroundTint="#000000"
     android:keepScreenOn="true">
 
     <FrameLayout
@@ -22,13 +25,14 @@
         <ProgressBar
             android:id="@+id/progressBarOne5"
             style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="110dp"
+            android:layout_width="100dp"
             android:layout_height="8dp"
             android:layout_gravity="center"
             android:progressDrawable="@drawable/custom_progress_bg"
+            android:max="300"
             android:rotation="90"
             android:translationX="35dp"
-            android:translationY="-100dp" />
+            android:translationY="-120dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -41,7 +45,7 @@
             android:textColorHint="#FFFFFF"
             android:textSize="20sp"
             android:translationX="35dp"
-            android:translationY="-170dp" />
+            android:translationY="-185dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -54,59 +58,61 @@
             android:textColorHint="#FFFFFF"
             android:textSize="20sp"
             android:translationX="35dp"
-            android:translationY="-20dp" />
+            android:translationY="-45dp" />
 
         <TextView
+            android:id="@+id/progressTextOne5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="@font/ehsmb"
+            android:fontFamily="sans-serif-thin"
             android:rotation="90"
-            android:text="10N"
+            android:text="0 N"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:translationX="35dp"
-            android:translationY="-215dp" />
+            android:translationY="-230dp" />
 
         <CheckBox
             android:id="@+id/checkBox1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:buttonTint="#666666"
             android:fontFamily="@font/ehsmb"
             android:rotation="90"
             android:text="X"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:textSize="20sp"
-            android:buttonTint="#666666"
             android:translationX="35dp"
-            android:translationY="-270dp" />
+            android:translationY="-285dp" />
 
         <ProgressBar
             android:id="@+id/progressBarTwo5"
             style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="110dp"
+            android:layout_width="100dp"
             android:layout_height="8dp"
             android:layout_gravity="center"
             android:progressDrawable="@drawable/custom_progress_bg"
+            android:max="300"
             android:rotation="90"
             android:translationX="0dp"
-            android:translationY="-100dp" />
+            android:translationY="-120dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/ehsmb"
-            android:text="0"
             android:layout_gravity="center"
+            android:fontFamily="@font/ehsmb"
             android:rotation="90"
+            android:text="0"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:textSize="20sp"
-            android:translationY="-170dp"
-            android:translationX="0dp"/>
+            android:translationX="0dp"
+            android:translationY="-185dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -119,58 +125,61 @@
             android:textColorHint="#FFFFFF"
             android:textSize="20sp"
             android:translationX="0dp"
-            android:translationY="-20dp" />
+            android:translationY="-45dp" />
 
         <TextView
+            android:id="@+id/progressTextTwo5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="@font/ehsmb"
+            android:fontFamily="sans-serif-thin"
             android:rotation="90"
-            android:text="10N"
+            android:text="0 N"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:translationX="0dp"
-            android:translationY="-215dp" />
+            android:translationY="-230dp" />
 
         <CheckBox
             android:id="@+id/checkBox2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:buttonTint="#666666"
             android:fontFamily="@font/ehsmb"
             android:rotation="90"
             android:text="Y"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:textSize="20sp"
-            android:buttonTint="#666666"
             android:translationX="0dp"
-            android:translationY="-270dp" />
+            android:translationY="-285dp" />
 
         <ProgressBar
             android:id="@+id/progressBarThree5"
             style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="110dp"
+            android:layout_width="100dp"
             android:layout_height="8dp"
             android:layout_gravity="center"
             android:progressDrawable="@drawable/custom_progress_bg"
+            android:max="300"
             android:rotation="90"
-            android:translationY="-100dp"
-            android:translationX="-35dp" />
+            android:translationX="-35dp"
+            android:translationY="-120dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/ehsmb"
-            android:text="0"
             android:layout_gravity="center"
+            android:fontFamily="@font/ehsmb"
             android:rotation="90"
+            android:text="0"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:textSize="20sp"
-            android:translationY="-170dp"
-            android:translationX="-35dp"/>
+            android:translationX="-35dp"
+            android:translationY="-185dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -183,59 +192,61 @@
             android:textColorHint="#FFFFFF"
             android:textSize="20sp"
             android:translationX="-35dp"
-            android:translationY="-20dp" />
+            android:translationY="-45dp" />
 
         <TextView
+            android:id="@+id/progressTextThree5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="@font/ehsmb"
+            android:fontFamily="sans-serif-thin"
             android:rotation="90"
-            android:text="10N"
+            android:text="0 N"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:translationX="-35dp"
-            android:translationY="-215dp" />
+            android:translationY="-230dp" />
 
         <CheckBox
             android:id="@+id/checkBox3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:buttonTint="#666666"
             android:fontFamily="@font/ehsmb"
             android:rotation="90"
-            android:text="X"
+            android:text="Z"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:textSize="20sp"
-            android:buttonTint="#666666"
             android:translationX="-35dp"
-            android:translationY="-270dp" />
+            android:translationY="-285dp" />
 
         <ProgressBar
             android:id="@+id/progressBarFour5"
             style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="110dp"
+            android:layout_width="100dp"
             android:layout_height="8dp"
             android:layout_gravity="center"
             android:progressDrawable="@drawable/custom_progress_bg"
+            android:max="30"
             android:rotation="90"
-            android:translationY="200dp"
-            android:translationX="35dp" />
+            android:translationX="35dp"
+            android:translationY="170dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/ehsmb"
-            android:text="0"
             android:layout_gravity="center"
+            android:fontFamily="@font/ehsmb"
             android:rotation="90"
+            android:text="0"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:textSize="20sp"
-            android:translationY="130dp"
-            android:translationX="35dp"/>
+            android:translationX="35dp"
+            android:translationY="105dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -248,59 +259,61 @@
             android:textColorHint="#FFFFFF"
             android:textSize="20sp"
             android:translationX="35dp"
-            android:translationY="280dp" />
+            android:translationY="238dp" />
 
         <TextView
+            android:id="@+id/progressTextFour5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="@font/ehsmb"
+            android:fontFamily="sans-serif-thin"
             android:rotation="90"
-            android:text="10N"
+            android:text="0 Nm"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:translationX="35dp"
-            android:translationY="85dp" />
+            android:translationY="60dp" />
 
         <CheckBox
             android:id="@+id/checkBox4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:buttonTint="#666666"
             android:fontFamily="@font/ehsmb"
             android:rotation="90"
             android:text="A"
-            android:buttonTint="#666666"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:textSize="20sp"
             android:translationX="35dp"
-            android:translationY="30dp" />
+            android:translationY="5dp" />
 
         <ProgressBar
             android:id="@+id/progressBarFive5"
             style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="110dp"
+            android:layout_width="100dp"
             android:layout_height="8dp"
             android:layout_gravity="center"
             android:progressDrawable="@drawable/custom_progress_bg"
+            android:max="30"
             android:rotation="90"
-            android:translationY="200dp"
-            android:translationX="0dp" />
+            android:translationX="0dp"
+            android:translationY="170dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/ehsmb"
-            android:text="0"
             android:layout_gravity="center"
+            android:fontFamily="@font/ehsmb"
             android:rotation="90"
+            android:text="0"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:textSize="20sp"
-            android:translationY="130dp"
-            android:translationX="0dp"/>
+            android:translationX="0dp"
+            android:translationY="105dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -313,58 +326,61 @@
             android:textColorHint="#FFFFFF"
             android:textSize="20sp"
             android:translationX="0dp"
-            android:translationY="280dp" />
+            android:translationY="238dp" />
 
         <TextView
+            android:id="@+id/progressTextFive5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="@font/ehsmb"
+            android:fontFamily="sans-serif-thin"
             android:rotation="90"
-            android:text="10N"
+            android:text="0 Nm"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:translationX="0dp"
-            android:translationY="85dp" />
+            android:translationY="60dp" />
 
         <CheckBox
             android:id="@+id/checkBox5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:buttonTint="#666666"
             android:fontFamily="@font/ehsmb"
             android:rotation="90"
             android:text="B"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:textSize="20sp"
-            android:buttonTint="#666666"
             android:translationX="0dp"
-            android:translationY="30dp" />
+            android:translationY="5dp" />
 
         <ProgressBar
             android:id="@+id/progressBarSix5"
             style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="110dp"
+            android:layout_width="100dp"
             android:layout_height="8dp"
             android:layout_gravity="center"
             android:progressDrawable="@drawable/custom_progress_bg"
+            android:max="30"
             android:rotation="90"
-            android:translationY="200dp"
-            android:translationX="-35dp" />
+            android:translationX="-35dp"
+            android:translationY="170dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/ehsmb"
-            android:text="0"
             android:layout_gravity="center"
+            android:fontFamily="@font/ehsmb"
             android:rotation="90"
+            android:text="0"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:textSize="20sp"
-            android:translationY="130dp"
-            android:translationX="-35dp"/>
+            android:translationX="-35dp"
+            android:translationY="105dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -377,49 +393,81 @@
             android:textColorHint="#FFFFFF"
             android:textSize="20sp"
             android:translationX="-35dp"
-            android:translationY="280dp" />
+            android:translationY="238dp" />
 
         <TextView
+            android:id="@+id/progressTextSix5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="@font/ehsmb"
+            android:fontFamily="sans-serif-thin"
             android:rotation="90"
-            android:text="10N"
+            android:text="0 Nm"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:translationX="-35dp"
-            android:translationY="85dp" />
+            android:translationY="60dp" />
 
         <CheckBox
             android:id="@+id/checkBox6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:buttonTint="#666666"
             android:fontFamily="@font/ehsmb"
             android:rotation="90"
             android:text="C"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:textSize="20sp"
-            android:buttonTint="#666666"
             android:translationX="-35dp"
-            android:translationY="30dp" />
+            android:translationY="5dp" />
 
-        <SeekBar
-            android:id="@+id/seekBarOne5"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
+        <CheckBox
+            android:id="@+id/checkBox7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:backgroundTint="#FFFFFF"
-            android:foregroundTint="#FFFFFF"
-            android:indeterminateTint="#FFFFFF"
-            android:progressBackgroundTint="#FFFFFF"
-            android:progressTint="#FFFFFF"
-            android:thumbTint="#FFFFFF"
-            android:translationY="310dp"
-            android:translationX="0in"/>
+            android:buttonTint="#666666"
+            android:fontFamily="@font/ehsmb"
+            android:rotation="90"
+            android:text="N"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="20sp"
+            android:translationX="0dp"
+            android:translationY="280dp" />
+
+        <CheckBox
+            android:id="@+id/backBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:buttonTint="#666666"
+            android:fontFamily="@font/ehsmb"
+            android:rotation="90"
+            android:text="B"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="20sp"
+            android:translationX="-35dp"
+            android:translationY="280dp" />
+
+
+        <TextView
+            android:id="@+id/speedText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif-thin"
+            android:rotation="90"
+            android:text="25%"
+            android:textColor="#FFFF00"
+            android:textColorHint="#FFFF00"
+            android:textSize="18sp"
+            android:translationX="35dp"
+            android:translationY="285dp" />
 
 
     </FrameLayout>
