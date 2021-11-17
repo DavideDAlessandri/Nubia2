@@ -25,6 +25,7 @@ public class FifthActivity extends AppCompatActivity {
     TextView speedText;
     TextView progressTextOne, progressTextTwo, progressTextThree, progressTextFour, progressTextFive, progressTextSix;
     CheckBox backBox;
+    CheckBox checkBoxX, checkBoxY, checkBoxZ, checkBoxA, checkBoxB, checkBoxC, checkBoxN;
 
     Thread Thread1 = null;
     String SERVER_IP = "192.168.1.2";
@@ -51,6 +52,14 @@ public class FifthActivity extends AppCompatActivity {
         progressTextFive=findViewById(R.id.progressTextFive5);
         progressTextSix=findViewById(R.id.progressTextSix5);
 
+        checkBoxX=findViewById(R.id.checkBoxX);
+        checkBoxY=findViewById(R.id.checkBoxY);
+        checkBoxZ=findViewById(R.id.checkBoxZ);
+        checkBoxA=findViewById(R.id.checkBoxA);
+        checkBoxB=findViewById(R.id.checkBoxB);
+        checkBoxC=findViewById(R.id.checkBoxC);
+        checkBoxN=findViewById(R.id.checkBoxN);
+
         speedText=findViewById(R.id.speedText);
         backBox=findViewById(R.id.backBox);
 
@@ -68,6 +77,84 @@ public class FifthActivity extends AppCompatActivity {
             }
         });
 
+        checkBoxX.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(checkBoxX.isChecked()){
+                    new Thread(new FifthActivity.Thread3("X=1")).start();
+                }else {
+                    new Thread(new FifthActivity.Thread3("X=0")).start();
+                }
+
+            }
+        });
+
+        checkBoxY.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(checkBoxY.isChecked()){
+                    new Thread(new FifthActivity.Thread3("Y=1")).start();
+                }else {
+                    new Thread(new FifthActivity.Thread3("Y=0")).start();
+                }
+            }
+        });
+
+        checkBoxZ.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(checkBoxZ.isChecked()){
+                    new Thread(new FifthActivity.Thread3("Z=1")).start();
+                }else {
+                    new Thread(new FifthActivity.Thread3("Z=0")).start();
+                }
+            }
+        });
+
+        checkBoxA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(checkBoxA.isChecked()){
+                    new Thread(new FifthActivity.Thread3("A=1")).start();
+                }else {
+                    new Thread(new FifthActivity.Thread3("A=0")).start();
+                }
+            }
+        });
+
+        checkBoxB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(checkBoxB.isChecked()){
+                    new Thread(new FifthActivity.Thread3("B=1")).start();
+                }else {
+                    new Thread(new FifthActivity.Thread3("B=0")).start();
+                }
+            }
+        });
+
+        checkBoxC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(checkBoxC.isChecked()){
+                    new Thread(new FifthActivity.Thread3("C=1")).start();
+                }else {
+                    new Thread(new FifthActivity.Thread3("C=0")).start();
+                }
+            }
+        });
+
+        checkBoxN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(checkBoxN.isChecked()){
+                    new Thread(new FifthActivity.Thread3("N=1")).start();
+                }else {
+                    new Thread(new FifthActivity.Thread3("N=0")).start();
+                }
+            }
+        });
 
         Thread1 = new Thread(new FifthActivity.Thread1());
         Thread1.start();
@@ -141,6 +228,14 @@ public class FifthActivity extends AppCompatActivity {
         String val5=message.substring(12,15);
         String val6=message.substring(15,18);
 
+        String val7=message.substring(18,19);           //get checkBox X value
+        String val8=message.substring(19,20);           //get checkBox Y value
+        String val9=message.substring(20,21);           //get checkBox Z value
+        String val10=message.substring(21,22);          //get checkBox A value
+        String val11=message.substring(22,23);          //get checkBox B value
+        String val12=message.substring(23,24);          //get checkBox C value
+        //String val13=message.substring(24,25);          //get checkBox N value
+
         int number1 = Integer.parseInt(val1);           //set progressbar 1 value
         progressBarOne.setProgress(number1);
         progressTextOne.setText(number1+" N");
@@ -164,6 +259,42 @@ public class FifthActivity extends AppCompatActivity {
         int number6 = Integer.parseInt(val6);
         progressBarSix.setProgress(number6);
         progressTextSix.setText(number6+" Nm");
+
+        if(val7.equals("1")){
+            checkBoxX.setChecked(true);                 //set check box
+        }else{
+            checkBoxX.setChecked(false);
+        }
+
+        if(val8.equals("1")){
+            checkBoxY.setChecked(true);
+        }else{
+            checkBoxY.setChecked(false);
+        }
+
+        if(val9.equals("1")){
+            checkBoxZ.setChecked(true);
+        }else{
+            checkBoxZ.setChecked(false);
+        }
+
+        if(val10.equals("1")){
+            checkBoxA.setChecked(true);
+        }else{
+            checkBoxA.setChecked(false);
+        }
+
+        if(val11.equals("1")){
+            checkBoxB.setChecked(true);
+        }else{
+            checkBoxB.setChecked(false);
+        }
+
+        if(val12.equals("1")){
+            checkBoxC.setChecked(true);
+        }else{
+            checkBoxC.setChecked(false);
+        }
 
 
     }

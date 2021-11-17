@@ -75,12 +75,12 @@
             android:translationY="-230dp" />
 
         <CheckBox
-            android:id="@+id/checkBox1"
+            android:id="@+id/checkBoxX"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:buttonTint="#666666"
             android:fontFamily="@font/ehsmb"
+            android:buttonTint="#666666"
             android:rotation="90"
             android:text="X"
             android:textColor="#FFFFFF"
@@ -142,12 +142,12 @@
             android:translationY="-230dp" />
 
         <CheckBox
-            android:id="@+id/checkBox2"
+            android:id="@+id/checkBoxY"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:buttonTint="#666666"
             android:fontFamily="@font/ehsmb"
+            android:buttonTint="#666666"
             android:rotation="90"
             android:text="Y"
             android:textColor="#FFFFFF"
@@ -209,12 +209,12 @@
             android:translationY="-230dp" />
 
         <CheckBox
-            android:id="@+id/checkBox3"
+            android:id="@+id/checkBoxZ"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:buttonTint="#666666"
             android:fontFamily="@font/ehsmb"
+            android:buttonTint="#666666"
             android:rotation="90"
             android:text="Z"
             android:textColor="#FFFFFF"
@@ -276,12 +276,12 @@
             android:translationY="60dp" />
 
         <CheckBox
-            android:id="@+id/checkBox4"
+            android:id="@+id/checkBoxA"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:buttonTint="#666666"
             android:fontFamily="@font/ehsmb"
+            android:buttonTint="#666666"
             android:rotation="90"
             android:text="A"
             android:textColor="#FFFFFF"
@@ -343,12 +343,12 @@
             android:translationY="60dp" />
 
         <CheckBox
-            android:id="@+id/checkBox5"
+            android:id="@+id/checkBoxB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:buttonTint="#666666"
             android:fontFamily="@font/ehsmb"
+            android:buttonTint="#666666"
             android:rotation="90"
             android:text="B"
             android:textColor="#FFFFFF"
@@ -410,12 +410,12 @@
             android:translationY="60dp" />
 
         <CheckBox
-            android:id="@+id/checkBox6"
+            android:id="@+id/checkBoxC"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:buttonTint="#666666"
             android:fontFamily="@font/ehsmb"
+            android:buttonTint="#666666"
             android:rotation="90"
             android:text="C"
             android:textColor="#FFFFFF"
@@ -425,11 +425,10 @@
             android:translationY="5dp" />
 
         <CheckBox
-            android:id="@+id/checkBox7"
+            android:id="@+id/checkBoxN"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:buttonTint="#666666"
             android:fontFamily="@font/ehsmb"
             android:rotation="90"
             android:text="N"
@@ -444,7 +443,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:buttonTint="#666666"
             android:fontFamily="@font/ehsmb"
             android:rotation="90"
             android:text="B"

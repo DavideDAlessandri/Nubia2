@@ -27,7 +27,7 @@ public class SecondActivity extends AppCompatActivity {
 
 
     Thread Thread1 = null;
-    String SERVER_IP = "192.168.1.2";
+    String SERVER_IP = "192.168.100.100";
     int SERVER_PORT = 8080;
 
     @Override
