@@ -6,9 +6,11 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,9 +25,8 @@ public class MainActivity extends AppCompatActivity {
     Button thirdPage;
     Button fourthPage;
     Button fifthPage;
-    Thread Thread1 = null;
-    String SERVER_IP = "192.168.100.100";
-    int SERVER_PORT = 8080;
+    Button connectButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +39,14 @@ public class MainActivity extends AppCompatActivity {
         thirdPage = findViewById(R.id.thirdPage);
         fourthPage=findViewById(R.id.fourthPage);
         fifthPage=findViewById(R.id.fifthPage);
+        connectButton=findViewById(R.id.connectButton);
 
         secondPage.setPaintFlags(secondPage.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);       //underline button
         thirdPage.setPaintFlags(thirdPage.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         fourthPage.setPaintFlags(fourthPage.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         fifthPage.setPaintFlags(fifthPage.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+
+
 
         secondPage.setOnClickListener(new View.OnClickListener() {      //Click change page
             @Override
@@ -72,52 +76,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //communication
-        Thread1 = new Thread(new MainActivity.Thread1());
-        Thread1.start();
 
-    }
 
-    private PrintWriter output;
-    private BufferedReader input;
-    class Thread1 implements Runnable {                                //Server connection
-        public void run() {
-            Socket socket;
-            try {
-                socket = new Socket(SERVER_IP, SERVER_PORT);           //connection server ip / port
-                output = new PrintWriter(socket.getOutputStream());
-                input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                new Thread(new MainActivity.Thread2()).start();
-            } catch (IOException e) {
-                e.printStackTrace();
+        connectButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startService();
             }
-        }
-    }
-    class Thread2 implements Runnable {                             //Server message reader
-        @Override
-        public void run() {
-            while (true) {
-                try {
-                    final String message = input.readLine();
-                    if (message!= null) {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                if(message.equals("go")){
-                                    changeActivityTwo();
-                                }
-                            }
-                        });
-                    } else {
-                        Thread1 = new Thread(new MainActivity.Thread1());
-                        Thread1.start();
-                        return;
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+        });
+
+
     }
 
 
@@ -141,4 +109,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private void startService(){
+        startService(new Intent(this, MyService.class));
+    }
+
+
 }
+

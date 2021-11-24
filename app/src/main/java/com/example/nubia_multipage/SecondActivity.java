@@ -2,6 +2,7 @@ package com.example.nubia_multipage;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.Window;
 import android.view.animation.AlphaAnimation;
@@ -25,10 +26,7 @@ public class SecondActivity extends AppCompatActivity {
     ImageView gif;
     FrameLayout layout;
 
-
-    Thread Thread1 = null;
-    String SERVER_IP = "192.168.100.100";
-    int SERVER_PORT = 8080;
+    Boolean running=true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,68 +38,52 @@ public class SecondActivity extends AppCompatActivity {
         color= findViewById(R.id.color);
         gif= findViewById(R.id.gif);
 
-        //communication
-        Thread1 = new Thread(new SecondActivity.Thread1());
-        Thread1.start();
-
-        changeColor("blue");
-
         layout=findViewById(R.id.layout2);
 
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
+
             }
         });
 
+
         }
 
-    private PrintWriter output;
-    private BufferedReader input;
-    class Thread1 implements Runnable {                                //Server connection
-        public void run() {
-            Socket socket;
-            try {
-                socket = new Socket(SERVER_IP, SERVER_PORT);           //connection server ip / port
-                output = new PrintWriter(socket.getOutputStream());
-                input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                new Thread(new SecondActivity.Thread2()).start();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+    @Override
+    protected  void onResume(){
+        super.onResume();
+
+        running=true;
+        changeColor("blue");
     }
-    class Thread2 implements Runnable {                             //Server message reader
+
+
+    class Thread1 implements Runnable {                             //Server message reader
         @Override
         public void run() {
-            while (true) {
-                try {
-                    final String message = input.readLine();
-                    if (message!= null) {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                changeColor(message);
-                            }
-                        });
-                    } else {
-                        Thread1 = new Thread(new SecondActivity.Thread1());
-                        Thread1.start();
-                        return;
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
+
+            if (!running) return;
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+
+                    changeColor(MyService.messageToActivity);
+
                 }
-            }
+            });
+
         }
     }
+
 
 
     private void changeColor(String message){
 
         TextView txtMarquee;
         txtMarquee = findViewById(R.id.marqueeText);
+
 
         int redColor = getResources().getIdentifier("@drawable/statusbar_red",null,this.getPackageName());
         int greenColor = getResources().getIdentifier("@drawable/statusbar_green",null,this.getPackageName());
@@ -123,6 +105,7 @@ public class SecondActivity extends AppCompatActivity {
             animation.setRepeatCount(Animation.INFINITE); //repeating indefinitely
             animation.setRepeatMode(Animation.REVERSE); //animation will start from end point once ended.
             color.startAnimation(animation); //to start animation
+
         }
 
         if(message.equals("green")){
@@ -150,12 +133,21 @@ public class SecondActivity extends AppCompatActivity {
         if(message.equals("back")){
             finish();
         }
+
+        MyService.messageToActivity="null";
+        new Thread(new SecondActivity.Thread1()).start();
+
+
+
     }
 
-    private void changeActivityThree(){                                      //Click change page
-        Intent intent = new Intent(this,ThirdActivity.class);
-        startActivity(intent);
+    @Override
+    protected void onStop() {
+
+        super.onStop();
+        running=false;
     }
+
 
     }
 

@@ -28,9 +28,7 @@ public class FourthActivity extends AppCompatActivity {
     Button sendButton;
     Switch switchOne;
 
-    Thread Thread1 = null;
-    String SERVER_IP = "192.168.1.2";
-    int SERVER_PORT = 8080;
+    Boolean running=true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +47,6 @@ public class FourthActivity extends AppCompatActivity {
 
         backButton.setPaintFlags(backButton.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         sendButton.setPaintFlags(sendButton.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-
 
         seekBarOne.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -111,64 +108,52 @@ public class FourthActivity extends AppCompatActivity {
             public void onClick(View v) {
                 getProgressOne();
                 getProgressTwo();
-                new Thread(new Thread3("-"+progressOne+"-"+progressTwo+"-"+switchOneView+"-")).start();
+                new Thread(new Thread2("-"+progressOne+"-"+progressTwo+"-"+switchOneView+"-")).start();
 
             }
         });
 
-        Thread1 = new Thread(new FourthActivity.Thread1());
-        Thread1.start();
 
     }
 
-    private PrintWriter output;
-    private BufferedReader input;
-    class Thread1 implements Runnable {                                //Server connection
-        public void run() {
-            Socket socket;
-            try {
-                socket = new Socket(SERVER_IP, SERVER_PORT);           //connection server ip / port
-                output = new PrintWriter(socket.getOutputStream());
-                input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                new Thread(new FourthActivity.Thread2()).start();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+    @Override
+    protected  void onResume(){
+        super.onResume();
+
+        running=true;
+        MyService.messageToActivity="null";
+        new Thread(new FourthActivity.Thread1()).start();
+
     }
-    class Thread2 implements Runnable {                             //Server message reader
+
+
+    class Thread1 implements Runnable {                             //Server message reader
         @Override
         public void run() {
-            while (true) {
-                try {
-                    final String message = input.readLine();
-                    if (message!= null) {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                receiveValue(message);
-                            }
-                        });
-                    } else {
-                        Thread1 = new Thread(new FourthActivity.Thread1());
-                        Thread1.start();
-                        return;
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
+
+            if (!running) return;
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+
+                    receiveValue(MyService.messageToActivity);
+
                 }
-            }
+            });
+
         }
     }
-    class Thread3 implements Runnable {                             //Phone message reader / sender
+
+
+    class Thread2 implements Runnable {                             //Phone message reader / sender
         private String message;
-        Thread3(String message) {
+        Thread2(String message) {
             this.message = message;
         }
         @Override
         public void run() {
-            output.write(message);
-            output.flush();
+            MyService.output.write(message);
+            MyService.output.flush();
         }
     }
 
@@ -182,28 +167,44 @@ public class FourthActivity extends AppCompatActivity {
 
     private  void receiveValue(String message){
 
-        String val1=message.substring(0,2);             //get seekbar 1 value
-        String val2=message.substring(2,4);             //get seekbar 2 value
-        String sw1=message.substring(4,5);
-
-        int number1 = Integer.parseInt(val1);           //set seekbar 1 value
-        seekBarOne.setProgress(number1);
-        if(val1.equals("99")){
-            seekBarOne.setProgress(100);
-        }
-
-        int number2 = Integer.parseInt(val2);           //set seekbar 2 value
-        seekBarTwo.setProgress(number2);
-        if(val2.equals("99")){
-            seekBarTwo.setProgress(100);
-        }
-
-        if(sw1.equals("1")){                            //set switch 1 value
-            switchOne.setChecked(true);
+        if(message.equals("null")){
+            new Thread(new FourthActivity.Thread1()).start();
         }else{
-            switchOne.setChecked(false);
+            String val1=message.substring(0,2);             //get seekbar 1 value
+            String val2=message.substring(2,4);             //get seekbar 2 value
+            String sw1=message.substring(4,5);
+
+            int number1 = Integer.parseInt(val1);           //set seekbar 1 value
+            seekBarOne.setProgress(number1);
+            if(val1.equals("99")){
+                seekBarOne.setProgress(100);
+            }
+
+            int number2 = Integer.parseInt(val2);           //set seekbar 2 value
+            seekBarTwo.setProgress(number2);
+            if(val2.equals("99")){
+                seekBarTwo.setProgress(100);
+            }
+
+            if(sw1.equals("1")){                            //set switch 1 value
+                switchOne.setChecked(true);
+            }else{
+                switchOne.setChecked(false);
+            }
+
+
+            MyService.messageToActivity="null";
+            new Thread(new FourthActivity.Thread1()).start();
         }
 
     }
+
+    @Override
+    protected void onStop() {
+
+        super.onStop();
+        running=false;
+    }
+
 
 }

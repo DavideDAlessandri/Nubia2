@@ -102,7 +102,7 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textSupsi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/ehsmb"
@@ -112,6 +112,14 @@
             android:layout_gravity="center"
             android:translationY="290dp"
             android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/connectButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:translationY="-245dp"
+            android:text="Connect" />
 
     </FrameLayout>
 

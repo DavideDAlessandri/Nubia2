@@ -25,6 +25,9 @@
         <activity android:name=".FourthActivity"/>
         <activity android:name=".FifthActivity"/>
 
+        <service android:enabled="true" android:name=".MyService">
+        </service>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
