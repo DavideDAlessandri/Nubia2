@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     Button fourthPage;
     Button fifthPage;
     Button connectButton;
+    Boolean running=true;
 
 
     @Override
@@ -82,10 +83,58 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startService();
+
+                Handler handler = new Handler();
+                handler. postDelayed(new Runnable() {
+                    public void run() {
+
+                        running=true;
+                        MyService.messageToActivity="null";
+                        new Thread(new MainActivity.Thread1()).start();
+
+                    }
+                }, 1000); //1 seconds.
+
             }
         });
 
 
+    }
+
+    @Override
+    protected  void onResume(){
+        super.onResume();
+
+        if (MyService.connectStatus.equals(true)){
+
+            MyService.messageToActivity="null";
+            running=true;
+            new Thread(new MainActivity.Thread1()).start();
+        }
+    }
+
+    class Thread1 implements Runnable {                             //Server message reader
+        @Override
+        public void run() {
+
+            if (!running) return;
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+
+                    if(MyService.messageToActivity.equals("go")){
+                        running=false;
+                        MyService.messageToActivity="null";
+                        changeActivityTwo();
+                        return;
+                    }else{
+                        new Thread(new MainActivity.Thread1()).start();
+                    }
+
+                }
+            });
+
+        }
     }
 
 
@@ -113,6 +162,14 @@ public class MainActivity extends AppCompatActivity {
         startService(new Intent(this, MyService.class));
     }
 
+
+
+    @Override
+    protected void onStop() {
+
+        super.onStop();
+        running=false;
+    }
 
 }
 

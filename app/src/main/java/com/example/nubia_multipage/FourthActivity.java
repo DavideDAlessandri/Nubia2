@@ -27,7 +27,6 @@ public class FourthActivity extends AppCompatActivity {
     Button backButton;
     Button sendButton;
     Switch switchOne;
-
     Boolean running=true;
 
     @Override

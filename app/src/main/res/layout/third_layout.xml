@@ -372,6 +372,16 @@
             android:backgroundTint="#666666"
             android:translationY="170dp" />
 
+        <ImageView
+            android:id="@+id/robotPhoto"
+            android:layout_gravity="center"
+            android:rotation="90"
+            android:translationY="170dp"
+            android:alpha="0.5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/robot_backround" />
+
     </FrameLayout>
 
 </LinearLayout>

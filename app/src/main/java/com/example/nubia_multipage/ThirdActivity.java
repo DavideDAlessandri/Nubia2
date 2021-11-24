@@ -2,6 +2,7 @@ package com.example.nubia_multipage;
 
 import android.os.Bundle;
 import android.view.Window;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -13,6 +14,7 @@ public class ThirdActivity extends AppCompatActivity {
     SeekBar seekBarOne;
     ProgressBar progressBarOne, progressBarTwo, progressBarThree, progressBarFour, progressBarFive, progressBarSix;
     Integer progressOne;
+    ImageView robot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,7 @@ public class ThirdActivity extends AppCompatActivity {
         progressBarFour=findViewById(R.id.progressBarFour3);
         progressBarFive=findViewById(R.id.progressBarFive3);
         progressBarSix=findViewById(R.id.progressBarSix3);
+        robot=findViewById(R.id.robotPhoto);
 
         seekBarOne.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -39,6 +42,7 @@ public class ThirdActivity extends AppCompatActivity {
                 progressBarFour.setProgress(progressOne);
                 progressBarFive.setProgress(progressOne);
                 progressBarSix.setProgress(progressOne);
+                robot.setAlpha(progressOne*2);
             }
 
             @Override

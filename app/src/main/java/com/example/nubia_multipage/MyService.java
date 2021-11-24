@@ -66,15 +66,9 @@ public class MyService extends Service {
             while (true) {
                 try {
                     final String message = input.readLine();
-                    if (message!= null) {
 
-                        messageToActivity=message;
+                    messageToActivity=message;
 
-                    } else {
-                        Thread1 = new Thread(new MyService.Thread1());
-                        Thread1.start();
-                        return;
-                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

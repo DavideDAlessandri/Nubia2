@@ -25,7 +25,6 @@ public class SecondActivity extends AppCompatActivity {
     ImageView color;
     ImageView gif;
     FrameLayout layout;
-
     Boolean running=true;
 
     @Override
