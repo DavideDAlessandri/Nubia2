@@ -17,6 +17,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class FourthActivity extends AppCompatActivity {
 
@@ -123,6 +125,16 @@ public class FourthActivity extends AppCompatActivity {
         MyService.messageToActivity="null";
         new Thread(new FourthActivity.Thread1()).start();
 
+        new Timer().scheduleAtFixedRate(new TimerTask() {                                           //send data every second
+            @Override
+            public void run() {
+                if (!running) return;                                                               //exit on stop
+                getProgressOne();
+                getProgressTwo();
+                new Thread(new Thread2("-"+progressOne+"-"+progressTwo+"-"+switchOneView+"-")).start();
+            }
+        }, 0, 1000);//1000 milliseconds=1 second
+
     }
 
 
@@ -130,7 +142,7 @@ public class FourthActivity extends AppCompatActivity {
         @Override
         public void run() {
 
-            if (!running) return;
+            if (!running) return;                                   //Exit thread
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -197,6 +209,7 @@ public class FourthActivity extends AppCompatActivity {
         }
 
     }
+
 
     @Override
     protected void onStop() {

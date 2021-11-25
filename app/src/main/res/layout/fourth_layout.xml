@@ -81,15 +81,15 @@
             android:id="@+id/speed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/ehsmb"
-            android:text="speed"
             android:layout_gravity="center"
+            android:fontFamily="@font/ehsmb"
             android:rotation="90"
+            android:text="speed"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:textSize="30sp"
-            android:translationY="-220dp"
-            android:translationX="25dp"/>
+            android:translationX="25dp"
+            android:translationY="-220dp" />
 
         <SeekBar
             android:id="@+id/seekBarTwo"

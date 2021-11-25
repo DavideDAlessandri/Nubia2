@@ -178,7 +178,6 @@
             android:translationY="-280dp" />
 
 
-
         <ProgressBar
             android:id="@+id/progressBarFour3"
             style="?android:attr/progressBarStyleHorizontal"
@@ -374,12 +373,12 @@
 
         <ImageView
             android:id="@+id/robotPhoto"
-            android:layout_gravity="center"
-            android:rotation="90"
-            android:translationY="170dp"
-            android:alpha="0.5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:alpha="0.5"
+            android:rotation="90"
+            android:translationY="170dp"
             app:srcCompat="@drawable/robot_backround" />
 
     </FrameLayout>
