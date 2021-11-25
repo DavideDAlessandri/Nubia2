@@ -1,5 +1,6 @@
 package com.example.nubia_multipage;
 
+import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
@@ -12,11 +13,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.Socket;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -27,7 +23,7 @@ public class FourthActivity extends AppCompatActivity {
     String progressOne,progressTwo;
     String switchOneView;
     Button backButton;
-    Button sendButton;
+    Button sixthPage;
     Switch switchOne;
     Boolean running=true;
 
@@ -43,11 +39,11 @@ public class FourthActivity extends AppCompatActivity {
         seekBarOne= findViewById(R.id.seekBarOne5);
         seekBarTwo=findViewById(R.id.seekBarTwo);
         backButton= findViewById(R.id.backButton);
-        sendButton=findViewById(R.id.sendData);
+        sixthPage=findViewById(R.id.activitySixButton);
         switchOne= findViewById(R.id.switchOne);
 
         backButton.setPaintFlags(backButton.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-        sendButton.setPaintFlags(sendButton.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        sixthPage.setPaintFlags(sixthPage.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
         seekBarOne.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -104,13 +100,10 @@ public class FourthActivity extends AppCompatActivity {
             }
         });
 
-        sendButton.setOnClickListener(new View.OnClickListener() {
+        sixthPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getProgressOne();
-                getProgressTwo();
-                new Thread(new Thread2("-"+progressOne+"-"+progressTwo+"-"+switchOneView+"-")).start();
-
+                changeActivitySix();
             }
         });
 
@@ -208,6 +201,12 @@ public class FourthActivity extends AppCompatActivity {
             new Thread(new FourthActivity.Thread1()).start();
         }
 
+    }
+
+    private void changeActivitySix(){                                                               //Change activity
+        Intent intent = new Intent(this,SixthActivity.class);
+        startActivity(intent);
+        running=false;
     }
 
 

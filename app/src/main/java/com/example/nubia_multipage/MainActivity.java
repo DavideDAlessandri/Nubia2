@@ -89,12 +89,11 @@ public class MainActivity extends AppCompatActivity {
                         MyService.messageToActivity="null";                                         //Set incoming message "null"
                         new Thread(new MainActivity.Thread1()).start();                             //Start thread 1 (read incoming message)
 
-                    }
+                        }
                 }, 1000); //1 seconds.
 
             }
         });
-
 
     }
 
