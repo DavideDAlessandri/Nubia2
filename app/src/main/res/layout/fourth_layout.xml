@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:keepScreenOn="true">>
+    android:keepScreenOn="true">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -31,7 +31,7 @@
             android:textColorHint="#FFFFFF"
             android:textSize="25sp"
             android:translationX="22dp"
-            android:translationY="175dp" />
+            android:translationY="145dp" />
 
         <Button
             android:id="@+id/activitySixButton"
@@ -46,7 +46,7 @@
             android:textColorHint="#FFFFFF"
             android:textSize="25sp"
             android:translationX="-22dp"
-            android:translationY="175dp" />
+            android:translationY="145dp" />
 
         <SeekBar
             android:id="@+id/seekBarOne5"
@@ -176,6 +176,27 @@
             android:textSize="30sp"
             android:translationY="25dp"
             android:translationX="25dp"/>
+
+        <ToggleButton
+            android:id="@+id/toggleButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custum_toggle_button"
+            android:rotation="90"
+            android:textOff="N-Guiding"
+            android:textOn="N-Guiding"
+            android:translationX="45dp"
+            android:translationY="535dp" />
+
+        <ToggleButton
+            android:id="@+id/toggleButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rotation="90"
+            android:translationX="-5dp"
+            android:translationY="535dp"
+            android:background="@drawable/custum_toggle_button"
+            />
 
     </FrameLayout>
 

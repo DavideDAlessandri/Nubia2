@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         connectButton.setVisibility(View.VISIBLE);
         connectButton.setOnClickListener(new View.OnClickListener() {                               //Connect button
             @Override
@@ -84,13 +85,16 @@ public class MainActivity extends AppCompatActivity {
                 handler. postDelayed(new Runnable() {
                     public void run() {
 
-                        connectButton.setVisibility(View.GONE);                                     //Hide button
-                        running=true;                                                               //Allow thread 1 to run
-                        MyService.messageToActivity="null";                                         //Set incoming message "null"
-                        new Thread(new MainActivity.Thread1()).start();                             //Start thread 1 (read incoming message)
+                        if (MyService.connectStatus.equals(true)) {                                 //If server connected:
+
+                            connectButton.setVisibility(View.GONE);                                 //Hide button
+                            running = true;                                                         //Allow thread 1 to run
+                            MyService.messageToActivity = "null";                                   //Set incoming message "null"
+                            new Thread(new MainActivity.Thread1()).start();                         //Start thread 1 (read incoming message)
 
                         }
-                }, 1000); //1 seconds.
+                        }
+                }, 500); //0.5 seconds.
 
             }
         });
@@ -153,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,FifthActivity.class);
         startActivity(intent);
     }
+
 
     private void startService(){                                                                    //Start background service
         startService(new Intent(this, MyService.class));

@@ -10,6 +10,7 @@ import android.widget.CompoundButton;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,6 +26,8 @@ public class FourthActivity extends AppCompatActivity {
     Button backButton;
     Button sixthPage;
     Switch switchOne;
+    ToggleButton toggleButton1;
+    String toggleButton1St;
     Boolean running=true;
 
     @Override
@@ -41,6 +44,7 @@ public class FourthActivity extends AppCompatActivity {
         backButton= findViewById(R.id.backButton);
         sixthPage=findViewById(R.id.activitySixButton);
         switchOne= findViewById(R.id.switchOne);
+        toggleButton1=findViewById(R.id.toggleButton1);
 
         backButton.setPaintFlags(backButton.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         sixthPage.setPaintFlags(sixthPage.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
@@ -107,6 +111,17 @@ public class FourthActivity extends AppCompatActivity {
             }
         });
 
+        toggleButton1St="off";
+        toggleButton1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {     //toggle button
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    toggleButton1St="on";
+                } else {
+                    toggleButton1St="off";
+                }
+            }
+        });
 
     }
 
@@ -124,7 +139,7 @@ public class FourthActivity extends AppCompatActivity {
                 if (!running) return;                                                               //exit on stop
                 getProgressOne();
                 getProgressTwo();
-                new Thread(new Thread2("-"+progressOne+"-"+progressTwo+"-"+switchOneView+"-")).start();
+                new Thread(new Thread2("-"+progressOne+"-"+progressTwo+"-"+switchOneView+"-"+toggleButton1St+"-")).start();
             }
         }, 0, 1000);//1000 milliseconds=1 second
 

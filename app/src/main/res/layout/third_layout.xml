@@ -378,8 +378,17 @@
             android:layout_gravity="center"
             android:alpha="0.5"
             android:rotation="90"
-            android:translationY="170dp"
+            android:translationY="70dp"
             app:srcCompat="@drawable/robot_backround" />
+
+        <ToggleButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rotation="90"
+            android:translationX="45dp"
+            android:translationY="515dp"
+            android:background="@drawable/custum_toggle_button"
+            android:text="Button" />
 
     </FrameLayout>
 

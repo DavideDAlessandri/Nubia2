@@ -15,8 +15,8 @@ import java.net.Socket;
 public class MyService extends Service {
 
     Thread Thread1 = null;
-    String SERVER_IP = "192.168.100.2";
-    //String SERVER_IP = "192.168.100.10";
+    String SERVER_IP = "192.168.100.2";       //IP PC Davide
+    //String SERVER_IP = "192.168.100.100";       //IP Robot
     int SERVER_PORT = 8080;
 
 
@@ -35,8 +35,6 @@ public class MyService extends Service {
         //do something
         Thread1 = new Thread(new MyService.Thread1());
         Thread1.start();
-        connectStatus=true;
-
     }
 
     @Override
