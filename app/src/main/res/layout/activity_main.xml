@@ -18,108 +18,145 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
-        <Button
-            android:id="@+id/secondPage"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="268dp"
-            android:layout_height="113dp"
-            android:layout_gravity="center"
-            android:backgroundTint="#000000"
-            android:fontFamily="@font/ehsmb"
-            android:rotation="90"
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/main_screen" />
+
+        <TextView
+            android:id="@+id/RunPage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/frau_2"
             android:text="Run"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
-            android:textSize="25sp"
-            android:translationX="22dp"
-            android:translationY="-160dp" />
-
-        <Button
-            android:id="@+id/thirdPage"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="186dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/ehsmb"
+            android:shadowColor="#000000"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="5"
+            android:padding="5dp"
             android:rotation="90"
-            android:text="Ver.1"
+            android:layout_gravity="center"
+            android:translationY="-283dp"
+            android:translationX="55dp"
+            android:textSize="40sp" />
+
+        <TextView
+            android:id="@+id/TeachPage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/frau_2"
+            android:text="Teach"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
-            android:textSize="25sp"
-            android:translationX="-22dp"
-            android:translationY="-160dp" />
-
-        <pl.droidsonroids.gif.GifImageView
-            android:layout_width="250dp"
-            android:layout_height="154dp"
-            android:layout_gravity="center"
+            android:shadowColor="#000000"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="5"
+            android:padding="5dp"
             android:rotation="90"
-            android:src="@drawable/gif_circle"
-            android:translationX="0dp"
-            android:translationY="0dp"
-            />
+            android:layout_gravity="center"
+            android:translationY="-266dp"
+            android:translationX="4dp"
+            android:textSize="40sp" />
 
-        <Button
-            android:id="@+id/fourthPage"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="213dp"
+        <TextView
+            android:id="@+id/HandPage"
+            android:layout_width="241dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="@font/ehsmb"
+            android:fontFamily="@font/frau_2"
+            android:padding="5dp"
             android:rotation="90"
+            android:shadowColor="#000000"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="5"
+            android:text="Hand guide"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="40sp"
+            android:translationX="-45dp"
+            android:translationY="-197dp" />
+
+        <TextView
+            android:id="@+id/AddOnsPage"
+            android:layout_width="241dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/frau_2"
+            android:padding="5dp"
+            android:rotation="90"
+            android:shadowColor="#000000"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="5"
+            android:text="Add-Ons"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="40sp"
+            android:translationX="55dp"
+            android:translationY="305dp" />
+
+        <TextView
+            android:id="@+id/MonitorPage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/frau_2"
+            android:text="Monitor"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:shadowColor="#000000"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="5"
+            android:padding="5dp"
+            android:rotation="90"
+            android:layout_gravity="center"
+            android:translationY="251dp"
+            android:translationX="4dp"
+            android:textSize="40sp" />
+
+        <TextView
+            android:id="@+id/SettingsPage"
+            android:layout_width="241dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/frau_2"
+            android:padding="5dp"
+            android:rotation="90"
+            android:shadowColor="#000000"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="5"
             android:text="Settings"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
-            android:textSize="25sp"
-            android:translationX="22dp"
-            android:translationY="160dp" />
-
-        <Button
-            android:id="@+id/fifthPage"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/ehsmb"
-            android:layout_gravity="center"
-            android:rotation="90"
-            android:text="Ver.2"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
-            android:textSize="25sp"
-            android:translationX="-22dp"
-            android:translationY="160dp" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/ehsmb"
-            android:text="Rossini"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FDFDFD"
-            android:layout_gravity="center"
-            android:translationY="-290dp"
-            android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/textSupsi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/ehsmb"
-            android:text="SUPSI"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FDFDFD"
-            android:layout_gravity="center"
-            android:translationY="290dp"
-            android:textSize="24sp" />
+            android:textSize="40sp"
+            android:translationX="-45dp"
+            android:translationY="289dp" />
 
         <Button
             android:id="@+id/connectButton"
-            android:layout_width="wrap_content"
+            android:layout_width="241dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:translationY="-245dp"
-            android:text="Connect" />
+            android:fontFamily="@font/frau_2"
+            android:padding="5dp"
+            android:rotation="90"
+            android:shadowColor="#000000"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="5"
+            android:text="Conn."
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="24sp"
+            android:background="#0000ffff"
+            android:translationX="-35dp"
+            android:translationY="-26dp" />
 
 
     </FrameLayout>

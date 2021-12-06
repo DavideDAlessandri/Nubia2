@@ -20,10 +20,10 @@ import java.net.Socket;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button secondPage;
-    Button thirdPage;
-    Button fourthPage;
-    Button fifthPage;
+    TextView secondPage;
+    TextView thirdPage;
+    TextView fourthPage;
+    TextView fifthPage;
     Button connectButton;
     Boolean running=true;                                                                           //Thread 1 start/stop
 
@@ -34,16 +34,11 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
 
-        secondPage=findViewById(R.id.secondPage);
-        thirdPage = findViewById(R.id.thirdPage);
-        fourthPage=findViewById(R.id.fourthPage);
-        fifthPage=findViewById(R.id.fifthPage);
+        secondPage=findViewById(R.id.RunPage);
+        thirdPage = findViewById(R.id.TeachPage);
+        fourthPage=findViewById(R.id.SettingsPage);
+        fifthPage=findViewById(R.id.HandPage);
         connectButton=findViewById(R.id.connectButton);
-
-        secondPage.setPaintFlags(secondPage.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);           //underline button
-        thirdPage.setPaintFlags(thirdPage.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-        fourthPage.setPaintFlags(fourthPage.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-        fifthPage.setPaintFlags(fifthPage.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
 
         secondPage.setOnClickListener(new View.OnClickListener() {                                  //Change page buttons

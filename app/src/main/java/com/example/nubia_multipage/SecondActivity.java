@@ -91,52 +91,53 @@ public class SecondActivity extends AppCompatActivity {
         int gifRobot = getResources().getIdentifier("@drawable/gif_robot",null,this.getPackageName());
         int gifEye = getResources().getIdentifier("@drawable/gif_eye",null,this.getPackageName());
 
-                                                                                                    //Change image if message is "red", "yellow" .....
-        if(message.equals("red")){
-            color.setImageResource(redColor);
-            gif.setImageResource(gifRobot);
-            txtMarquee.setText("Errore Errore Errore");
-            txtMarquee.setSelected(true);
+        if(message.equals("null")){
+            new Thread(new SecondActivity.Thread1()).start();
+        }else{
+            if(message.equals("red")){
+                color.setImageResource(redColor);
+                gif.setImageResource(gifRobot);
+                txtMarquee.setText("Errore Errore Errore");
+                txtMarquee.setSelected(true);
 
-            Animation animation = new AlphaAnimation(1, 0); //to change visibility from visible to invisible
-            animation.setDuration(1000); //1 second duration for each animation cycle
-            animation.setInterpolator(new LinearInterpolator());
-            animation.setRepeatCount(Animation.INFINITE); //repeating indefinitely
-            animation.setRepeatMode(Animation.REVERSE); //animation will start from end point once ended.
-            color.startAnimation(animation); //to start animation
+                Animation animation = new AlphaAnimation(1, 0); //to change visibility from visible to invisible
+                animation.setDuration(1000); //1 second duration for each animation cycle
+                animation.setInterpolator(new LinearInterpolator());
+                animation.setRepeatCount(Animation.INFINITE); //repeating indefinitely
+                animation.setRepeatMode(Animation.REVERSE); //animation will start from end point once ended.
+                color.startAnimation(animation); //to start animation
 
+            }
+
+            if(message.equals("green")){
+                color.setImageResource(greenColor);
+                gif.setImageResource(0);
+                txtMarquee.setText("Verde Verde Verde");
+                txtMarquee.setSelected(true);
+                color.clearAnimation();
+            }
+
+            if(message.equals("yellow")){
+                color.setImageResource(yellowColor);
+                gif.setImageResource(gifEye);
+                txtMarquee.setText("Giallo Giallo Giallo");
+                txtMarquee.setSelected(true);
+                color.clearAnimation();
+            }
+            if(message.equals("blue")){
+                color.setImageResource(blueColor);
+                gif.setImageResource(0);
+                txtMarquee.setText("Test test test test");
+                txtMarquee.setSelected(true);
+                color.clearAnimation();
+            }
+            if(message.equals("back")){
+                finish();
+            }
+
+            MyService.messageToActivity="null";
+            new Thread(new SecondActivity.Thread1()).start();
         }
-
-        if(message.equals("green")){
-            color.setImageResource(greenColor);
-            gif.setImageResource(0);
-            txtMarquee.setText("Verde Verde Verde");
-            txtMarquee.setSelected(true);
-            color.clearAnimation();
-        }
-
-        if(message.equals("yellow")){
-            color.setImageResource(yellowColor);
-            gif.setImageResource(gifEye);
-            txtMarquee.setText("Giallo Giallo Giallo");
-            txtMarquee.setSelected(true);
-            color.clearAnimation();
-        }
-        if(message.equals("blue")){
-            color.setImageResource(blueColor);
-            gif.setImageResource(0);
-            txtMarquee.setText("Test test test test");
-            txtMarquee.setSelected(true);
-            color.clearAnimation();
-        }
-        if(message.equals("back")){
-            finish();
-        }
-
-        MyService.messageToActivity="null";
-        new Thread(new SecondActivity.Thread1()).start();
-
-
 
     }
 

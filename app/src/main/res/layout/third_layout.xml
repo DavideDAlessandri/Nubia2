@@ -371,15 +371,6 @@
             android:backgroundTint="#666666"
             android:translationY="170dp" />
 
-        <ImageView
-            android:id="@+id/robotPhoto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:alpha="0.5"
-            android:rotation="90"
-            android:translationY="70dp"
-            app:srcCompat="@drawable/robot_backround" />
 
         <ToggleButton
             android:layout_width="wrap_content"
