@@ -1,8 +1,6 @@
 package com.example.nubia_multipage;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.view.Window;
 import android.view.animation.AlphaAnimation;
@@ -13,12 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.Socket;
 
 public class SecondActivity extends AppCompatActivity {
 
@@ -32,7 +24,7 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
-        setContentView(R.layout.second_layout);
+        setContentView(R.layout.second_ly_run);
 
         color= findViewById(R.id.color);
         gif= findViewById(R.id.gif);
@@ -91,13 +83,16 @@ public class SecondActivity extends AppCompatActivity {
         int gifRobot = getResources().getIdentifier("@drawable/gif_robot",null,this.getPackageName());
         int gifEye = getResources().getIdentifier("@drawable/gif_eye",null,this.getPackageName());
 
+        String screenMessage=message.substring(2);
+        String colorMessage=message.substring(0,2);
+
         if(message.equals("null")){
             new Thread(new SecondActivity.Thread1()).start();
         }else{
-            if(message.equals("red")){
+            if(colorMessage.equals("R1")){
                 color.setImageResource(redColor);
                 gif.setImageResource(gifRobot);
-                txtMarquee.setText("Errore Errore Errore");
+                txtMarquee.setText(screenMessage + " " + screenMessage + " " + screenMessage + " ");
                 txtMarquee.setSelected(true);
 
                 Animation animation = new AlphaAnimation(1, 0); //to change visibility from visible to invisible
@@ -108,26 +103,33 @@ public class SecondActivity extends AppCompatActivity {
                 color.startAnimation(animation); //to start animation
 
             }
-
-            if(message.equals("green")){
-                color.setImageResource(greenColor);
+            if(colorMessage.equals("R2")) {
+                color.setImageResource(redColor);
                 gif.setImageResource(0);
-                txtMarquee.setText("Verde Verde Verde");
+                txtMarquee.setText(screenMessage + " " + screenMessage + " " + screenMessage + " ");
                 txtMarquee.setSelected(true);
                 color.clearAnimation();
             }
 
-            if(message.equals("yellow")){
+            if(colorMessage.equals("G1")){
+                color.setImageResource(greenColor);
+                gif.setImageResource(0);
+                txtMarquee.setText(screenMessage + " " + screenMessage + " " + screenMessage + " ");
+                txtMarquee.setSelected(true);
+                color.clearAnimation();
+            }
+
+            if(colorMessage.equals("Y1")){
                 color.setImageResource(yellowColor);
                 gif.setImageResource(gifEye);
-                txtMarquee.setText("Giallo Giallo Giallo");
+                txtMarquee.setText(screenMessage + " " + screenMessage + " " + screenMessage + " ");
                 txtMarquee.setSelected(true);
                 color.clearAnimation();
             }
             if(message.equals("blue")){
                 color.setImageResource(blueColor);
                 gif.setImageResource(0);
-                txtMarquee.setText("Test test test test");
+                txtMarquee.setText("Message Message Message");
                 txtMarquee.setSelected(true);
                 color.clearAnimation();
             }

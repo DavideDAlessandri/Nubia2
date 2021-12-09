@@ -20,10 +20,12 @@ import java.net.Socket;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView secondPage;
-    TextView thirdPage;
-    TextView fourthPage;
-    TextView fifthPage;
+    Button secondPage;
+    Button thirdPage;
+    Button fourthPage;
+    Button fifthPage;
+    Button sixthPage;
+    Button seventhPage;
     Button connectButton;
     Boolean running=true;                                                                           //Thread 1 start/stop
 
@@ -38,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
         thirdPage = findViewById(R.id.TeachPage);
         fourthPage=findViewById(R.id.SettingsPage);
         fifthPage=findViewById(R.id.HandPage);
+        sixthPage=findViewById(R.id.MonitorPage);
+        seventhPage=findViewById(R.id.AddOnsPage);
         connectButton=findViewById(R.id.connectButton);
 
 
@@ -66,6 +70,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 changeActivityFive();
+            }
+        });
+
+        sixthPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeActivitySix();
+            }
+        });
+
+        seventhPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeActivitySeven();
             }
         });
 
@@ -151,6 +169,16 @@ public class MainActivity extends AppCompatActivity {
     private void changeActivityFive(){
         Intent intent = new Intent(this,FifthActivity.class);
         startActivity(intent);
+    }
+
+    private void changeActivitySix(){
+        Intent Intent = new Intent(this,SixthActivity.class);
+        startActivity(Intent);
+    }
+
+    private void changeActivitySeven(){
+        Intent Intent = new Intent(this,SeventhActivity.class);
+        startActivity(Intent);
     }
 
 

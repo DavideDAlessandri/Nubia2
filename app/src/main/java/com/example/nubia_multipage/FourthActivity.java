@@ -35,7 +35,7 @@ public class FourthActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
-        setContentView(R.layout.fourth_layout);
+        setContentView(R.layout.fourth_ly_settings);
 
         percOne= findViewById(R.id.percOne);
         percTwo= findViewById(R.id.percTwo);
@@ -129,20 +129,22 @@ public class FourthActivity extends AppCompatActivity {
     protected  void onResume(){
         super.onResume();
 
-        running=true;
-        MyService.messageToActivity="null";
-        new Thread(new FourthActivity.Thread1()).start();
+        if (MyService.connectStatus.equals(true)){
+            running=true;
+            MyService.messageToActivity="null";
+            new Thread(new FourthActivity.Thread1()).start();
 
-        new Timer().scheduleAtFixedRate(new TimerTask() {                                           //send data every second
-            @Override
-            public void run() {
-                if (!running) return;                                                               //exit on stop
-                getProgressOne();
-                getProgressTwo();
-                new Thread(new Thread2("-"+progressOne+"-"+progressTwo+"-"+switchOneView+"-"+toggleButton1St+"-")).start();
-            }
-        }, 0, 1000);//1000 milliseconds=1 second
+            new Timer().scheduleAtFixedRate(new TimerTask() {                                           //send data every second
+                @Override
+                public void run() {
+                    if (!running) return;
+                    getProgressOne();
+                    getProgressTwo();
+                    new Thread(new Thread2("-"+progressOne+"-"+progressTwo+"-"+switchOneView+"-"+toggleButton1St+"-")).start();
+                }
+            }, 0, 1000);//1000 milliseconds=1 second
 
+        }
     }
 
 
@@ -206,9 +208,9 @@ public class FourthActivity extends AppCompatActivity {
             }
 
             if(sw1.equals("1")){                            //set switch 1 value
-                switchOne.setChecked(true);
+                toggleButton1.setChecked(true);
             }else{
-                switchOne.setChecked(false);
+                toggleButton1.setChecked(false);
             }
 
 

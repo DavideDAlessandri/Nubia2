@@ -1,25 +1,15 @@
 package com.example.nubia_multipage;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ProgressBar;
-import android.widget.SeekBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.Socket;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class FifthActivity extends AppCompatActivity {
 
@@ -36,7 +26,7 @@ public class FifthActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
-        setContentView(R.layout.fifth_layout);
+        setContentView(R.layout.fifth_ly_hand);
 
         progressBarOne=findViewById(R.id.progressBarOne5);
         progressBarTwo=findViewById(R.id.progressBarTwo5);
@@ -198,6 +188,7 @@ public class FifthActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     private  void receiveValue(String message){
 
         if(message.equals("null")){
@@ -221,26 +212,68 @@ public class FifthActivity extends AppCompatActivity {
 
             int number1 = Integer.parseInt(val1);           //set progressbar 1 value
             progressBarOne.setProgress(number1);
+            if(number1>=200){
+                progressBarOne.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_red));
+            }else if(number1>=100){
+                progressBarOne.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_yellow));
+            }else if(number1>=0){
+                progressBarOne.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_green));
+            }
             progressTextOne.setText(number1 + " N");
 
             int number2 = Integer.parseInt(val2);           //set progressbar 2 value
             progressBarTwo.setProgress(number2);
+            if(number2>=200){
+                progressBarTwo.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_red));
+            }else if(number2>=100){
+                progressBarTwo.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_yellow));
+            }else if(number2>=0){
+                progressBarTwo.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_green));
+            }
             progressTextTwo.setText(number2 + " N");
 
             int number3 = Integer.parseInt(val3);
             progressBarThree.setProgress(number3);
+            if(number3>=200){
+                progressBarThree.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_red));
+            }else if(number3>=100){
+                progressBarThree.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_yellow));
+            }else if(number3>=0){
+                progressBarThree.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_green));
+            }
             progressTextThree.setText(number3 + " N");
 
             int number4 = Integer.parseInt(val4);
             progressBarFour.setProgress(number4);
+            if(number4>=20){
+                progressBarFour.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_red));
+            }else if(number4>=10){
+                progressBarFour.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_yellow));
+            }else if(number4>=0){
+                progressBarFour.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_green));
+            }
             progressTextFour.setText(number4 + " Nm");
 
             int number5 = Integer.parseInt(val5);
             progressBarFive.setProgress(number5);
+            if(number5>=20){
+                progressBarFive.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_red));
+            }else if(number5>=10){
+                progressBarFive.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_yellow));
+            }else if(number5>=0){
+                progressBarFive.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_green));
+            }
             progressTextFive.setText(number5 + " Nm");
 
             int number6 = Integer.parseInt(val6);
             progressBarSix.setProgress(number6);
+            if(number6>=20){
+                progressBarSix.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_red));
+            }else if(number6>=10){
+                progressBarSix.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_yellow));
+            }else if(number6>=0){
+                progressBarSix.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_green));
+            }
             progressTextSix.setText(number6 + " Nm");
 
             if (val7.equals("1")) {

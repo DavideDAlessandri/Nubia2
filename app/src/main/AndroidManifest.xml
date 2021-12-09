@@ -25,6 +25,7 @@
         <activity android:name=".FourthActivity"/>
         <activity android:name=".FifthActivity"/>
         <activity android:name=".SixthActivity"/>
+        <activity android:name=".SeventhActivity"/>
 
         <service android:enabled="true" android:name=".MyService">
         </service>

@@ -24,7 +24,7 @@
             android:layout_width="80dp"
             android:layout_height="8dp"
             android:layout_gravity="center"
-            android:progressDrawable="@drawable/custom_progress_bg"
+            android:progressDrawable="@drawable/custom_progress_bg_green"
             android:rotation="0"
             android:translationX="15dp"
             android:translationY="-140dp" />
@@ -77,7 +77,7 @@
             android:layout_width="80dp"
             android:layout_height="8dp"
             android:layout_gravity="center"
-            android:progressDrawable="@drawable/custom_progress_bg"
+            android:progressDrawable="@drawable/custom_progress_bg_green"
             android:rotation="0"
             android:translationX="15dp"
             android:translationY="-115dp" />
@@ -117,7 +117,7 @@
             android:layout_width="80dp"
             android:layout_height="8dp"
             android:layout_gravity="center"
-            android:progressDrawable="@drawable/custom_progress_bg"
+            android:progressDrawable="@drawable/custom_progress_bg_green"
             android:rotation="0"
             android:translationY="-90dp"
             android:translationX="15dp" />
@@ -184,7 +184,7 @@
             android:layout_width="80dp"
             android:layout_height="8dp"
             android:layout_gravity="center"
-            android:progressDrawable="@drawable/custom_progress_bg"
+            android:progressDrawable="@drawable/custom_progress_bg_green"
             android:rotation="0"
             android:translationX="15dp"
             android:translationY="100dp" />
@@ -237,7 +237,7 @@
             android:layout_width="80dp"
             android:layout_height="8dp"
             android:layout_gravity="center"
-            android:progressDrawable="@drawable/custom_progress_bg"
+            android:progressDrawable="@drawable/custom_progress_bg_green"
             android:rotation="0"
             android:translationX="15dp"
             android:translationY="125dp" />
@@ -277,7 +277,7 @@
             android:layout_width="80dp"
             android:layout_height="8dp"
             android:layout_gravity="center"
-            android:progressDrawable="@drawable/custom_progress_bg"
+            android:progressDrawable="@drawable/custom_progress_bg_green"
             android:rotation="0"
             android:translationY="150dp"
             android:translationX="15dp" />
