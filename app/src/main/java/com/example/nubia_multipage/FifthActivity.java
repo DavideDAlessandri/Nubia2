@@ -8,16 +8,14 @@ import android.view.Window;
 import android.widget.CheckBox;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class FifthActivity extends AppCompatActivity {
 
     ProgressBar progressBarOne, progressBarTwo, progressBarThree, progressBarFour, progressBarFive, progressBarSix;
-    TextView speedText;
-    TextView progressTextOne, progressTextTwo, progressTextThree, progressTextFour, progressTextFive, progressTextSix;
-    CheckBox backBox;
-    CheckBox checkBoxX, checkBoxY, checkBoxZ, checkBoxA, checkBoxB, checkBoxC, checkBoxN;
+    ToggleButton checkBoxX, checkBoxY, checkBoxZ, checkBoxA, checkBoxB, checkBoxC;
 
     Boolean running=true;
 
@@ -35,37 +33,13 @@ public class FifthActivity extends AppCompatActivity {
         progressBarFive=findViewById(R.id.progressBarFive5);
         progressBarSix=findViewById(R.id.progressBarSix5);
 
-        progressTextOne=findViewById(R.id.progressTextOne5);
-        progressTextTwo=findViewById(R.id.progressTextTwo5);
-        progressTextThree=findViewById(R.id.progressTextThree5);
-        progressTextFour=findViewById(R.id.progressTextFour5);
-        progressTextFive=findViewById(R.id.progressTextFive5);
-        progressTextSix=findViewById(R.id.progressTextSix5);
-
         checkBoxX=findViewById(R.id.checkBoxX);
         checkBoxY=findViewById(R.id.checkBoxY);
         checkBoxZ=findViewById(R.id.checkBoxZ);
         checkBoxA=findViewById(R.id.checkBoxA);
         checkBoxB=findViewById(R.id.checkBoxB);
         checkBoxC=findViewById(R.id.checkBoxC);
-        checkBoxN=findViewById(R.id.checkBoxN);
 
-        speedText=findViewById(R.id.speedText);
-        backBox=findViewById(R.id.backBox);
-
-        speedText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                changeActivityFour();
-            }
-        });
-
-        backBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
 
         checkBoxX.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,17 +109,6 @@ public class FifthActivity extends AppCompatActivity {
             }
         });
 
-        checkBoxN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(checkBoxN.isChecked()){
-                    new Thread(new FifthActivity.Thread2("N=1")).start();
-                }else {
-                    new Thread(new FifthActivity.Thread2("N=0")).start();
-                }
-            }
-        });
-
 
     }
 
@@ -208,7 +171,7 @@ public class FifthActivity extends AppCompatActivity {
             String val10 = message.substring(21, 22);          //get checkBox A value
             String val11 = message.substring(22, 23);          //get checkBox B value
             String val12 = message.substring(23, 24);          //get checkBox C value
-            String val13 = message.substring(24,25);          //get checkBox N value
+            //String val13 = message.substring(24,25);          //get checkBox N value
 
             int number1 = Integer.parseInt(val1);           //set progressbar 1 value
             progressBarOne.setProgress(number1);
@@ -219,7 +182,6 @@ public class FifthActivity extends AppCompatActivity {
             }else if(number1>=0){
                 progressBarOne.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_green));
             }
-            progressTextOne.setText(number1 + " N");
 
             int number2 = Integer.parseInt(val2);           //set progressbar 2 value
             progressBarTwo.setProgress(number2);
@@ -230,7 +192,6 @@ public class FifthActivity extends AppCompatActivity {
             }else if(number2>=0){
                 progressBarTwo.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_green));
             }
-            progressTextTwo.setText(number2 + " N");
 
             int number3 = Integer.parseInt(val3);
             progressBarThree.setProgress(number3);
@@ -241,7 +202,6 @@ public class FifthActivity extends AppCompatActivity {
             }else if(number3>=0){
                 progressBarThree.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_green));
             }
-            progressTextThree.setText(number3 + " N");
 
             int number4 = Integer.parseInt(val4);
             progressBarFour.setProgress(number4);
@@ -252,7 +212,6 @@ public class FifthActivity extends AppCompatActivity {
             }else if(number4>=0){
                 progressBarFour.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_green));
             }
-            progressTextFour.setText(number4 + " Nm");
 
             int number5 = Integer.parseInt(val5);
             progressBarFive.setProgress(number5);
@@ -263,7 +222,6 @@ public class FifthActivity extends AppCompatActivity {
             }else if(number5>=0){
                 progressBarFive.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_green));
             }
-            progressTextFive.setText(number5 + " Nm");
 
             int number6 = Integer.parseInt(val6);
             progressBarSix.setProgress(number6);
@@ -274,7 +232,6 @@ public class FifthActivity extends AppCompatActivity {
             }else if(number6>=0){
                 progressBarSix.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_green));
             }
-            progressTextSix.setText(number6 + " Nm");
 
             if (val7.equals("1")) {
                 checkBoxX.setChecked(true);                 //set check box
@@ -310,12 +267,6 @@ public class FifthActivity extends AppCompatActivity {
                 checkBoxC.setChecked(true);
             } else {
                 checkBoxC.setChecked(false);
-            }
-
-            if (val13.equals("1")){
-                checkBoxN.setChecked(true);
-            }else{
-                checkBoxN.setChecked(false);
             }
 
             MyService.messageToActivity = "null";

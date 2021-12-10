@@ -378,8 +378,7 @@
             android:rotation="90"
             android:translationX="45dp"
             android:translationY="515dp"
-            android:background="@drawable/custum_toggle_button"
-            android:text="Button" />
+            android:background="@drawable/custum_toggle_button" />
 
     </FrameLayout>
 
