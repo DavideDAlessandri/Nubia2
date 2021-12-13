@@ -181,7 +181,7 @@
             android:id="@+id/toggleButton1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/custum_toggle_button"
+            android:background="@drawable/custum_toggle_button1"
             android:rotation="90"
             android:textOff="N-Guiding"
             android:textOn="N-Guiding"
@@ -195,7 +195,7 @@
             android:rotation="90"
             android:translationX="-5dp"
             android:translationY="535dp"
-            android:background="@drawable/custum_toggle_button"
+            android:background="@drawable/custum_toggle_button1"
             />
 
     </FrameLayout>

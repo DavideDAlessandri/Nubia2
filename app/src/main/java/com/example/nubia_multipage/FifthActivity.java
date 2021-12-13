@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.CheckBox;
 import android.widget.ProgressBar;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -16,6 +17,8 @@ public class FifthActivity extends AppCompatActivity {
 
     ProgressBar progressBarOne, progressBarTwo, progressBarThree, progressBarFour, progressBarFive, progressBarSix;
     ToggleButton checkBoxX, checkBoxY, checkBoxZ, checkBoxA, checkBoxB, checkBoxC;
+    SeekBar seekBarOVR;
+    Integer progressOVR;
 
     Boolean running=true;
 
@@ -40,6 +43,7 @@ public class FifthActivity extends AppCompatActivity {
         checkBoxB=findViewById(R.id.checkBoxB);
         checkBoxC=findViewById(R.id.checkBoxC);
 
+        seekBarOVR=findViewById(R.id.seekBarOVR);
 
         checkBoxX.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,6 +113,54 @@ public class FifthActivity extends AppCompatActivity {
             }
         });
 
+        seekBarOVR.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @SuppressLint("UseCompatLoadingForDrawables")
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                getProgressOVR();
+
+                progressBarOne.setProgress(progressOVR);
+                progressBarTwo.setProgress(progressOVR);
+                progressBarThree.setProgress(progressOVR);
+                progressBarFour.setProgress(progressOVR);
+                progressBarFive.setProgress(progressOVR);
+                progressBarSix.setProgress(progressOVR);
+
+                if(progressOVR>=66){
+                    progressBarOne.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_red));
+                    progressBarTwo.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_red));
+                    progressBarThree.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_red));
+                    progressBarFour.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_red));
+                    progressBarFive.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_red));
+                    progressBarSix.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_red));
+                }else if(progressOVR>=33){
+                    progressBarOne.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_yellow));
+                    progressBarTwo.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_yellow));
+                    progressBarThree.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_yellow));
+                    progressBarFour.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_yellow));
+                    progressBarFive.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_yellow));
+                    progressBarSix.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_yellow));
+                }else if(progressOVR>=0){
+                    progressBarOne.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_green));
+                    progressBarTwo.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_green));
+                    progressBarThree.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_green));
+                    progressBarFour.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_green));
+                    progressBarFive.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_green));
+                    progressBarSix.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_green));
+                }
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
 
     }
 
@@ -286,6 +338,10 @@ public class FifthActivity extends AppCompatActivity {
 
         super.onStop();
         running=false;                                                      //Stop thread 1
+    }
+
+    private void getProgressOVR(){
+        progressOVR=Integer.valueOf(seekBarOVR.getProgress());
     }
 
 }
