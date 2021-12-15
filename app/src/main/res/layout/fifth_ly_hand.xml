@@ -32,7 +32,7 @@
             android:id="@+id/progressBarOne5"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="81dp"
-            android:layout_height="11dp"
+            android:layout_height="10dp"
             android:layout_gravity="center"
             android:max="300"
             android:progressDrawable="@drawable/custom_progress_bg_green"
@@ -43,7 +43,7 @@
             android:id="@+id/progressBarTwo5"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="81dp"
-            android:layout_height="11dp"
+            android:layout_height="10dp"
             android:layout_gravity="center"
             android:progressDrawable="@drawable/custom_progress_bg_green"
             android:max="300"
@@ -54,7 +54,7 @@
             android:id="@+id/progressBarThree5"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="81dp"
-            android:layout_height="11dp"
+            android:layout_height="10dp"
             android:layout_gravity="center"
             android:progressDrawable="@drawable/custom_progress_bg_green"
             android:max="300"
@@ -65,7 +65,7 @@
             android:id="@+id/progressBarFour5"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="81dp"
-            android:layout_height="11dp"
+            android:layout_height="10dp"
             android:layout_gravity="center"
             android:progressDrawable="@drawable/custom_progress_bg_green"
             android:max="30"
@@ -76,7 +76,7 @@
             android:id="@+id/progressBarFive5"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="81dp"
-            android:layout_height="11dp"
+            android:layout_height="10dp"
             android:layout_gravity="center"
             android:progressDrawable="@drawable/custom_progress_bg_green"
             android:max="30"
@@ -87,7 +87,7 @@
             android:id="@+id/progressBarSix5"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="81dp"
-            android:layout_height="11dp"
+            android:layout_height="10dp"
             android:layout_gravity="center"
             android:progressDrawable="@drawable/custom_progress_bg_green"
             android:max="30"
@@ -224,7 +224,7 @@
             android:translationY="-210dp" />
 
         <ToggleButton
-            android:id="@+id/checkBoxEn"
+            android:id="@+id/checkBoxN"
             android:layout_width="117dp"
             android:layout_height="29dp"
             android:layout_gravity="center"
@@ -256,62 +256,76 @@
             android:progressTint="#0000ffff"
             android:layout_gravity="center"
             android:translationX="0dp"
-            android:translationY="-212px" />
+            android:translationY="-213px" />
 
 
         <ImageView
-            android:id="@+id/imageView6"
+            android:id="@+id/rAxisY"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_gravity="center"
             android:translationX="20dp"
             android:translationY="222dp"
-            app:srcCompat="@drawable/r_axis_y" />
+            />
 
         <ImageView
-            android:id="@+id/imageView7"
+            android:id="@+id/rAxisZ"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_gravity="center"
             android:translationX="-21dp"
             android:translationY="253dp"
-            app:srcCompat="@drawable/r_axis_z" />
+            />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/lAxisX"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_gravity="center"
             android:translationX="0dp"
             android:translationY="237dp"
-            app:srcCompat="@drawable/l_axis_x" />
+            />
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/lAxisY"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_gravity="center"
             android:translationX="13dp"
             android:translationY="237dp"
-            app:srcCompat="@drawable/l_axis_y" />
+            />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/lAxisZ"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_gravity="center"
             android:translationX="-8dp"
             android:translationY="251dp"
-            app:srcCompat="@drawable/l_axis_z" />
+            />
 
         <ImageView
-            android:id="@+id/imageView5"
+            android:id="@+id/rAxisX"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_gravity="center"
             android:translationX="-8dp"
             android:translationY="224dp"
-            app:srcCompat="@drawable/r_axis_x" />
+            />
+
+        <TextView
+            android:id="@+id/OVRText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/frau_2"
+            android:rotation="90"
+            android:text="0"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:translationX="6dp"
+            android:translationY="289dp"
+            android:textSize="30sp" />
 
 
     </FrameLayout>

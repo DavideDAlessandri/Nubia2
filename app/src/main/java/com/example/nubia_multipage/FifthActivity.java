@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -16,9 +17,11 @@ import androidx.appcompat.app.AppCompatActivity;
 public class FifthActivity extends AppCompatActivity {
 
     ProgressBar progressBarOne, progressBarTwo, progressBarThree, progressBarFour, progressBarFive, progressBarSix;
-    ToggleButton checkBoxX, checkBoxY, checkBoxZ, checkBoxA, checkBoxB, checkBoxC;
+    ToggleButton checkBoxX, checkBoxY, checkBoxZ, checkBoxA, checkBoxB, checkBoxC, checkBoxN;
     SeekBar seekBarOVR;
     Integer progressOVR;
+    ImageView iLAxisX, iLAxisY, iLAxisZ, iRAxisX, iRAxisY, iRAxisZ;
+    TextView ovrText;
 
     Boolean running=true;
 
@@ -42,17 +45,35 @@ public class FifthActivity extends AppCompatActivity {
         checkBoxA=findViewById(R.id.checkBoxA);
         checkBoxB=findViewById(R.id.checkBoxB);
         checkBoxC=findViewById(R.id.checkBoxC);
+        checkBoxN=findViewById(R.id.checkBoxN);
+
+        iLAxisX=findViewById(R.id.lAxisX);
+        iLAxisY=findViewById(R.id.lAxisY);
+        iLAxisZ=findViewById(R.id.lAxisZ);
+        iRAxisX=findViewById(R.id.rAxisX);
+        iRAxisY=findViewById(R.id.rAxisY);
+        iRAxisZ=findViewById(R.id.rAxisZ);
 
         seekBarOVR=findViewById(R.id.seekBarOVR);
+        ovrText=findViewById(R.id.OVRText);
+
+        int lAxisX = getResources().getIdentifier("@drawable/l_axis_x",null,this.getPackageName());
+        int lAxisY = getResources().getIdentifier("@drawable/l_axis_y",null,this.getPackageName());
+        int lAxisZ = getResources().getIdentifier("@drawable/l_axis_z",null,this.getPackageName());
+        int rAxisX = getResources().getIdentifier("@drawable/r_axis_x",null,this.getPackageName());
+        int rAxisY = getResources().getIdentifier("@drawable/r_axis_y",null,this.getPackageName());
+        int rAxisZ = getResources().getIdentifier("@drawable/r_axis_z",null,this.getPackageName());
 
         checkBoxX.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if(checkBoxX.isChecked()){
-                    new Thread(new FifthActivity.Thread2("X=1")).start();
+                if(checkBoxX.isChecked()){                                                          //if checkBox X checked
+                    iLAxisX.setImageResource(lAxisX);                                               //set image axis
+                    new Thread(new FifthActivity.Thread2("X=1")).start();                           //send message to server
                 }else {
-                    new Thread(new FifthActivity.Thread2("X=0")).start();
+                    iLAxisX.setImageResource(0);                                                    //remove image
+                    new Thread(new FifthActivity.Thread2("X=0")).start();                           //send message to server
                 }
 
             }
@@ -62,8 +83,10 @@ public class FifthActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(checkBoxY.isChecked()){
+                    iLAxisY.setImageResource(lAxisY);
                     new Thread(new FifthActivity.Thread2("Y=1")).start();
                 }else {
+                    iLAxisY.setImageResource(0);
                     new Thread(new FifthActivity.Thread2("Y=0")).start();
                 }
             }
@@ -73,8 +96,10 @@ public class FifthActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(checkBoxZ.isChecked()){
+                    iLAxisZ.setImageResource(lAxisZ);
                     new Thread(new FifthActivity.Thread2("Z=1")).start();
                 }else {
+                    iLAxisZ.setImageResource(0);
                     new Thread(new FifthActivity.Thread2("Z=0")).start();
                 }
             }
@@ -84,8 +109,10 @@ public class FifthActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(checkBoxA.isChecked()){
+                    iRAxisX.setImageResource(rAxisX);
                     new Thread(new FifthActivity.Thread2("A=1")).start();
                 }else {
+                    iRAxisX.setImageResource(0);
                     new Thread(new FifthActivity.Thread2("A=0")).start();
                 }
             }
@@ -95,8 +122,10 @@ public class FifthActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(checkBoxB.isChecked()){
+                    iRAxisY.setImageResource(rAxisY);
                     new Thread(new FifthActivity.Thread2("B=1")).start();
                 }else {
+                    iRAxisY.setImageResource(0);
                     new Thread(new FifthActivity.Thread2("B=0")).start();
                 }
             }
@@ -106,48 +135,23 @@ public class FifthActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(checkBoxC.isChecked()){
+                    iRAxisZ.setImageResource(rAxisZ);
                     new Thread(new FifthActivity.Thread2("C=1")).start();
                 }else {
+                    iRAxisZ.setImageResource(0);
                     new Thread(new FifthActivity.Thread2("C=0")).start();
                 }
             }
         });
 
-        seekBarOVR.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        seekBarOVR.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {               //seekBar OVR
             @SuppressLint("UseCompatLoadingForDrawables")
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                getProgressOVR();
 
-                progressBarOne.setProgress(progressOVR);
-                progressBarTwo.setProgress(progressOVR);
-                progressBarThree.setProgress(progressOVR);
-                progressBarFour.setProgress(progressOVR);
-                progressBarFive.setProgress(progressOVR);
-                progressBarSix.setProgress(progressOVR);
-
-                if(progressOVR>=66){
-                    progressBarOne.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_red));
-                    progressBarTwo.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_red));
-                    progressBarThree.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_red));
-                    progressBarFour.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_red));
-                    progressBarFive.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_red));
-                    progressBarSix.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_red));
-                }else if(progressOVR>=33){
-                    progressBarOne.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_yellow));
-                    progressBarTwo.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_yellow));
-                    progressBarThree.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_yellow));
-                    progressBarFour.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_yellow));
-                    progressBarFive.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_yellow));
-                    progressBarSix.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_yellow));
-                }else if(progressOVR>=0){
-                    progressBarOne.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_green));
-                    progressBarTwo.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_green));
-                    progressBarThree.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_green));
-                    progressBarFour.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_green));
-                    progressBarFive.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_green));
-                    progressBarSix.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_green));
-                }
+                getProgressOVR();                                                                   //get new value
+                String progressOVRString =progressOVR.toString();                                   //convert int to string
+                ovrText.setText(progressOVRString);                                                 //display value
 
             }
 
@@ -157,7 +161,11 @@ public class FifthActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
+            public void onStopTrackingTouch(SeekBar seekBar) {                                      //when value change
+
+                getProgressOVR();                                                                   //get new value
+                String progressOVRString =progressOVR.toString();                                   //convert int to string
+                new Thread(new FifthActivity.Thread2(" OVR:"+progressOVRString+" ")).start();       // send value to server
 
             }
         });
@@ -206,6 +214,13 @@ public class FifthActivity extends AppCompatActivity {
     @SuppressLint("UseCompatLoadingForDrawables")
     private  void receiveValue(String message){
 
+        int lAxisX = getResources().getIdentifier("@drawable/l_axis_x",null,this.getPackageName());
+        int lAxisY = getResources().getIdentifier("@drawable/l_axis_y",null,this.getPackageName());
+        int lAxisZ = getResources().getIdentifier("@drawable/l_axis_z",null,this.getPackageName());
+        int rAxisX = getResources().getIdentifier("@drawable/r_axis_x",null,this.getPackageName());
+        int rAxisY = getResources().getIdentifier("@drawable/r_axis_y",null,this.getPackageName());
+        int rAxisZ = getResources().getIdentifier("@drawable/r_axis_z",null,this.getPackageName());
+
         if(message.equals("null")){
             new Thread(new FifthActivity.Thread1()).start();
         }else {
@@ -223,7 +238,7 @@ public class FifthActivity extends AppCompatActivity {
             String val10 = message.substring(21, 22);          //get checkBox A value
             String val11 = message.substring(22, 23);          //get checkBox B value
             String val12 = message.substring(23, 24);          //get checkBox C value
-            //String val13 = message.substring(24,25);          //get checkBox N value
+            String val13 = message.substring(24,25);          //get checkBox N value
 
             int number1 = Integer.parseInt(val1);           //set progressbar 1 value
             progressBarOne.setProgress(number1);
@@ -286,39 +301,57 @@ public class FifthActivity extends AppCompatActivity {
             }
 
             if (val7.equals("1")) {
-                checkBoxX.setChecked(true);                 //set check box
+                checkBoxX.setChecked(true);                                                         //set check box
+                iLAxisX.setImageResource(lAxisX);                                                   //set axis image
             } else {
                 checkBoxX.setChecked(false);
+                iLAxisX.setImageResource(0);                                                        //remove axis image
             }
 
             if (val8.equals("1")) {
                 checkBoxY.setChecked(true);
+                iLAxisY.setImageResource(lAxisY);
             } else {
                 checkBoxY.setChecked(false);
+                iLAxisY.setImageResource(0);
             }
 
             if (val9.equals("1")) {
                 checkBoxZ.setChecked(true);
+                iLAxisZ.setImageResource(lAxisZ);
             } else {
                 checkBoxZ.setChecked(false);
+                iLAxisZ.setImageResource(0);
             }
 
             if (val10.equals("1")) {
                 checkBoxA.setChecked(true);
+                iRAxisX.setImageResource(rAxisX);
             } else {
                 checkBoxA.setChecked(false);
+                iRAxisX.setImageResource(0);
             }
 
             if (val11.equals("1")) {
                 checkBoxB.setChecked(true);
+                iRAxisY.setImageResource(rAxisY);
             } else {
                 checkBoxB.setChecked(false);
+                iRAxisY.setImageResource(0);
             }
 
             if (val12.equals("1")) {
                 checkBoxC.setChecked(true);
+                iRAxisZ.setImageResource(rAxisZ);
             } else {
                 checkBoxC.setChecked(false);
+                iRAxisZ.setImageResource(0);
+            }
+
+            if (val13.equals("1")) {
+                checkBoxN.setChecked(true);
+            } else {
+                checkBoxN.setChecked(false);
             }
 
             MyService.messageToActivity = "null";
@@ -327,21 +360,27 @@ public class FifthActivity extends AppCompatActivity {
 
     }
 
-    private void changeActivityFour(){                                      //Click change page
+    private void changeActivityFour(){                                                              //Click change page
         Intent intent = new Intent(this,FourthActivity.class);
         startActivity(intent);
-        running=false;                                                      //Stop thread 1
+        running=false;                                                                              //Stop thread 1
     }
 
     @Override
     protected void onStop() {
 
         super.onStop();
-        running=false;                                                      //Stop thread 1
+        running=false;                                                                              //Stop thread 1
     }
 
     private void getProgressOVR(){
         progressOVR=Integer.valueOf(seekBarOVR.getProgress());
+    }
+
+    @Override
+    public void finish(){
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);                     //animation out
     }
 
 }

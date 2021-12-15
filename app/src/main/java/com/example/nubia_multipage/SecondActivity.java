@@ -145,11 +145,15 @@ public class SecondActivity extends AppCompatActivity {
 
     @Override
     protected void onStop() {
-
         super.onStop();
         running=false;
     }
 
+    @Override
+    public void finish(){
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);                     //animation out
+    }
 
     }
 

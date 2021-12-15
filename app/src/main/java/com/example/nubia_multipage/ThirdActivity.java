@@ -84,4 +84,12 @@ public class ThirdActivity extends AppCompatActivity {
     private void getProgressOne(){
         progressOne=Integer.valueOf(seekBarOne.getProgress());
     }
+
+    @Override
+    public void finish(){
+        super.finish();
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);                     //animation out
+    }
 }
+
+

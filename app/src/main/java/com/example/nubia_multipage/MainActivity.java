@@ -10,8 +10,8 @@ import android.os.Handler;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     Button seventhPage;
     Button connectButton;
     Boolean running=true;                                                                           //Thread 1 start/stop
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,31 +155,37 @@ public class MainActivity extends AppCompatActivity {
     private void changeActivityTwo(){                                                               //Change activity
         Intent intent = new Intent(this,SecondActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);                     //animation out
     }
 
     private void changeActivityThree(){
         Intent intent = new Intent(this,ThirdActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);                    //start animation
     }
 
     private void changeActivityFour(){
         Intent intent = new Intent(this,FourthActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);                    //start animation
     }
 
     private void changeActivityFive(){
         Intent intent = new Intent(this,FifthActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);                    //start animation
     }
 
     private void changeActivitySix(){
         Intent Intent = new Intent(this,SixthActivity.class);
         startActivity(Intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);                    //start animation
     }
 
     private void changeActivitySeven(){
         Intent Intent = new Intent(this,SeventhActivity.class);
         startActivity(Intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);                    //start animation
     }
 
 
