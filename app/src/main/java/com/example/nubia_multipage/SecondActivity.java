@@ -15,7 +15,6 @@ import androidx.appcompat.app.AppCompatActivity;
 public class SecondActivity extends AppCompatActivity {
 
     ImageView color;
-    ImageView gif;
     FrameLayout layout;
     Boolean running=true;
 
@@ -27,7 +26,6 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.second_ly_run);
 
         color= findViewById(R.id.color);
-        gif= findViewById(R.id.gif);
 
         layout=findViewById(R.id.layout2);
 
@@ -79,9 +77,6 @@ public class SecondActivity extends AppCompatActivity {
         int redColor = getResources().getIdentifier("@drawable/statusbar_red",null,this.getPackageName());
         int greenColor = getResources().getIdentifier("@drawable/statusbar_green",null,this.getPackageName());
         int yellowColor = getResources().getIdentifier("@drawable/statusbar_yellow",null,this.getPackageName());
-        int blueColor = getResources().getIdentifier("@drawable/statusbar_blue",null,this.getPackageName());
-        int gifRobot = getResources().getIdentifier("@drawable/gif_robot",null,this.getPackageName());
-        int gifEye = getResources().getIdentifier("@drawable/gif_eye",null,this.getPackageName());
 
         String screenMessage=message.substring(2);
         String colorMessage=message.substring(0,2);
@@ -91,7 +86,6 @@ public class SecondActivity extends AppCompatActivity {
         }else{
             if(colorMessage.equals("R1")){
                 color.setImageResource(redColor);
-                gif.setImageResource(gifRobot);
                 txtMarquee.setText(screenMessage + " " + screenMessage + " " + screenMessage + " ");
                 txtMarquee.setSelected(true);
 
@@ -105,7 +99,6 @@ public class SecondActivity extends AppCompatActivity {
             }
             if(colorMessage.equals("R2")) {
                 color.setImageResource(redColor);
-                gif.setImageResource(0);
                 txtMarquee.setText(screenMessage + " " + screenMessage + " " + screenMessage + " ");
                 txtMarquee.setSelected(true);
                 color.clearAnimation();
@@ -113,7 +106,6 @@ public class SecondActivity extends AppCompatActivity {
 
             if(colorMessage.equals("G1")){
                 color.setImageResource(greenColor);
-                gif.setImageResource(0);
                 txtMarquee.setText(screenMessage + " " + screenMessage + " " + screenMessage + " ");
                 txtMarquee.setSelected(true);
                 color.clearAnimation();
@@ -121,14 +113,12 @@ public class SecondActivity extends AppCompatActivity {
 
             if(colorMessage.equals("Y1")){
                 color.setImageResource(yellowColor);
-                gif.setImageResource(gifEye);
                 txtMarquee.setText(screenMessage + " " + screenMessage + " " + screenMessage + " ");
                 txtMarquee.setSelected(true);
                 color.clearAnimation();
             }
             if(message.equals("blue")){
-                color.setImageResource(blueColor);
-                gif.setImageResource(0);
+                color.setImageResource(greenColor);
                 txtMarquee.setText("Message Message Message");
                 txtMarquee.setSelected(true);
                 color.clearAnimation();
@@ -152,7 +142,7 @@ public class SecondActivity extends AppCompatActivity {
     @Override
     public void finish(){
         super.finish();
-        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);                     //animation out
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);                     //animation out
     }
 
     }

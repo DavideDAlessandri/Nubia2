@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:rotation="180"
     android:keepScreenOn="true">>
 
     <FrameLayout
@@ -30,28 +31,32 @@
             android:rotation="90"
             android:scrollHorizontally="true"
             android:singleLine="true"
-            android:text="Test Test Test"
+            android:text="Test Test Test Test"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
-            android:textSize="80sp"
-            android:translationY="100dp" />
+            android:textSize="70sp"
+            android:translationX="-16dp"
+            android:translationY="120dp" />
 
-        <pl.droidsonroids.gif.GifImageView
-            android:id="@+id/gif"
-            android:layout_width="164dp"
-            android:layout_height="137dp"
-            android:rotation="90"
-            android:translationX="00dp"
-            android:translationY="505dp" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="match_parent"
+            android:layout_height="197dp"
+            android:translationY="450dp"
+            app:srcCompat="@android:drawable/screen_background_dark" />
 
         <ImageView
             android:id="@+id/color"
-            android:layout_width="640dp"
-            android:layout_height="match_parent"
-            android:rotation="90"
-            android:src="@drawable/statusbar_blue"
-            android:translationX="-255dp"
-            android:translationY="0dp" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/statusbar_green" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/runtime_green" />
 
 
     </FrameLayout>

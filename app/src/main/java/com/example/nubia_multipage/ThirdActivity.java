@@ -88,7 +88,7 @@ public class ThirdActivity extends AppCompatActivity {
     @Override
     public void finish(){
         super.finish();
-        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);                     //animation out
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);                     //animation out
     }
 }
 

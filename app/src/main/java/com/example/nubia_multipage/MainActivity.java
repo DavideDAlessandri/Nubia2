@@ -2,21 +2,15 @@ package com.example.nubia_multipage;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.Socket;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     Button sixthPage;
     Button seventhPage;
     Button connectButton;
+    ImageView imageRun, imageTeach, imageHand, imageSettings, imageMonitor, imageAddOns;
     Boolean running=true;                                                                           //Thread 1 start/stop
 
 
@@ -45,17 +40,34 @@ public class MainActivity extends AppCompatActivity {
         seventhPage=findViewById(R.id.AddOnsPage);
         connectButton=findViewById(R.id.connectButton);
 
+        imageRun=findViewById(R.id.imageRun);
+        imageTeach=findViewById(R.id.imageTeach);
+        imageHand=findViewById(R.id.imageHand);
+        imageSettings=findViewById(R.id.imageSettings);
+        imageMonitor=findViewById(R.id.imageMonitor);
+        imageAddOns=findViewById(R.id.imageAddOns);
+
 
         secondPage.setOnClickListener(new View.OnClickListener() {                                  //Change page buttons
             @Override
             public void onClick(View v) {
-                changeActivityTwo();
+
+                Animation animation;                                                                //button animation
+                animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_r);
+                imageRun.startAnimation(animation);
+
+                changeActivityTwo();                                                                //Change activity
             }
         });
 
         thirdPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Animation animation;                                                                //button animation
+                animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_r);
+                imageTeach.startAnimation(animation);
+
                 changeActivityThree();
             }
         });
@@ -63,6 +75,11 @@ public class MainActivity extends AppCompatActivity {
         fourthPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Animation animation;                                                                //button animation
+                animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_l);
+                imageSettings.startAnimation(animation);
+
                 changeActivityFour();
             }
         });
@@ -70,6 +87,11 @@ public class MainActivity extends AppCompatActivity {
         fifthPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Animation animation;                                                                //button animation
+                animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_r);
+                imageHand.startAnimation(animation);
+
                 changeActivityFive();
             }
         });
@@ -77,6 +99,11 @@ public class MainActivity extends AppCompatActivity {
         sixthPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Animation animation;                                                                //button animation
+                animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_l);
+                imageMonitor.startAnimation(animation);
+
                 changeActivitySix();
             }
         });
@@ -84,6 +111,11 @@ public class MainActivity extends AppCompatActivity {
         seventhPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Animation animation;                                                                //button animation
+                animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_l);
+                imageAddOns.startAnimation(animation);
+
                 changeActivitySeven();
             }
         });
@@ -124,6 +156,7 @@ public class MainActivity extends AppCompatActivity {
             MyService.messageToActivity="null";
             running=true;
             new Thread(new MainActivity.Thread1()).start();                                         //Start thread 1
+
         }
     }
 
@@ -155,37 +188,37 @@ public class MainActivity extends AppCompatActivity {
     private void changeActivityTwo(){                                                               //Change activity
         Intent intent = new Intent(this,SecondActivity.class);
         startActivity(intent);
-        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);                     //animation out
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);                     //animation out
     }
 
     private void changeActivityThree(){
         Intent intent = new Intent(this,ThirdActivity.class);
         startActivity(intent);
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);                    //start animation
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);                    //start animation
     }
 
     private void changeActivityFour(){
         Intent intent = new Intent(this,FourthActivity.class);
         startActivity(intent);
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);                    //start animation
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);                    //start animation
     }
 
     private void changeActivityFive(){
         Intent intent = new Intent(this,FifthActivity.class);
         startActivity(intent);
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);                    //start animation
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);                    //start animation
     }
 
     private void changeActivitySix(){
         Intent Intent = new Intent(this,SixthActivity.class);
         startActivity(Intent);
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);                    //start animation
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);                    //start animation
     }
 
     private void changeActivitySeven(){
         Intent Intent = new Intent(this,SeventhActivity.class);
         startActivity(Intent);
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);                    //start animation
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);                    //start animation
     }
 
 
@@ -200,6 +233,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStop();
         running=false;                                                                              //When exit page stop thread 1
     }
+
 
 }
 
