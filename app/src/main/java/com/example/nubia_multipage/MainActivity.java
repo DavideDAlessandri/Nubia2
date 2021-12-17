@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run() {
 
-                    if(MyService.messageToActivity.equals("go")){                                   //If message = "go" change to activity 2
+                    if(MyService.messageToActivity.equals("start")){                                   //If message = "go" change to activity 2
                         running=false;
                         MyService.messageToActivity="null";
                         changeActivityTwo();
