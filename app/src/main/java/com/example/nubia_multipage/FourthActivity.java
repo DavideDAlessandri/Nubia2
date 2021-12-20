@@ -129,6 +129,8 @@ public class FourthActivity extends AppCompatActivity {
     protected  void onResume(){
         super.onResume();
 
+        MainActivity.startStatus=false;                                                             //reset start status (stop when change activity)
+
         if (MyService.connectStatus.equals(true)){
             running=true;
             MyService.messageToActivity="null";
@@ -188,9 +190,27 @@ public class FourthActivity extends AppCompatActivity {
 
     private  void receiveValue(String message){
 
-        if(message.equals("null")){
+        if(MainActivity.startStatus){                                                               //if another activity is called stop this activity
+            finish();
+        }
+
+        if(message.equals("null")) {
             new Thread(new FourthActivity.Thread1()).start();
+
+        }else if(message.equals("run")) {
+            finish();
+        }else if(message.equals("teach")) {
+            finish();
+        }else if(message.equals("hand")) {
+            finish();
+        }else if(message.equals("settings")) {
+            finish();
+        }else if(message.equals("monitor")) {
+            finish();
+        }else if(message.equals("addons")) {
+            finish();
         }else{
+
             String val1=message.substring(0,2);             //get seekbar 1 value
             String val2=message.substring(2,4);             //get seekbar 2 value
             String sw1=message.substring(4,5);
@@ -217,6 +237,7 @@ public class FourthActivity extends AppCompatActivity {
             MyService.messageToActivity="null";
             new Thread(new FourthActivity.Thread1()).start();
         }
+
 
     }
 

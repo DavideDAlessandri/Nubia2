@@ -31,7 +31,7 @@
             android:rotation="90"
             android:scrollHorizontally="true"
             android:singleLine="true"
-            android:text="Test Test Test Test"
+            android:text="Assembly assembly"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:textSize="70sp"
@@ -56,6 +56,45 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/runtime_green" />
+
+        <TextView
+            android:id="@+id/step1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/frau_2"
+            android:rotation="90"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:translationY="166dp"
+            android:translationX="15dp"
+            android:textSize="50sp" />
+
+        <TextView
+            android:id="@+id/step2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/frau_2"
+            android:rotation="90"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:translationY="204dp"
+            android:translationX="-15dp"
+            android:textSize="50sp" />
+
+        <TextView
+            android:id="@+id/etf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/frau_2"
+            android:rotation="90"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textSize="50sp"
+            android:translationX="15dp"
+            android:translationY="280dp" />
 
 
     </FrameLayout>

@@ -176,6 +176,7 @@ public class FifthActivity extends AppCompatActivity {
     protected  void onResume(){
         super.onResume();
 
+        MainActivity.startStatus=false;                                                             //reset start status (stop when change activity)
         running=true;
         MyService.messageToActivity="null";
         new Thread(new FifthActivity.Thread1()).start();
@@ -221,9 +222,25 @@ public class FifthActivity extends AppCompatActivity {
         int rAxisY = getResources().getIdentifier("@drawable/r_axis_y",null,this.getPackageName());
         int rAxisZ = getResources().getIdentifier("@drawable/r_axis_z",null,this.getPackageName());
 
-        if(message.equals("null")){
+        if(MainActivity.startStatus){                                                               //if another activity is called stop this activity
+            finish();
+        }
+
+        if(message.equals("null")) {
             new Thread(new FifthActivity.Thread1()).start();
-        }else {
+        }else if(message.equals("run")) {
+            finish();
+        }else if(message.equals("teach")) {
+            finish();
+        }else if(message.equals("hand")) {
+            finish();
+        }else if(message.equals("settings")) {
+            finish();
+        }else if(message.equals("monitor")) {
+            finish();
+        }else if(message.equals("addons")) {
+            finish();
+        }else{
 
             String val1 = message.substring(0, 3);             //get progressbar 1 value
             String val2 = message.substring(3, 6);             //get progressbar 2 value
@@ -360,11 +377,6 @@ public class FifthActivity extends AppCompatActivity {
 
     }
 
-    private void changeActivityFour(){                                                              //Click change page
-        Intent intent = new Intent(this,FourthActivity.class);
-        startActivity(intent);
-        running=false;                                                                              //Stop thread 1
-    }
 
     @Override
     protected void onStop() {

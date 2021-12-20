@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     Button connectButton;
     ImageView imageRun, imageTeach, imageHand, imageSettings, imageMonitor, imageAddOns;
     Boolean running=true;                                                                           //Thread 1 start/stop
+    public static Boolean startStatus=false;                                                        //Stop activity when start another activity
 
 
     @Override
@@ -169,10 +170,35 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run() {
 
-                    if(MyService.messageToActivity.equals("start")){                                   //If message = "go" change to activity 2
-                        running=false;
+                    if(MyService.messageToActivity.equals("run")){                                  //If message = "start" change to activity 2
                         MyService.messageToActivity="null";
+                        startStatus=true;                                                           //stop "old" activity
                         changeActivityTwo();
+                        return;
+                    }else if(MyService.messageToActivity.equals("teach")) {
+                        MyService.messageToActivity="null";
+                        startStatus=true;
+                        changeActivityThree();
+                        return;
+                    }else if(MyService.messageToActivity.equals("hand")) {
+                        MyService.messageToActivity="null";
+                        startStatus=true;
+                        changeActivityFive();
+                        return;
+                    }else if(MyService.messageToActivity.equals("settings")) {
+                        MyService.messageToActivity="null";
+                        startStatus=true;
+                        changeActivityFour();
+                        return;
+                    }else if(MyService.messageToActivity.equals("monitor")) {
+                        MyService.messageToActivity="null";
+                        startStatus=true;
+                        changeActivitySix();
+                        return;
+                    }else if(MyService.messageToActivity.equals("addons")) {
+                        MyService.messageToActivity="null";
+                        startStatus=true;
+                        changeActivitySeven();
                         return;
                     }else{
                         new Thread(new MainActivity.Thread1()).start();                             //Else restart thread
@@ -186,36 +212,42 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void changeActivityTwo(){                                                               //Change activity
+        new Thread(new MainActivity.Thread1()).start();
         Intent intent = new Intent(this,SecondActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);                     //animation out
     }
 
     private void changeActivityThree(){
+        new Thread(new MainActivity.Thread1()).start();
         Intent intent = new Intent(this,ThirdActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);                    //start animation
     }
 
     private void changeActivityFour(){
+        new Thread(new MainActivity.Thread1()).start();
         Intent intent = new Intent(this,FourthActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);                    //start animation
     }
 
     private void changeActivityFive(){
+        new Thread(new MainActivity.Thread1()).start();
         Intent intent = new Intent(this,FifthActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);                    //start animation
     }
 
     private void changeActivitySix(){
+        new Thread(new MainActivity.Thread1()).start();
         Intent Intent = new Intent(this,SixthActivity.class);
         startActivity(Intent);
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);                    //start animation
     }
 
     private void changeActivitySeven(){
+        new Thread(new MainActivity.Thread1()).start();
         Intent Intent = new Intent(this,SeventhActivity.class);
         startActivity(Intent);
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);                    //start animation
