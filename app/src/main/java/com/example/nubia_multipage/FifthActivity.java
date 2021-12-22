@@ -257,6 +257,8 @@ public class FifthActivity extends AppCompatActivity {
             String val12 = message.substring(23, 24);          //get checkBox C value
             String val13 = message.substring(24,25);          //get checkBox N value
 
+            String val14 = message.substring(25,28);            //get seekbar progress
+
             int number1 = Integer.parseInt(val1);           //set progressbar 1 value
             progressBarOne.setProgress(number1);
             if(number1>=200){
@@ -370,6 +372,9 @@ public class FifthActivity extends AppCompatActivity {
             } else {
                 checkBoxN.setChecked(false);
             }
+
+            int number14 = Integer.parseInt(val14);
+            seekBarOVR.setProgress(number14);
 
             MyService.messageToActivity = "null";
             new Thread(new FifthActivity.Thread1()).start();
