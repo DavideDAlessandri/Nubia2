@@ -80,6 +80,8 @@ public class SixthActivity extends AppCompatActivity {
                     String progressA1String=progressA1.toString();
                     limitText.setText(progressA1String);
 
+                    new Thread(new SixthActivity.Thread2("A1")).start();                            // send button checked status to server
+
                 }else{
                     seekBarLimitA1.setVisibility(View.GONE);
 
@@ -106,6 +108,8 @@ public class SixthActivity extends AppCompatActivity {
                     getProgressLimitA2();
                     String progressA2String=progressA2.toString();
                     limitText.setText(progressA2String);
+
+                    new Thread(new SixthActivity.Thread2("A2")).start();                            // send button checked status to server
 
                 }else {
                     seekBarLimitA2.setVisibility(View.GONE);
@@ -134,6 +138,8 @@ public class SixthActivity extends AppCompatActivity {
                     String progressA3String=progressA3.toString();
                     limitText.setText(progressA3String);
 
+                    new Thread(new SixthActivity.Thread2("A3")).start();                            // send button checked status to server
+
                 }else {
                     seekBarLimitA3.setVisibility(View.GONE);
 
@@ -160,6 +166,8 @@ public class SixthActivity extends AppCompatActivity {
                     getProgressLimitA4();
                     String progressA4String=progressA4.toString();
                     limitText.setText(progressA4String);
+
+                    new Thread(new SixthActivity.Thread2("A4")).start();                            // send button checked status to server
 
                 }else {
                     seekBarLimitA4.setVisibility(View.GONE);
@@ -188,6 +196,8 @@ public class SixthActivity extends AppCompatActivity {
                     String progressA5String=progressA5.toString();
                     limitText.setText(progressA5String);
 
+                    new Thread(new SixthActivity.Thread2("A5")).start();                            // send button checked status to server
+
                 }else {
                     seekBarLimitA5.setVisibility(View.GONE);
 
@@ -214,6 +224,8 @@ public class SixthActivity extends AppCompatActivity {
                     getProgressLimitA6();
                     String progressA6String=progressA6.toString();
                     limitText.setText(progressA6String);
+
+                    new Thread(new SixthActivity.Thread2("A6")).start();                            // send button checked status to server
 
                 }else {
                     seekBarLimitA6.setVisibility(View.GONE);
@@ -362,7 +374,9 @@ public class SixthActivity extends AppCompatActivity {
         MainActivity.startStatus=false;                                                             //reset start status (stop when change activity)
         running=true;
         MyService.messageToActivity="null";
+        new Thread(new SixthActivity.Thread2("MonitorActivity")).start();                           // send current page name to server
         new Thread(new SixthActivity.Thread1()).start();
+
 
     }
 
@@ -413,6 +427,8 @@ public class SixthActivity extends AppCompatActivity {
         }else if(message.equals("monitor")) {
             finish();
         }else if(message.equals("addons")) {
+            finish();
+        }else if(message.equals("stop")) {
             finish();
         }else if(switchMessage.equals("A")) {                                                       //if initial value of message = A => change button display settings
 

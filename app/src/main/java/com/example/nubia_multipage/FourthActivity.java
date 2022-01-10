@@ -209,6 +209,8 @@ public class FourthActivity extends AppCompatActivity {
             finish();
         }else if(message.equals("addons")) {
             finish();
+        }else if(message.equals("stop")) {
+            finish();
         }else{
 
             String val1=message.substring(0,2);             //get seekbar 1 value

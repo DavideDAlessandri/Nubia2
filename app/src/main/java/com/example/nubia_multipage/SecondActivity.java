@@ -55,6 +55,7 @@ public class SecondActivity extends AppCompatActivity {
         MainActivity.startStatus=false;                                                             //reset start status (stop when change activity)
         running=true;
         changeColor("start");
+        new Thread(new SecondActivity.Thread2("RunActivity")).start();                              // send current page name to server
     }
 
 
@@ -75,6 +76,17 @@ public class SecondActivity extends AppCompatActivity {
         }
     }
 
+    class Thread2 implements Runnable {                                                             //Phone message reader / sender
+        private String message;
+        Thread2(String message) {
+            this.message = message;
+        }
+        @Override
+        public void run() {
+            MyService.output.write(message);
+            MyService.output.flush();
+        }
+    }
 
 
     private void changeColor(String message){

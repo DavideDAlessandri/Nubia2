@@ -156,6 +156,7 @@ public class MainActivity extends AppCompatActivity {
 
             MyService.messageToActivity="null";
             running=true;
+            new Thread(new MainActivity.Thread2("MainActivity")).start();                           // send current page name to server
             new Thread(new MainActivity.Thread1()).start();                                         //Start thread 1
 
         }
@@ -207,6 +208,18 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
+        }
+    }
+
+    class Thread2 implements Runnable {                                                             //Phone message reader / sender
+        private String message;
+        Thread2(String message) {
+            this.message = message;
+        }
+        @Override
+        public void run() {
+            MyService.output.write(message);
+            MyService.output.flush();
         }
     }
 

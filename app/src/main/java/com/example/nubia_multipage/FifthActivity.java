@@ -179,6 +179,7 @@ public class FifthActivity extends AppCompatActivity {
         MainActivity.startStatus=false;                                                             //reset start status (stop when change activity)
         running=true;
         MyService.messageToActivity="null";
+        new Thread(new FifthActivity.Thread2("HandActivity")).start();                              // send current page name to server
         new Thread(new FifthActivity.Thread1()).start();
 
     }
@@ -239,6 +240,8 @@ public class FifthActivity extends AppCompatActivity {
         }else if(message.equals("monitor")) {
             finish();
         }else if(message.equals("addons")) {
+            finish();
+        }else if(message.equals("stop")) {
             finish();
         }else{
 
