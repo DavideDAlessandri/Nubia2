@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Animation animation;                                                                //button animation
-                animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_r);
+                animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_l);
                 imageRun.startAnimation(animation);
 
                 changeActivityTwo();                                                                //Change activity
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Animation animation;                                                                //button animation
-                animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_r);
+                animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_l);
                 imageTeach.startAnimation(animation);
 
                 changeActivityThree();
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Animation animation;                                                                //button animation
-                animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_l);
+                animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_r);
                 imageSettings.startAnimation(animation);
 
                 changeActivityFour();
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Animation animation;                                                                //button animation
-                animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_r);
+                animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_l);
                 imageHand.startAnimation(animation);
 
                 changeActivityFive();
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Animation animation;                                                                //button animation
-                animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_l);
+                animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_r);
                 imageMonitor.startAnimation(animation);
 
                 changeActivitySix();
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Animation animation;                                                                //button animation
-                animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_l);
+                animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_r);
                 imageAddOns.startAnimation(animation);
 
                 changeActivitySeven();
