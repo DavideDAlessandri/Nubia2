@@ -128,7 +128,7 @@
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:textOff="A5"
-            android:textOn="A6"
+            android:textOn="A5"
             android:textSize="12sp"
             android:translationX="11dp"
             android:translationY="-210dp" />

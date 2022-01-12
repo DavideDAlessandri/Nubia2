@@ -234,7 +234,8 @@ public class FifthActivity extends AppCompatActivity {
         }else if(message.equals("teach")) {
             finish();
         }else if(message.equals("hand")) {
-            finish();
+            MyService.messageToActivity = "null";
+            new Thread(new FifthActivity.Thread1()).start();
         }else if(message.equals("settings")) {
             finish();
         }else if(message.equals("monitor")) {

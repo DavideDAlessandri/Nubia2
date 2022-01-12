@@ -65,11 +65,6 @@ public class SixthActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(checkBoxA1.isChecked()){
                     seekBarLimitA1.setVisibility(View.VISIBLE);
-                    checkBoxA2.setChecked(false);
-                    checkBoxA3.setChecked(false);
-                    checkBoxA4.setChecked(false);
-                    checkBoxA5.setChecked(false);
-                    checkBoxA6.setChecked(false);
                     seekBarLimitA2.setVisibility(View.GONE);
                     seekBarLimitA3.setVisibility(View.GONE);
                     seekBarLimitA4.setVisibility(View.GONE);
@@ -80,9 +75,10 @@ public class SixthActivity extends AppCompatActivity {
                     String progressA1String=progressA1.toString();
                     limitText.setText(progressA1String);
 
-                    new Thread(new SixthActivity.Thread2("A1")).start();                            // send button checked status to server
+                    new Thread(new SixthActivity.Thread2("A1-1")).start();                          // send button checked status to server
 
                 }else{
+                    new Thread(new SixthActivity.Thread2("A1-0")).start();                          // send button checked status to server
                     seekBarLimitA1.setVisibility(View.GONE);
 
                 }
@@ -94,11 +90,6 @@ public class SixthActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(checkBoxA2.isChecked()){
                     seekBarLimitA2.setVisibility(View.VISIBLE);
-                    checkBoxA1.setChecked(false);
-                    checkBoxA3.setChecked(false);
-                    checkBoxA4.setChecked(false);
-                    checkBoxA5.setChecked(false);
-                    checkBoxA6.setChecked(false);
                     seekBarLimitA1.setVisibility(View.GONE);
                     seekBarLimitA3.setVisibility(View.GONE);
                     seekBarLimitA4.setVisibility(View.GONE);
@@ -109,10 +100,11 @@ public class SixthActivity extends AppCompatActivity {
                     String progressA2String=progressA2.toString();
                     limitText.setText(progressA2String);
 
-                    new Thread(new SixthActivity.Thread2("A2")).start();                            // send button checked status to server
+                    new Thread(new SixthActivity.Thread2("A2-1")).start();                          // send button checked status to server
 
                 }else {
                     seekBarLimitA2.setVisibility(View.GONE);
+                    new Thread(new SixthActivity.Thread2("A2-0")).start();                          // send button checked status to server
 
                 }
             }
@@ -123,11 +115,6 @@ public class SixthActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(checkBoxA3.isChecked()){
                     seekBarLimitA3.setVisibility(View.VISIBLE);
-                    checkBoxA2.setChecked(false);
-                    checkBoxA1.setChecked(false);
-                    checkBoxA4.setChecked(false);
-                    checkBoxA5.setChecked(false);
-                    checkBoxA6.setChecked(false);
                     seekBarLimitA2.setVisibility(View.GONE);
                     seekBarLimitA1.setVisibility(View.GONE);
                     seekBarLimitA4.setVisibility(View.GONE);
@@ -138,10 +125,11 @@ public class SixthActivity extends AppCompatActivity {
                     String progressA3String=progressA3.toString();
                     limitText.setText(progressA3String);
 
-                    new Thread(new SixthActivity.Thread2("A3")).start();                            // send button checked status to server
+                    new Thread(new SixthActivity.Thread2("A3-1")).start();                          // send button checked status to server
 
                 }else {
                     seekBarLimitA3.setVisibility(View.GONE);
+                    new Thread(new SixthActivity.Thread2("A1-0")).start();                          // send button checked status to server
 
                 }
             }
@@ -152,11 +140,6 @@ public class SixthActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(checkBoxA4.isChecked()){
                     seekBarLimitA4.setVisibility(View.VISIBLE);
-                    checkBoxA2.setChecked(false);
-                    checkBoxA3.setChecked(false);
-                    checkBoxA1.setChecked(false);
-                    checkBoxA5.setChecked(false);
-                    checkBoxA6.setChecked(false);
                     seekBarLimitA2.setVisibility(View.GONE);
                     seekBarLimitA3.setVisibility(View.GONE);
                     seekBarLimitA1.setVisibility(View.GONE);
@@ -167,10 +150,11 @@ public class SixthActivity extends AppCompatActivity {
                     String progressA4String=progressA4.toString();
                     limitText.setText(progressA4String);
 
-                    new Thread(new SixthActivity.Thread2("A4")).start();                            // send button checked status to server
+                    new Thread(new SixthActivity.Thread2("A4-1")).start();                          // send button checked status to server
 
                 }else {
                     seekBarLimitA4.setVisibility(View.GONE);
+                    new Thread(new SixthActivity.Thread2("A1-0")).start();                          // send button checked status to server
 
                 }
             }
@@ -181,11 +165,6 @@ public class SixthActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(checkBoxA5.isChecked()){
                     seekBarLimitA5.setVisibility(View.VISIBLE);
-                    checkBoxA2.setChecked(false);
-                    checkBoxA3.setChecked(false);
-                    checkBoxA4.setChecked(false);
-                    checkBoxA1.setChecked(false);
-                    checkBoxA6.setChecked(false);
                     seekBarLimitA2.setVisibility(View.GONE);
                     seekBarLimitA3.setVisibility(View.GONE);
                     seekBarLimitA4.setVisibility(View.GONE);
@@ -196,10 +175,11 @@ public class SixthActivity extends AppCompatActivity {
                     String progressA5String=progressA5.toString();
                     limitText.setText(progressA5String);
 
-                    new Thread(new SixthActivity.Thread2("A5")).start();                            // send button checked status to server
+                    new Thread(new SixthActivity.Thread2("A5-1")).start();                          // send button checked status to server
 
                 }else {
                     seekBarLimitA5.setVisibility(View.GONE);
+                    new Thread(new SixthActivity.Thread2("A5-0")).start();                          // send button checked status to server
 
                 }
             }
@@ -210,11 +190,6 @@ public class SixthActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(checkBoxA6.isChecked()){
                     seekBarLimitA6.setVisibility(View.VISIBLE);
-                    checkBoxA2.setChecked(false);
-                    checkBoxA3.setChecked(false);
-                    checkBoxA4.setChecked(false);
-                    checkBoxA5.setChecked(false);
-                    checkBoxA1.setChecked(false);
                     seekBarLimitA2.setVisibility(View.GONE);
                     seekBarLimitA3.setVisibility(View.GONE);
                     seekBarLimitA4.setVisibility(View.GONE);
@@ -225,10 +200,11 @@ public class SixthActivity extends AppCompatActivity {
                     String progressA6String=progressA6.toString();
                     limitText.setText(progressA6String);
 
-                    new Thread(new SixthActivity.Thread2("A6")).start();                            // send button checked status to server
+                    new Thread(new SixthActivity.Thread2("A6-1")).start();                          // send button checked status to server
 
                 }else {
                     seekBarLimitA6.setVisibility(View.GONE);
+                    new Thread(new SixthActivity.Thread2("A1-0")).start();                          // send button checked status to server
 
                 }
             }
@@ -377,7 +353,6 @@ public class SixthActivity extends AppCompatActivity {
         new Thread(new SixthActivity.Thread2("MonitorActivity")).start();                           // send current page name to server
         new Thread(new SixthActivity.Thread1()).start();
 
-
     }
 
     class Thread1 implements Runnable {                                                             //Server message reader
@@ -425,7 +400,8 @@ public class SixthActivity extends AppCompatActivity {
         }else if(message.equals("settings")) {
             finish();
         }else if(message.equals("monitor")) {
-            finish();
+            MyService.messageToActivity = "null";
+            new Thread(new SixthActivity.Thread1()).start();
         }else if(message.equals("addons")) {
             finish();
         }else if(message.equals("stop")) {
@@ -441,7 +417,7 @@ public class SixthActivity extends AppCompatActivity {
 
             if(ch1.equals("1")){
                 checkBoxA1.setChecked(true);
-                seekBarLimitA1.setVisibility(View.VISIBLE);
+                seekBarLimitA1.setVisibility(View.GONE);
             }else{
                 checkBoxA1.setChecked(false);
                 seekBarLimitA1.setVisibility(View.GONE);
@@ -449,7 +425,7 @@ public class SixthActivity extends AppCompatActivity {
 
             if(ch2.equals("1")){
                 checkBoxA2.setChecked(true);
-                seekBarLimitA2.setVisibility(View.VISIBLE);
+                seekBarLimitA2.setVisibility(View.GONE);
             }else{
                 checkBoxA2.setChecked(false);
                 seekBarLimitA2.setVisibility(View.GONE);
@@ -457,7 +433,7 @@ public class SixthActivity extends AppCompatActivity {
 
             if(ch3.equals("1")){
                 checkBoxA3.setChecked(true);
-                seekBarLimitA3.setVisibility(View.VISIBLE);
+                seekBarLimitA3.setVisibility(View.GONE);
             }else{
                 checkBoxA3.setChecked(false);
                 seekBarLimitA3.setVisibility(View.GONE);
@@ -465,7 +441,7 @@ public class SixthActivity extends AppCompatActivity {
 
             if(ch4.equals("1")){
                 checkBoxA4.setChecked(true);
-                seekBarLimitA4.setVisibility(View.VISIBLE);
+                seekBarLimitA4.setVisibility(View.GONE);
             }else{
                 checkBoxA4.setChecked(false);
                 seekBarLimitA4.setVisibility(View.GONE);
@@ -473,7 +449,7 @@ public class SixthActivity extends AppCompatActivity {
 
             if(ch5.equals("1")){
                 checkBoxA5.setChecked(true);
-                seekBarLimitA5.setVisibility(View.VISIBLE);
+                seekBarLimitA5.setVisibility(View.GONE);
             }else{
                 checkBoxA5.setChecked(false);
                 seekBarLimitA5.setVisibility(View.GONE);
@@ -481,7 +457,7 @@ public class SixthActivity extends AppCompatActivity {
 
             if(ch6.equals("1")){
                 checkBoxA6.setChecked(true);
-                seekBarLimitA6.setVisibility(View.VISIBLE);
+                seekBarLimitA6.setVisibility(View.GONE);
             }else{
                 checkBoxA6.setChecked(false);
                 seekBarLimitA6.setVisibility(View.GONE);

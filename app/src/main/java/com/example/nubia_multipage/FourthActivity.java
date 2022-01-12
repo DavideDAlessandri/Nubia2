@@ -204,7 +204,8 @@ public class FourthActivity extends AppCompatActivity {
         }else if(message.equals("hand")) {
             finish();
         }else if(message.equals("settings")) {
-            finish();
+            MyService.messageToActivity="null";
+            new Thread(new FourthActivity.Thread1()).start();
         }else if(message.equals("monitor")) {
             finish();
         }else if(message.equals("addons")) {

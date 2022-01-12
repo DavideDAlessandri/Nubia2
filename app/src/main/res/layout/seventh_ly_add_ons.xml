@@ -19,6 +19,23 @@
         app:layout_constraintVertical_bias="0.0">
 
 
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rotation="90"
+            android:layout_gravity="center"
+            android:translationY="-200dp"
+            app:srcCompat="@drawable/eye_r" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rotation="90"
+            android:layout_gravity="center"
+            android:translationY="200dp"
+            app:srcCompat="@drawable/eye_l" />
     </FrameLayout>
 
 </LinearLayout>

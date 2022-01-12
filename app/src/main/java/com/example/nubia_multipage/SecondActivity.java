@@ -108,7 +108,8 @@ public class SecondActivity extends AppCompatActivity {
         }
 
         if(message.equals("run")) {
-            finish();
+            MyService.messageToActivity="null";
+            new Thread(new SecondActivity.Thread1()).start();
         }else if(message.equals("teach")) {
             finish();
         }else if(message.equals("hand")) {
