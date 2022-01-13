@@ -55,7 +55,10 @@ public class SecondActivity extends AppCompatActivity {
         MainActivity.startStatus=false;                                                             //reset start status (stop when change activity)
         running=true;
         changeColor("start");
-        new Thread(new SecondActivity.Thread2("RunActivity")).start();                              // send current page name to server
+
+        if(MyService.connectStatus){                                                                //If tcp connected
+            new Thread(new SecondActivity.Thread2("RunActivity")).start();                          // send current page name to server
+        }
     }
 
 
@@ -120,87 +123,69 @@ public class SecondActivity extends AppCompatActivity {
             finish();
         }else if(message.equals("addons")) {
             finish();
+        }else if(message.equals("null")) {
+            new Thread(new SecondActivity.Thread1()).start();
         }else {
-            if(message.equals("menuStart")){                                                            //send "messages" to menu
-                menuStatus=false;
-                message="00000";                                                                        //set initial values
-            }
 
-            if(message.equals("menuStop")){                                                             //send "messages" to change color and text
-                menuStatus=true;
+            String screenMessage = message.substring(2);                                              //Subtract initial value of message to find color and option (Ex: G1)
+            String colorMessage = message.substring(0, 2);
+
+            if (colorMessage.equals("R1")) {
+                color.setImageResource(redColor);
+                menu.setImageResource(0);
+                label.setImageResource(redLabel);
+                txtMarquee.setText(screenMessage + " " + screenMessage + " " + screenMessage + " ");
+                txtMarquee.setSelected(true);
+
+                step1.setText(null);                                                                    //remove menu values
+                step2.setText(null);
+                etf.setText(null);
+
+                Animation animation = new AlphaAnimation(1, 0); //to change visibility from visible to invisible
+                animation.setDuration(1000); //1 second duration for each animation cycle
+                animation.setInterpolator(new LinearInterpolator());
+                animation.setRepeatCount(Animation.INFINITE); //repeating indefinitely
+                animation.setRepeatMode(Animation.REVERSE); //animation will start from end point once ended.
+                color.startAnimation(animation); //to start animation
+
+            }
+            if (colorMessage.equals("R2")) {
+                color.setImageResource(redColor);
+                menu.setImageResource(0);
+                label.setImageResource(redLabel);
+                txtMarquee.setText(screenMessage + " " + screenMessage + " " + screenMessage + " ");
+                txtMarquee.setSelected(true);
+                color.clearAnimation();
                 step1.setText(null);                                                                    //remove menu values
                 step2.setText(null);
                 etf.setText(null);
             }
 
-            if(menuStatus){
-                String screenMessage=message.substring(2);                                              //Subtract initial value of message to find color and option (Ex: G1)
-                String colorMessage=message.substring(0,2);
+            if (colorMessage.equals("G1")) {
+                color.setImageResource(greenColor);
+                menu.setImageResource(greenMenu);
+                label.setImageResource(greenLabel);
+                txtMarquee.setText(screenMessage + " " + screenMessage + " " + screenMessage + " ");
+                txtMarquee.setSelected(true);
+                color.clearAnimation();
+            }
 
-                if(message.equals("null")){
-                    new Thread(new SecondActivity.Thread1()).start();
-                }else{
-                    if(colorMessage.equals("R1")){
-                        color.setImageResource(redColor);
-                        menu.setImageResource(0);
-                        label.setImageResource(redLabel);
-                        txtMarquee.setText(screenMessage + " " + screenMessage + " " + screenMessage + " ");
-                        txtMarquee.setSelected(true);
+            if (colorMessage.equals("Y1")) {
+                color.setImageResource(yellowColor);
+                menu.setImageResource(0);
+                label.setImageResource(yellowLabel);
+                txtMarquee.setText(screenMessage + " " + screenMessage + " " + screenMessage + " ");
+                txtMarquee.setSelected(true);
+                color.clearAnimation();
+                step1.setText(null);                                                                    //remove menu values
+                step2.setText(null);
+                etf.setText(null);
+            }
 
-                        Animation animation = new AlphaAnimation(1, 0); //to change visibility from visible to invisible
-                        animation.setDuration(1000); //1 second duration for each animation cycle
-                        animation.setInterpolator(new LinearInterpolator());
-                        animation.setRepeatCount(Animation.INFINITE); //repeating indefinitely
-                        animation.setRepeatMode(Animation.REVERSE); //animation will start from end point once ended.
-                        color.startAnimation(animation); //to start animation
-
-                    }
-                    if(colorMessage.equals("R2")) {
-                        color.setImageResource(redColor);
-                        menu.setImageResource(0);
-                        label.setImageResource(redLabel);
-                        txtMarquee.setText(screenMessage + " " + screenMessage + " " + screenMessage + " ");
-                        txtMarquee.setSelected(true);
-                        color.clearAnimation();
-                    }
-
-                    if(colorMessage.equals("G1")){
-                        color.setImageResource(greenColor);
-                        menu.setImageResource(greenMenu);
-                        label.setImageResource(greenLabel);
-                        txtMarquee.setText(screenMessage + " " + screenMessage + " " + screenMessage + " ");
-                        txtMarquee.setSelected(true);
-                        color.clearAnimation();
-                    }
-
-                    if(colorMessage.equals("Y1")){
-                        color.setImageResource(yellowColor);
-                        menu.setImageResource(0);
-                        label.setImageResource(yellowLabel);
-                        txtMarquee.setText(screenMessage + " " + screenMessage + " " + screenMessage + " ");
-                        txtMarquee.setSelected(true);
-                        color.clearAnimation();
-                    }
-                    if(message.equals("start")){
-                        color.setImageResource(greenColor);
-                        menu.setImageResource(greenMenu);
-                        label.setImageResource(greenLabel);
-                        txtMarquee.setText("Message Message Message");
-                        txtMarquee.setSelected(true);
-                        color.clearAnimation();
-                    }
-                    if(message.equals("stop")){
-                        finish();
-                    }
-
-                    MyService.messageToActivity="null";
-                    new Thread(new SecondActivity.Thread1()).start();
-                }
-
-            }else{
-                String messageStep1=message.substring(0,2);                                             //display menu info
-                String messageStep2=message.substring(2,4);
-                String messageEtf=message.substring(4);
+            if (colorMessage.equals("M1")) {
+                String messageStep1 = screenMessage.substring(0, 2);                               //display menu info
+                String messageStep2 = screenMessage.substring(2, 4);
+                String messageEtf = screenMessage.substring(4);
 
                 step1.setText(messageStep1);
                 step2.setText(messageStep2);
@@ -208,6 +193,21 @@ public class SecondActivity extends AppCompatActivity {
 
                 new Thread(new SecondActivity.Thread1()).start();
             }
+
+            if (message.equals("start")) {
+                color.setImageResource(greenColor);
+                menu.setImageResource(greenMenu);
+                label.setImageResource(greenLabel);
+                txtMarquee.setText("Message Message Message");
+                txtMarquee.setSelected(true);
+                color.clearAnimation();
+            }
+            if (message.equals("stop")) {
+                finish();
+            }
+
+            MyService.messageToActivity = "null";
+            new Thread(new SecondActivity.Thread1()).start();
 
         }
 

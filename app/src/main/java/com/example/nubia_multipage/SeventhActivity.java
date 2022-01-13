@@ -1,13 +1,25 @@
 package com.example.nubia_multipage;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.text.Layout;
+import android.view.View;
 import android.view.Window;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SeventhActivity extends AppCompatActivity {
 
+    ImageView eyeR, eyeL;
+    ImageView gifR, gifL;
+    View layout;
+    MediaPlayer mp;
     Boolean running=true;
+    Boolean pageL=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +28,36 @@ public class SeventhActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.seventh_ly_add_ons);
 
+        eyeR=findViewById(R.id.eyeR);
+        eyeL=findViewById(R.id.eyeL);
+        gifR=findViewById(R.id.gifR);
+        gifL=findViewById(R.id.gifL);
+        layout=findViewById(R.id.layout7);
+        mp = MediaPlayer.create(this, R.raw.sound_1_retro);
+
+        int eyeLeft = getResources().getIdentifier("@drawable/eye_l",null,this.getPackageName());
+        int eyeRight = getResources().getIdentifier("@drawable/eye_r",null,this.getPackageName());
+
+        eyeR.setImageResource(eyeRight);                                                            //Set eye right on open activity
+        eyeL.setImageResource(0);
+
+        layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(!pageL){                                                                         //If tap on screen inverse eye position
+                    eyeR.setImageResource(0);
+                    eyeL.setImageResource(eyeLeft);
+                    pageL=true;
+                }else{
+                    eyeR.setImageResource(eyeRight);
+                    eyeL.setImageResource(0);
+                    pageL=false;
+                }
+                new Thread(new SeventhActivity.Thread1()).start();
+
+            }
+        });
 
     }
 
@@ -32,8 +74,12 @@ public class SeventhActivity extends AppCompatActivity {
         MainActivity.startStatus=false;                                                             //reset start status (stop when change activity)
         running=true;
         MyService.messageToActivity="null";
-        new Thread(new SeventhActivity.Thread2("AddOnsActivity")).start();                           // send current page name to server
-        new Thread(new SeventhActivity.Thread1()).start();
+
+        if(MyService.connectStatus){                                                                //if tcp connected
+            new Thread(new SeventhActivity.Thread2("AddOnsActivity")).start();                      // send current page name to server
+            new Thread(new SeventhActivity.Thread1()).start();
+        }
+
 
     }
 
@@ -68,6 +114,14 @@ public class SeventhActivity extends AppCompatActivity {
 
     private  void receiveValue(String message){
 
+        int eyeLeft = getResources().getIdentifier("@drawable/eye_l",null,this.getPackageName());
+        int eyeRight = getResources().getIdentifier("@drawable/eye_r",null,this.getPackageName());
+        int eyeSLeft = getResources().getIdentifier("@drawable/eye_s_l",null,this.getPackageName());
+        int eyeSRight = getResources().getIdentifier("@drawable/eye_s_r",null,this.getPackageName());
+        int gifL =  getResources().getIdentifier("@drawable/gif_l",null,this.getPackageName());
+        int gifR =  getResources().getIdentifier("@drawable/gif_r",null,this.getPackageName());
+
+
         if(message.equals("null")) {
             new Thread(new SeventhActivity.Thread1()).start();
         }else if(message.equals("run")) {
@@ -82,14 +136,38 @@ public class SeventhActivity extends AppCompatActivity {
             finish();
         }else if(message.equals("addons")) {
 
-            //to-do => display 1 / 2
+            pageL=true;                                                                             //if pageLR = true => display R = display L
+            eyeR.setImageResource(0);                                                               //Change eye position
+            eyeL.setImageResource(eyeLeft);
 
             MyService.messageToActivity = "null";
             new Thread(new SeventhActivity.Thread1()).start();
+
         }else if(message.equals("stop")) {
             finish();
         }else{
-            //to-do
+            if(pageL){                                                                              //change eye Left or Right
+
+                if(message.equals("1")){
+                    eyeL.setImageResource(eyeSLeft);
+                }
+                if(message.equals("2")){
+                    eyeL.setImageResource(eyeLeft);
+                }
+                if(message.equals("3")){
+                    mp.start();
+                }
+            }else{
+                if(message.equals("1")){
+                    eyeR.setImageResource(eyeSRight);
+                }
+                if(message.equals("2")){
+                    eyeR.setImageResource(eyeRight);
+                }
+                if(message.equals("3")){
+                    mp.start();
+                }
+            }
 
 
             MyService.messageToActivity = "null";

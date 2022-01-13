@@ -215,6 +215,9 @@ public class SixthActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
+                getProgressLimitA1();
+                String progressA1String=progressA1.toString();
+                limitText.setText(progressA1String);
             }
 
             @Override
@@ -226,8 +229,7 @@ public class SixthActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {
 
                 getProgressLimitA1();
-                String progressA1String=progressA1.toString();
-                limitText.setText(progressA1String);                                                //get new value
+                String progressA1String=progressA1.toString();                                      //get new value
                 new Thread(new SixthActivity.Thread2(" PA1:"+progressA1String+" ")).start();        // send value to server
             }
         });
@@ -237,6 +239,9 @@ public class SixthActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
+                getProgressLimitA2();
+                String progressA2String=progressA2.toString();
+                limitText.setText(progressA2String);
             }
 
             @Override
@@ -259,6 +264,9 @@ public class SixthActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
+                getProgressLimitA3();
+                String progressA3String=progressA3.toString();
+                limitText.setText(progressA3String);
             }
 
             @Override
@@ -281,6 +289,9 @@ public class SixthActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
+                getProgressLimitA4();
+                String progressA4String=progressA4.toString();
+                limitText.setText(progressA4String);
             }
 
             @Override
@@ -303,6 +314,9 @@ public class SixthActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
+                getProgressLimitA5();
+                String progressA5String=progressA5.toString();
+                limitText.setText(progressA5String);
             }
 
             @Override
@@ -325,6 +339,9 @@ public class SixthActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
+                getProgressLimitA5();
+                String progressA5String=progressA5.toString();
+                limitText.setText(progressA5String);
             }
 
             @Override
@@ -350,8 +367,12 @@ public class SixthActivity extends AppCompatActivity {
         MainActivity.startStatus=false;                                                             //reset start status (stop when change activity)
         running=true;
         MyService.messageToActivity="null";
-        new Thread(new SixthActivity.Thread2("MonitorActivity")).start();                           // send current page name to server
-        new Thread(new SixthActivity.Thread1()).start();
+
+        if(MyService.connectStatus){                                                                // if tcp connected
+            new Thread(new SixthActivity.Thread2("MonitorActivity")).start();                       // send current page name to server
+            new Thread(new SixthActivity.Thread1()).start();
+        }
+
 
     }
 

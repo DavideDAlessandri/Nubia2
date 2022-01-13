@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     Button connectButton;
     ImageView imageRun, imageTeach, imageHand, imageSettings, imageMonitor, imageAddOns;
     Boolean running=true;                                                                           //Thread 1 start/stop
+
     public static Boolean startStatus=false;                                                        //Stop activity when start another activity
 
 
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_l);
                 imageRun.startAnimation(animation);
 
+                running=false;                                                                      //Stop TCp listener
                 changeActivityTwo();                                                                //Change activity
             }
         });
@@ -69,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_l);
                 imageTeach.startAnimation(animation);
 
+                running=false;                                                                      //Stop TCp listener
                 changeActivityThree();
             }
         });
@@ -81,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_r);
                 imageSettings.startAnimation(animation);
 
+                running=false;                                                                      //Stop TCp listener
                 changeActivityFour();
             }
         });
@@ -93,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
                 animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_l);
                 imageHand.startAnimation(animation);
 
+                running=false;                                                                      //Stop TCp listener
                 changeActivityFive();
             }
         });
@@ -105,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_r);
                 imageMonitor.startAnimation(animation);
 
+                running=false;                                                                      //Stop TCp listener
                 changeActivitySix();
             }
         });
@@ -117,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
                 animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_r);
                 imageAddOns.startAnimation(animation);
 
+                running=false;                                                                      //Stop TCp listener
                 changeActivitySeven();
             }
         });

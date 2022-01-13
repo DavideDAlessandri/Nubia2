@@ -8,6 +8,7 @@
     android:keepScreenOn="true">
 
     <FrameLayout
+        android:id="@+id/layout7"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#000000"
@@ -20,22 +21,38 @@
 
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/eyeR"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:rotation="90"
             android:layout_gravity="center"
-            android:translationY="-200dp"
+            android:translationY="-180dp"
             app:srcCompat="@drawable/eye_r" />
 
-        <ImageView
-            android:id="@+id/imageView5"
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/gifR"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:rotation="90"
             android:layout_gravity="center"
-            android:translationY="200dp"
+            android:translationY="-180dp" />
+
+        <ImageView
+            android:id="@+id/eyeL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rotation="90"
+            android:layout_gravity="center"
+            android:translationY="180dp"
             app:srcCompat="@drawable/eye_l" />
+
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/gifL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:rotation="90"
+            android:layout_gravity="center"
+            android:translationY="180dp" />
     </FrameLayout>
 
 </LinearLayout>
