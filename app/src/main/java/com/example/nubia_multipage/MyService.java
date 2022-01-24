@@ -17,7 +17,7 @@ public class MyService extends Service {
     Thread Thread1 = null;
     //String SERVER_IP = "192.168.100.2";       //IP PC Davide
     String SERVER_IP = "192.168.100.100";       //IP Robot
-    int SERVER_PORT = 8080;
+    int SERVER_PORT = 8080;                     //8081
 
 
     public static PrintWriter output;
