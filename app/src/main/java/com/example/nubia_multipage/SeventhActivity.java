@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 
@@ -48,10 +49,20 @@ public class SeventhActivity extends AppCompatActivity {
                 if(!pageL){                                                                         //If tap on screen inverse eye position
                     eyeR.setImageResource(0);
                     eyeL.setImageResource(eyeLeft);
+
+                    //animation pulse
+                    //Animation connectingAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.alpha_scale_animation);
+                    //eyeL.startAnimation(connectingAnimation);
+
                     pageL=true;
                 }else{
                     eyeR.setImageResource(eyeRight);
                     eyeL.setImageResource(0);
+
+                    //animation pulse
+                    //Animation connectingAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.alpha_scale_animation);
+                    //eyeR.startAnimation(connectingAnimation);
+
                     pageL=false;
                 }
                 new Thread(new SeventhActivity.Thread1()).start();
