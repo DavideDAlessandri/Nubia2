@@ -181,7 +181,7 @@ public class FifthActivity extends AppCompatActivity {
         MyService.messageToActivity="null";
 
         if(MyService.connectStatus){                                                                // if tcp connected
-            new Thread(new FifthActivity.Thread2("HandActivity")).start();                          // send current page name to server
+            new Thread(new FifthActivity.Thread2("PGR05")).start();                          // send current page name to server
             new Thread(new FifthActivity.Thread1()).start();
         }
 

@@ -369,7 +369,7 @@ public class SixthActivity extends AppCompatActivity {
         MyService.messageToActivity="null";
 
         if(MyService.connectStatus){                                                                // if tcp connected
-            new Thread(new SixthActivity.Thread2("MonitorActivity")).start();                       // send current page name to server
+            new Thread(new SixthActivity.Thread2("PGR06")).start();                       // send current page name to server
             new Thread(new SixthActivity.Thread1()).start();
         }
 

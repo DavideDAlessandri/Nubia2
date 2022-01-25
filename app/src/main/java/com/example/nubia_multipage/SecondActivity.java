@@ -57,7 +57,7 @@ public class SecondActivity extends AppCompatActivity {
         changeColor("start");
 
         if(MyService.connectStatus){                                                                //If tcp connected
-            new Thread(new SecondActivity.Thread2("RunActivity")).start();                          // send current page name to server
+            new Thread(new SecondActivity.Thread2("PGR02")).start();                                // send current page name to server
         }
     }
 
@@ -110,6 +110,8 @@ public class SecondActivity extends AppCompatActivity {
             finish();
         }
 
+        String referenceMessage=message.substring(0,3);                                             //Identify message reference
+
         if(message.equals("run")) {
             MyService.messageToActivity="null";
             new Thread(new SecondActivity.Thread1()).start();
@@ -125,12 +127,12 @@ public class SecondActivity extends AppCompatActivity {
             finish();
         }else if(message.equals("null")) {
             new Thread(new SecondActivity.Thread1()).start();
-        }else {
+        }else if(referenceMessage.equals("BAR")){
 
-            String screenMessage = message.substring(2);                                              //Subtract initial value of message to find color and option (Ex: G1)
-            String colorMessage = message.substring(0, 2);
+            String screenMessage = message.substring(5);                                              //Subtract initial value of message to find color and option (Ex: G1)
+            String colorMessage = message.substring(3, 5);
 
-            if (colorMessage.equals("R1")) {
+            if (colorMessage.equals("r2")) {
                 color.setImageResource(redColor);
                 menu.setImageResource(0);
                 label.setImageResource(redLabel);
@@ -149,7 +151,7 @@ public class SecondActivity extends AppCompatActivity {
                 color.startAnimation(animation); //to start animation
 
             }
-            if (colorMessage.equals("R2")) {
+            if (colorMessage.equals("r1")) {
                 color.setImageResource(redColor);
                 menu.setImageResource(0);
                 label.setImageResource(redLabel);
@@ -161,7 +163,7 @@ public class SecondActivity extends AppCompatActivity {
                 etf.setText(null);
             }
 
-            if (colorMessage.equals("G1")) {
+            if (colorMessage.equals("g1")) {
                 color.setImageResource(greenColor);
                 menu.setImageResource(greenMenu);
                 label.setImageResource(greenLabel);
@@ -170,7 +172,7 @@ public class SecondActivity extends AppCompatActivity {
                 color.clearAnimation();
             }
 
-            if (colorMessage.equals("Y1")) {
+            if (colorMessage.equals("y1")) {
                 color.setImageResource(yellowColor);
                 menu.setImageResource(0);
                 label.setImageResource(yellowLabel);
@@ -182,17 +184,31 @@ public class SecondActivity extends AppCompatActivity {
                 etf.setText(null);
             }
 
-            if (colorMessage.equals("M1")) {
-                String messageStep1 = screenMessage.substring(0, 2);                               //display menu info
-                String messageStep2 = screenMessage.substring(2, 4);
-                String messageEtf = screenMessage.substring(4);
+            MyService.messageToActivity = "null";
+            new Thread(new SecondActivity.Thread1()).start();
 
-                step1.setText(messageStep1);
-                step2.setText(messageStep2);
-                etf.setText(messageEtf);
 
-                new Thread(new SecondActivity.Thread1()).start();
-            }
+        }else if(referenceMessage.equals("INF")){
+
+            String stringMessage=message.substring(3);
+            String messageStep1 = stringMessage.substring(0, 2);                               //display menu info
+            String messageStep2 = stringMessage.substring(2, 4);
+            String messageEtf = stringMessage.substring(4);
+
+            step1.setText(messageStep1);
+            step2.setText(messageStep2);
+            etf.setText(messageEtf);
+
+            MyService.messageToActivity = "null";
+            new Thread(new SecondActivity.Thread1()).start();
+
+        }else if(referenceMessage.equals("IMG")){
+
+            //to do
+            MyService.messageToActivity = "null";
+            new Thread(new SecondActivity.Thread1()).start();
+
+        }else{
 
             if (message.equals("start")) {
                 color.setImageResource(greenColor);

@@ -163,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
 
             MyService.messageToActivity="null";
             running=true;
-            new Thread(new MainActivity.Thread2("MainActivity")).start();                           // send current page name to server
+            new Thread(new MainActivity.Thread2("PGR01")).start();                                  // send current page name to server
             new Thread(new MainActivity.Thread1()).start();                                         //Start thread 1
 
         }
@@ -178,32 +178,32 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run() {
 
-                    if(MyService.messageToActivity.equals("run")){                                  //If message = "start" change to activity 2
+                    if(MyService.messageToActivity.equals("PGD02")){                                //If message = "start" change to activity 2 run
                         MyService.messageToActivity="null";
                         startStatus=true;                                                           //stop "old" activity
                         changeActivityTwo();
                         return;
-                    }else if(MyService.messageToActivity.equals("teach")) {
+                    }else if(MyService.messageToActivity.equals("PGD03")) {                         //teach
                         MyService.messageToActivity="null";
                         startStatus=true;
                         changeActivityThree();
                         return;
-                    }else if(MyService.messageToActivity.equals("hand")) {
+                    }else if(MyService.messageToActivity.equals("PGD05")) {                         //hand guide
                         MyService.messageToActivity="null";
                         startStatus=true;
                         changeActivityFive();
                         return;
-                    }else if(MyService.messageToActivity.equals("settings")) {
+                    }else if(MyService.messageToActivity.equals("PGD04")) {                         //settings
                         MyService.messageToActivity="null";
                         startStatus=true;
                         changeActivityFour();
                         return;
-                    }else if(MyService.messageToActivity.equals("monitor")) {
+                    }else if(MyService.messageToActivity.equals("PGD06")) {                         //monitor
                         MyService.messageToActivity="null";
                         startStatus=true;
                         changeActivitySix();
                         return;
-                    }else if(MyService.messageToActivity.equals("addons")) {
+                    }else if(MyService.messageToActivity.equals("PGD07")) {                         //add-ons
                         MyService.messageToActivity="null";
                         startStatus=true;
                         changeActivitySeven();
