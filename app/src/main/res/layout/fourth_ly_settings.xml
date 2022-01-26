@@ -19,184 +19,24 @@
         app:layout_constraintVertical_bias="0.0">
 
 
-        <Button
-            android:id="@+id/backButton"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/ehsmb"
-            android:rotation="90"
-            android:text="Back"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
-            android:textSize="25sp"
-            android:translationX="22dp"
-            android:translationY="145dp" />
-
-        <Button
-            android:id="@+id/activitySixButton"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/ehsmb"
-            android:rotation="90"
-            android:text="Debug"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
-            android:textSize="25sp"
-            android:translationX="-22dp"
-            android:translationY="145dp" />
-
-        <SeekBar
-            android:id="@+id/seekBarOne5"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_gravity="center"
-            android:backgroundTint="#FFFFFF"
-            android:foregroundTint="#FFFFFF"
-            android:indeterminateTint="#FFFFFF"
-            android:progressBackgroundTint="#FFFFFF"
-            android:progressTint="#FFFFFF"
-            android:rotation="90"
-            android:thumbTint="#FFFFFF"
-            android:translationY="-220dp"
-            android:translationX="-35dp"/>
-
-        <TextView
-            android:id="@+id/percOne"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/ehsmb"
-            android:text="0%"
-            android:layout_gravity="center"
-            android:rotation="90"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
-            android:textSize="24sp"
-            android:translationY="-220dp"
-            android:translationX="-15dp"/>
-
-        <TextView
-            android:id="@+id/speed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/ehsmb"
-            android:rotation="90"
-            android:text="speed"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
-            android:textSize="30sp"
-            android:translationX="25dp"
-            android:translationY="-220dp" />
-
-        <SeekBar
-            android:id="@+id/seekBarTwo"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_gravity="center"
-            android:backgroundTint="#FFFFFF"
-            android:foregroundTint="#FFFFFF"
-            android:indeterminateTint="#FFFFFF"
-            android:progressBackgroundTint="#FFFFFF"
-            android:progressTint="#FFFFFF"
-            android:rotation="90"
-            android:thumbTint="#FFFFFF"
-            android:translationX="-35dp"
-            android:translationY="-95dp" />
-
-        <TextView
-            android:id="@+id/percTwo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/ehsmb"
-            android:text="0%"
-            android:layout_gravity="center"
-            android:rotation="90"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
-            android:textSize="24sp"
-            android:translationY="-95dp"
-            android:translationX="-15dp"/>
-
-        <TextView
-            android:id="@+id/torque"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/ehsmb"
-            android:text="torque"
-            android:layout_gravity="center"
-            android:rotation="90"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
-            android:textSize="30sp"
-            android:translationY="-95dp"
-            android:translationX="25dp"/>
-
-        <Switch
-            android:id="@+id/switchOne"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/ehsmb"
-            android:rotation="90"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
-            android:textSize="24sp"
-            android:thumbTint="#FFFFFF"
-            android:trackTint="@drawable/track"
-            android:translationX="-35dp"
-            android:translationY="25dp" />
-
-        <TextView
-            android:id="@+id/onOff"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/ehsmb"
-            android:text="off/on"
-            android:layout_gravity="center"
-            android:rotation="90"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
-            android:textSize="15sp"
-            android:translationY="25dp"
-            android:translationX="-9dp"/>
-
-        <TextView
-            android:id="@+id/mode"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/ehsmb"
-            android:text="mode"
-            android:layout_gravity="center"
-            android:rotation="90"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
-            android:textSize="30sp"
-            android:translationY="25dp"
-            android:translationX="25dp"/>
-
         <ToggleButton
-            android:id="@+id/toggleButton1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/checkBoxZ"
+            android:layout_width="150dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
             android:background="@drawable/custum_toggle_button1"
+            android:fontFamily="@font/skporsche"
+            android:padding="5dp"
             android:rotation="90"
-            android:textOff="N-Guiding"
-            android:textOn="N-Guiding"
-            android:translationX="45dp"
-            android:translationY="535dp" />
-
-        <ToggleButton
-            android:id="@+id/toggleButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:rotation="90"
-            android:translationX="-5dp"
-            android:translationY="535dp"
-            android:background="@drawable/custum_toggle_button1"
+            android:shadowColor="#333333"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="5"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textOff="Display 1"
+            android:textOn="Display 2"
+            android:textSize="12sp"
             />
 
     </FrameLayout>
