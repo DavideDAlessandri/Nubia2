@@ -22,6 +22,7 @@ public class FifthActivity extends AppCompatActivity {
     Integer progressOVR;
     ImageView iLAxisX, iLAxisY, iLAxisZ, iRAxisX, iRAxisY, iRAxisZ;
     TextView ovrText;
+    String X,Y,Z,A,B,C;
 
     Boolean running=true;
 
@@ -64,16 +65,28 @@ public class FifthActivity extends AppCompatActivity {
         int rAxisY = getResources().getIdentifier("@drawable/r_axis_y",null,this.getPackageName());
         int rAxisZ = getResources().getIdentifier("@drawable/r_axis_z",null,this.getPackageName());
 
+        X="0";
+        Y="0";
+        Z="0";
+        A="0";
+        B="0";
+        C="0";
+
         checkBoxX.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 if(checkBoxX.isChecked()){                                                          //if checkBox X checked
                     iLAxisX.setImageResource(lAxisX);                                               //set image axis
-                    new Thread(new FifthActivity.Thread2("X=1")).start();                           //send message to server
+                    X="1";
+                    sendAxisStatus(X,Y,Z,A,B,C);
+
                 }else {
                     iLAxisX.setImageResource(0);                                                    //remove image
-                    new Thread(new FifthActivity.Thread2("X=0")).start();                           //send message to server
+                    X="0";
+                    sendAxisStatus(X,Y,Z,A,B,C);
+
+
                 }
 
             }
@@ -84,10 +97,12 @@ public class FifthActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(checkBoxY.isChecked()){
                     iLAxisY.setImageResource(lAxisY);
-                    new Thread(new FifthActivity.Thread2("Y=1")).start();
+                    Y="1";
+                    sendAxisStatus(X,Y,Z,A,B,C);
                 }else {
                     iLAxisY.setImageResource(0);
-                    new Thread(new FifthActivity.Thread2("Y=0")).start();
+                    Y="0";
+                    sendAxisStatus(X,Y,Z,A,B,C);
                 }
             }
         });
@@ -97,10 +112,12 @@ public class FifthActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(checkBoxZ.isChecked()){
                     iLAxisZ.setImageResource(lAxisZ);
-                    new Thread(new FifthActivity.Thread2("Z=1")).start();
+                    Z="1";
+                    sendAxisStatus(X,Y,Z,A,B,C);
                 }else {
                     iLAxisZ.setImageResource(0);
-                    new Thread(new FifthActivity.Thread2("Z=0")).start();
+                    Z="0";
+                    sendAxisStatus(X,Y,Z,A,B,C);
                 }
             }
         });
@@ -110,10 +127,12 @@ public class FifthActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(checkBoxA.isChecked()){
                     iRAxisX.setImageResource(rAxisX);
-                    new Thread(new FifthActivity.Thread2("A=1")).start();
+                    A="1";
+                    sendAxisStatus(X,Y,Z,A,B,C);
                 }else {
                     iRAxisX.setImageResource(0);
-                    new Thread(new FifthActivity.Thread2("A=0")).start();
+                    A="0";
+                    sendAxisStatus(X,Y,Z,A,B,C);
                 }
             }
         });
@@ -123,10 +142,12 @@ public class FifthActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(checkBoxB.isChecked()){
                     iRAxisY.setImageResource(rAxisY);
-                    new Thread(new FifthActivity.Thread2("B=1")).start();
+                    B="1";
+                    sendAxisStatus(X,Y,Z,A,B,C);
                 }else {
                     iRAxisY.setImageResource(0);
-                    new Thread(new FifthActivity.Thread2("B=0")).start();
+                    B="0";
+                    sendAxisStatus(X,Y,Z,A,B,C);
                 }
             }
         });
@@ -136,10 +157,12 @@ public class FifthActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(checkBoxC.isChecked()){
                     iRAxisZ.setImageResource(rAxisZ);
-                    new Thread(new FifthActivity.Thread2("C=1")).start();
+                    C="1";
+                    sendAxisStatus(X,Y,Z,A,B,C);
                 }else {
                     iRAxisZ.setImageResource(0);
-                    new Thread(new FifthActivity.Thread2("C=0")).start();
+                    C="0";
+                    sendAxisStatus(X,Y,Z,A,B,C);
                 }
             }
         });
@@ -165,7 +188,7 @@ public class FifthActivity extends AppCompatActivity {
 
                 getProgressOVR();                                                                   //get new value
                 String progressOVRString =progressOVR.toString();                                   //convert int to string
-                new Thread(new FifthActivity.Thread2(" OVR:"+progressOVRString+" ")).start();       // send value to server
+                new Thread(new FifthActivity.Thread2("OVR"+progressOVRString)).start();       // send value to server
 
             }
         });
@@ -231,6 +254,8 @@ public class FifthActivity extends AppCompatActivity {
             finish();
         }
 
+        String referenceMessage=message.substring(0,3);                                             //Identify message reference
+
         if(message.equals("null")) {
             new Thread(new FifthActivity.Thread1()).start();
         }else if(message.equals("run")) {
@@ -248,24 +273,15 @@ public class FifthActivity extends AppCompatActivity {
             finish();
         }else if(message.equals("stop")) {
             finish();
-        }else{
+        }else if(referenceMessage.equals("FTD")){
 
-            String val1 = message.substring(0, 3);             //get progressbar 1 value
-            String val2 = message.substring(3, 6);             //get progressbar 2 value
-            String val3 = message.substring(6, 9);
-            String val4 = message.substring(9, 12);
-            String val5 = message.substring(12, 15);
-            String val6 = message.substring(15, 18);
+            String val1 = message.substring(3, 6);             //get progressbar 1 value
+            String val2 = message.substring(6, 9);             //get progressbar 2 value
+            String val3 = message.substring(9, 12);
+            String val4 = message.substring(12, 14);
+            String val5 = message.substring(14, 16);
+            String val6 = message.substring(16, 18);
 
-            String val7 = message.substring(18, 19);           //get checkBox X value
-            String val8 = message.substring(19, 20);           //get checkBox Y value
-            String val9 = message.substring(20, 21);           //get checkBox Z value
-            String val10 = message.substring(21, 22);          //get checkBox A value
-            String val11 = message.substring(22, 23);          //get checkBox B value
-            String val12 = message.substring(23, 24);          //get checkBox C value
-            String val13 = message.substring(24,25);          //get checkBox N value
-
-            String val14 = message.substring(25,28);            //get seekbar progress
 
             int number1 = Integer.parseInt(val1);           //set progressbar 1 value
             progressBarOne.setProgress(number1);
@@ -327,6 +343,28 @@ public class FifthActivity extends AppCompatActivity {
                 progressBarSix.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_green));
             }
 
+            MyService.messageToActivity = "null";
+            new Thread(new FifthActivity.Thread1()).start();
+
+        }else if(referenceMessage.equals("OVD")){
+
+            String val14 = message.substring(3,6);            //get seekbar progress
+
+            int number14 = Integer.parseInt(val14);
+            seekBarOVR.setProgress(number14);
+
+            MyService.messageToActivity = "null";
+            new Thread(new FifthActivity.Thread1()).start();
+
+        }else if(referenceMessage.equals("HGD")){
+
+            String val7 = message.substring(3, 4);           //get checkBox X value
+            String val8 = message.substring(4, 5);           //get checkBox Y value
+            String val9 = message.substring(5, 6);           //get checkBox Z value
+            String val10 = message.substring(6, 7);          //get checkBox A value
+            String val11 = message.substring(7, 8);          //get checkBox B value
+            String val12 = message.substring(8, 9);          //get checkBox C value
+
             if (val7.equals("1")) {
                 checkBoxX.setChecked(true);                                                         //set check box
                 iLAxisX.setImageResource(lAxisX);                                                   //set axis image
@@ -375,21 +413,24 @@ public class FifthActivity extends AppCompatActivity {
                 iRAxisZ.setImageResource(0);
             }
 
-            if (val13.equals("1")) {
-                checkBoxN.setChecked(true);
-            } else {
-                checkBoxN.setChecked(false);
-            }
+            MyService.messageToActivity = "null";
+            new Thread(new FifthActivity.Thread1()).start();
 
-            int number14 = Integer.parseInt(val14);
-            seekBarOVR.setProgress(number14);
+
+        }else{
 
             MyService.messageToActivity = "null";
             new Thread(new FifthActivity.Thread1()).start();
+
         }
 
     }
 
+    private void sendAxisStatus(String X, String Y, String Z, String A, String B, String C){  //Send to robot hand guiding button status
+
+        new Thread(new FifthActivity.Thread2("HGR"+X+Y+Z+A+B+C)).start();                                       //HGRnnnnnn
+
+    }
 
     @Override
     protected void onStop() {

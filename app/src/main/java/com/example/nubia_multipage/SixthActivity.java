@@ -20,6 +20,7 @@ public class SixthActivity extends AppCompatActivity {
     ProgressBar progressBar1, progressBar2, progressBar3, progressBar4, progressBar5, progressBar6;
     TextView limitText;
     Integer progressA1, progressA2, progressA3, progressA4, progressA5, progressA6;
+    String A1,A2,A3,A4,A5,A6;
 
     Boolean running=true;
 
@@ -58,6 +59,12 @@ public class SixthActivity extends AppCompatActivity {
         seekBarLimitA5.setVisibility(View.GONE);
         seekBarLimitA6.setVisibility(View.GONE);
 
+        A1="0";
+        A2="0";
+        A3="0";
+        A4="0";
+        A5="0";
+        A6="0";
 
         checkBoxA1.setOnClickListener(new View.OnClickListener() {                                  //when checkbox1 checked show seekbar 1 and hide others
             @SuppressLint("UseCompatLoadingForDrawables")
@@ -75,10 +82,12 @@ public class SixthActivity extends AppCompatActivity {
                     String progressA1String=progressA1.toString();
                     limitText.setText(progressA1String);
 
-                    new Thread(new SixthActivity.Thread2("A1-1")).start();                          // send button checked status to server
+                    A1="1";
+                    sendJointStatus(A1,A2,A3,A4,A5,A6);                                             // send button checked status to server
 
                 }else{
-                    new Thread(new SixthActivity.Thread2("A1-0")).start();                          // send button checked status to server
+                    A1="0";
+                    sendJointStatus(A1,A2,A3,A4,A5,A6);                                             // send button checked status to server
                     seekBarLimitA1.setVisibility(View.GONE);
 
                 }
@@ -100,11 +109,13 @@ public class SixthActivity extends AppCompatActivity {
                     String progressA2String=progressA2.toString();
                     limitText.setText(progressA2String);
 
-                    new Thread(new SixthActivity.Thread2("A2-1")).start();                          // send button checked status to server
+                    A2="1";
+                    sendJointStatus(A1,A2,A3,A4,A5,A6);                                             // send button checked status to server
 
                 }else {
                     seekBarLimitA2.setVisibility(View.GONE);
-                    new Thread(new SixthActivity.Thread2("A2-0")).start();                          // send button checked status to server
+                    A2="0";
+                    sendJointStatus(A1,A2,A3,A4,A5,A6);                                             // send button checked status to server
 
                 }
             }
@@ -125,11 +136,13 @@ public class SixthActivity extends AppCompatActivity {
                     String progressA3String=progressA3.toString();
                     limitText.setText(progressA3String);
 
-                    new Thread(new SixthActivity.Thread2("A3-1")).start();                          // send button checked status to server
+                    A3="1";
+                    sendJointStatus(A1,A2,A3,A4,A5,A6);                                             // send button checked status to server
 
                 }else {
                     seekBarLimitA3.setVisibility(View.GONE);
-                    new Thread(new SixthActivity.Thread2("A1-0")).start();                          // send button checked status to server
+                    A3="0";
+                    sendJointStatus(A1,A2,A3,A4,A5,A6);                                             // send button checked status to server
 
                 }
             }
@@ -150,11 +163,13 @@ public class SixthActivity extends AppCompatActivity {
                     String progressA4String=progressA4.toString();
                     limitText.setText(progressA4String);
 
-                    new Thread(new SixthActivity.Thread2("A4-1")).start();                          // send button checked status to server
+                    A4="1";
+                    sendJointStatus(A1,A2,A3,A4,A5,A6);                                             // send button checked status to server
 
                 }else {
                     seekBarLimitA4.setVisibility(View.GONE);
-                    new Thread(new SixthActivity.Thread2("A1-0")).start();                          // send button checked status to server
+                    A4="0";
+                    sendJointStatus(A1,A2,A3,A4,A5,A6);                                             // send button checked status to server
 
                 }
             }
@@ -175,11 +190,13 @@ public class SixthActivity extends AppCompatActivity {
                     String progressA5String=progressA5.toString();
                     limitText.setText(progressA5String);
 
-                    new Thread(new SixthActivity.Thread2("A5-1")).start();                          // send button checked status to server
+                    A5="1";
+                    sendJointStatus(A1,A2,A3,A4,A5,A6);                                             // send button checked status to server
 
                 }else {
                     seekBarLimitA5.setVisibility(View.GONE);
-                    new Thread(new SixthActivity.Thread2("A5-0")).start();                          // send button checked status to server
+                    A5="0";
+                    sendJointStatus(A1,A2,A3,A4,A5,A6);                                             // send button checked status to server
 
                 }
             }
@@ -200,11 +217,13 @@ public class SixthActivity extends AppCompatActivity {
                     String progressA6String=progressA6.toString();
                     limitText.setText(progressA6String);
 
-                    new Thread(new SixthActivity.Thread2("A6-1")).start();                          // send button checked status to server
+                    A6="1";
+                    sendJointStatus(A1,A2,A3,A4,A5,A6);                                             // send button checked status to server
 
                 }else {
                     seekBarLimitA6.setVisibility(View.GONE);
-                    new Thread(new SixthActivity.Thread2("A1-0")).start();                          // send button checked status to server
+                    A6="0";
+                    sendJointStatus(A1,A2,A3,A4,A5,A6);                                             // send button checked status to server
 
                 }
             }
@@ -230,7 +249,11 @@ public class SixthActivity extends AppCompatActivity {
 
                 getProgressLimitA1();
                 String progressA1String=progressA1.toString();                                      //get new value
-                new Thread(new SixthActivity.Thread2(" PA1:"+progressA1String+" ")).start();        // send value to server
+                if(progressA1<100){                                                                 //if<100 send 0ss
+                    new Thread(new SixthActivity.Thread2("TLR10"+progressA1String)).start();        // send value to server
+                }else{
+                    new Thread(new SixthActivity.Thread2("TLR1"+progressA1String)).start();         // send value to server
+                }
             }
         });
 
@@ -255,7 +278,11 @@ public class SixthActivity extends AppCompatActivity {
                 getProgressLimitA2();
                 String progressA2String=progressA2.toString();
                 limitText.setText(progressA2String);
-                new Thread(new SixthActivity.Thread2(" PA2:"+progressA2String+" ")).start();        // send value to server
+                if(progressA2<100){                                                                 //if<100 send 0ss
+                    new Thread(new SixthActivity.Thread2("TLR20"+progressA2String)).start();        // send value to server
+                }else{
+                    new Thread(new SixthActivity.Thread2("TLR2"+progressA2String)).start();         // send value to server
+                }
             }
         });
 
@@ -280,7 +307,11 @@ public class SixthActivity extends AppCompatActivity {
                 getProgressLimitA3();
                 String progressA3String=progressA3.toString();
                 limitText.setText(progressA3String);
-                new Thread(new SixthActivity.Thread2(" PA3:"+progressA3String+" ")).start();        // send value to server
+                if(progressA3<100){                                                                 //if<100 send 0ss
+                    new Thread(new SixthActivity.Thread2("TLR30"+progressA3String)).start();        // send value to server
+                }else{
+                    new Thread(new SixthActivity.Thread2("TLR3"+progressA3String)).start();         // send value to server
+                }
             }
         });
 
@@ -305,7 +336,13 @@ public class SixthActivity extends AppCompatActivity {
                 getProgressLimitA4();
                 String progressA4String=progressA4.toString();
                 limitText.setText(progressA4String);
-                new Thread(new SixthActivity.Thread2(" PA4:"+progressA4String+" ")).start();        // send value to server
+
+                if(progressA4<100){                                                                 //if<100 send 0ss
+                    new Thread(new SixthActivity.Thread2("TLR40"+progressA4String)).start();        // send value to server
+                }else{
+                    new Thread(new SixthActivity.Thread2("TLR4"+progressA4String)).start();         // send value to server
+                }
+
             }
         });
 
@@ -330,7 +367,11 @@ public class SixthActivity extends AppCompatActivity {
                 getProgressLimitA5();
                 String progressA5String=progressA5.toString();
                 limitText.setText(progressA5String);
-                new Thread(new SixthActivity.Thread2(" PA5:"+progressA5String+" ")).start();        // send value to server
+                if(progressA5<100){                                                                 //if<100 send 0ss
+                    new Thread(new SixthActivity.Thread2("TLR50"+progressA5String)).start();        // send value to server
+                }else{
+                    new Thread(new SixthActivity.Thread2("TLR5"+progressA5String)).start();         // send value to server
+                }
             }
         });
 
@@ -355,7 +396,11 @@ public class SixthActivity extends AppCompatActivity {
                 getProgressLimitA6();
                 String progressA6String=progressA6.toString();
                 limitText.setText(progressA6String);
-                new Thread(new SixthActivity.Thread2(" PA6:"+progressA6String+" ")).start();        // send value to server
+                if(progressA6<100){                                                                 //if<100 send 0ss
+                    new Thread(new SixthActivity.Thread2("TLR60"+progressA6String)).start();        // send value to server
+                }else{
+                    new Thread(new SixthActivity.Thread2("TLR6"+progressA6String)).start();         // send value to server
+                }
             }
         });
     }
@@ -408,7 +453,7 @@ public class SixthActivity extends AppCompatActivity {
     @SuppressLint("UseCompatLoadingForDrawables")
     private  void receiveValue(String message){
 
-        String switchMessage=message.substring(0,1);                                                //Subtract initial value of message
+        String referenceMessage=message.substring(0,3);                                             //Identify message reference
 
         if(message.equals("null")) {
             new Thread(new SixthActivity.Thread1()).start();
@@ -427,14 +472,14 @@ public class SixthActivity extends AppCompatActivity {
             finish();
         }else if(message.equals("stop")) {
             finish();
-        }else if(switchMessage.equals("A")) {                                                       //if initial value of message = A => change button display settings
+        }else if(referenceMessage.equals("TID")) {                                                       //if initial value of message = A => change button display settings
 
-            String ch1 = message.substring(1, 2);                                                   //get progressbar checkbox 1 value
-            String ch2 = message.substring(2, 3);
-            String ch3 = message.substring(3, 4);
-            String ch4 = message.substring(4, 5);
-            String ch5 = message.substring(5, 6);
-            String ch6 = message.substring(6, 7);
+            String ch1 = message.substring(3, 4);                                                   //get progressbar checkbox 1 value
+            String ch2 = message.substring(4, 5);
+            String ch3 = message.substring(5, 6);
+            String ch4 = message.substring(6, 7);
+            String ch5 = message.substring(7, 8);
+            String ch6 = message.substring(8, 9);
 
             if(ch1.equals("1")){
                 checkBoxA1.setChecked(true);
@@ -484,21 +529,17 @@ public class SixthActivity extends AppCompatActivity {
                 seekBarLimitA6.setVisibility(View.GONE);
             }
 
-
-
             MyService.messageToActivity = "null";
             new Thread(new SixthActivity.Thread1()).start();
 
-        }else{
+        }else if(referenceMessage.equals("TOD")){
 
-            String val1 = message.substring(0, 3);                                                  //get progressbar 1 value
-            String val2 = message.substring(3, 6);                                                  //get progressbar 2 value
-            String val3 = message.substring(6, 9);
-            String val4 = message.substring(9, 12);
-            String val5 = message.substring(12, 15);
-            String val6 = message.substring(15, 18);
-
-            String val7 = message.substring(18,21);                                                 //get ovr value
+            String val1 = message.substring(3, 6);                                                  //get progressbar 1 value
+            String val2 = message.substring(6, 9);                                                  //get progressbar 1 value
+            String val3 = message.substring(9, 12);
+            String val4 = message.substring(12, 15);
+            String val5 = message.substring(15, 18);
+            String val6 = message.substring(18, 21);
 
             int number1 = Integer.parseInt(val1);                                                   //set progressbar 1 value
             progressBar1.setProgress(number1);
@@ -560,14 +601,31 @@ public class SixthActivity extends AppCompatActivity {
                 progressBar6.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_green));
             }
 
+            MyService.messageToActivity = "null";
+            new Thread(new SixthActivity.Thread1()).start();
+
+        }else if(referenceMessage.equals("TLD")){
+
+            //to-do
+
+            String val7 = message.substring(4,7);                                                   //get ovr value
             int number7 = Integer.parseInt(val7);
             String number7S = String.valueOf(number7);                                              //remove the 0 (ex val7=050 => number7S=50)
-            limitText.setText(number7S);                                                            //set limit text
+            limitText.setText(number7S);
 
             MyService.messageToActivity = "null";
             new Thread(new SixthActivity.Thread1()).start();
 
+        }else{
+            MyService.messageToActivity = "null";
+            new Thread(new SixthActivity.Thread1()).start();
         }
+
+    }
+
+    private void sendJointStatus(String A1, String A2, String A3, String A4, String A5, String A6){  //Send to robot hand guiding button status
+
+        new Thread(new SixthActivity.Thread2("HGR"+A1+A2+A3+A4+A5+A6)).start();                     //TIRnnnnnn
 
     }
 
