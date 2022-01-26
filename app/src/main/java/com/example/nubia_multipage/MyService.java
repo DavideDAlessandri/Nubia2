@@ -2,6 +2,7 @@ package com.example.nubia_multipage;
 
 import android.app.Service;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.IBinder;
 
@@ -17,7 +18,8 @@ public class MyService extends Service {
     Thread Thread1 = null;
     String SERVER_IP = "192.168.100.2";       //IP PC Davide
     //String SERVER_IP = "192.168.100.100";       //IP Robot
-    int SERVER_PORT = 8080;                     //8081
+    //int SERVER_PORT = 8080;                     //8081
+    int port;
 
 
     public static PrintWriter output;
@@ -32,7 +34,10 @@ public class MyService extends Service {
 
     @Override
     public void onStart(Intent intent, int startId) {
-        //do something
+
+        SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_PRIVATE);            //remember which display we are
+        port = sh.getInt("port", 0);
+
         Thread1 = new Thread(new MyService.Thread1());
         Thread1.start();
     }
@@ -47,7 +52,7 @@ public class MyService extends Service {
         public void run() {
             Socket socket;
             try {
-                socket = new Socket(SERVER_IP, SERVER_PORT);           //connection server ip / port
+                socket = new Socket(SERVER_IP, port);           //connection server ip / port
                 output = new PrintWriter(socket.getOutputStream());
                 input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 connectStatus=true;

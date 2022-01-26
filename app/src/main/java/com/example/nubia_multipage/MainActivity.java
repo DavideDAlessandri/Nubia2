@@ -20,8 +20,8 @@ public class MainActivity extends AppCompatActivity {
     Button fifthPage;
     Button sixthPage;
     Button seventhPage;
-    Button connectButton;
     ImageView imageRun, imageTeach, imageHand, imageSettings, imageMonitor, imageAddOns;
+    ImageView tryConnection;
     Boolean running=true;                                                                           //Thread 1 start/stop
 
     public static Boolean startStatus=false;                                                        //Stop activity when start another activity
@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
         fifthPage=findViewById(R.id.HandPage);
         sixthPage=findViewById(R.id.MonitorPage);
         seventhPage=findViewById(R.id.AddOnsPage);
-        connectButton=findViewById(R.id.connectButton);
 
         imageRun=findViewById(R.id.imageRun);
         imageTeach=findViewById(R.id.imageTeach);
@@ -48,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
         imageSettings=findViewById(R.id.imageSettings);
         imageMonitor=findViewById(R.id.imageMonitor);
         imageAddOns=findViewById(R.id.imageAddOns);
+
+        tryConnection=findViewById(R.id.tryConnection);
+        tryConnection.setVisibility(View.GONE);                                                     //Connection symbol
 
 
         secondPage.setOnClickListener(new View.OnClickListener() {                                  //Change page buttons
@@ -128,30 +130,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        if (MyService.connectStatus.equals(false)) {
+            tryToConnect();
+        }
 
-        connectButton.setVisibility(View.VISIBLE);
-        connectButton.setOnClickListener(new View.OnClickListener() {                               //Connect button
-            @Override
-            public void onClick(View v) {
-                startService();                                                                     //Start background service (TCP connection)
 
-                Handler handler = new Handler();                                                    //Start thread 1 after 1 second
-                handler. postDelayed(new Runnable() {
-                    public void run() {
-
-                        if (MyService.connectStatus.equals(true)) {                                 //If server connected:
-
-                            connectButton.setVisibility(View.GONE);                                 //Hide button
-                            running = true;                                                         //Allow thread 1 to run
-                            MyService.messageToActivity = "null";                                   //Set incoming message "null"
-                            new Thread(new MainActivity.Thread1()).start();                         //Start thread 1 (read incoming message)
-
-                        }
-                        }
-                }, 500); //0.5 seconds.
-
-            }
-        });
 
     }
 
@@ -276,6 +259,29 @@ public class MainActivity extends AppCompatActivity {
 
     private void startService(){                                                                    //Start background service
         startService(new Intent(this, MyService.class));
+    }
+
+    private void tryToConnect(){
+        tryConnection.setVisibility(View.VISIBLE);                                                  //try connection symbol
+
+        Handler handler = new Handler();                                                    //Start thread 1 after 1 second
+        handler. postDelayed(new Runnable() {
+            public void run() {
+
+                if (MyService.connectStatus.equals(true)) {                                 //If server connected:
+
+                    tryConnection.setVisibility(View.GONE);
+                    running = true;                                                         //Allow thread 1 to run
+                    MyService.messageToActivity = "null";                                   //Set incoming message "null"
+                    new Thread(new MainActivity.Thread1()).start();                         //Start thread 1 (read incoming message)
+
+                }else{
+                    startService();                                                                 //Start background service (TCP connection)
+                    tryToConnect();
+                }
+            }
+        }, 10000); //10 seconds.                                                              //try to connect every 2 second
+
     }
 
 

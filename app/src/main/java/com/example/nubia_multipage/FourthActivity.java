@@ -1,12 +1,15 @@
 package com.example.nubia_multipage;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -20,6 +23,10 @@ import java.util.TimerTask;
 public class FourthActivity extends AppCompatActivity {
 
     Boolean running=true;
+    ToggleButton displayButton;
+    ImageView connectedImage;
+    //TextView portView;
+    public static int SERVER_PORT=8080;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,13 +35,56 @@ public class FourthActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.fourth_ly_settings);
 
+        displayButton=findViewById(R.id.displayButton);
+        connectedImage=findViewById(R.id.connectedImage);
+        //portView=findViewById(R.id.portView);
 
+
+        displayButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(displayButton.isChecked()){
+
+                    SERVER_PORT=8081;
+                    saveData();
+
+                }else{
+
+                    SERVER_PORT=8080;
+                    saveData();
+
+                }
+            }
+        });
 
     }
 
     @Override
     protected  void onResume(){
         super.onResume();
+
+        if (MyService.connectStatus.equals(true)) {
+            connectedImage.setVisibility(View.VISIBLE);
+        }else{
+            connectedImage.setVisibility(View.GONE);
+        }
+
+            SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_PRIVATE);            //remember which display we are
+        Integer port = sh.getInt("port", 0);
+        String portString=port.toString();
+
+        if(portString.equals("8080")){
+            SERVER_PORT=8080;                                                                       //if display 1 port=8080
+            displayButton.setChecked(false);
+        }else{
+            SERVER_PORT=8081;                                                                       //if display 2 port=8081 button=checked
+            displayButton.setChecked(true);
+
+        }
+
+        //portView.setText(port);
+
 
         MainActivity.startStatus=false;                                                             //reset start status (stop when change activity)
         running=true;
@@ -88,20 +138,20 @@ public class FourthActivity extends AppCompatActivity {
         if(message.equals("null")) {
             new Thread(new FourthActivity.Thread1()).start();
 
-        }else if(message.equals("run")) {
+        }else if(message.equals("PGD02")) {
             finish();
-        }else if(message.equals("teach")) {
+        }else if(message.equals("PGD03")) {
             finish();
-        }else if(message.equals("hand")) {
+        }else if(message.equals("PGD05")) {
             finish();
-        }else if(message.equals("settings")) {
+        }else if(message.equals("PGD04")) {
             MyService.messageToActivity="null";
             new Thread(new FourthActivity.Thread1()).start();
-        }else if(message.equals("monitor")) {
+        }else if(message.equals("PGD06")) {
             finish();
-        }else if(message.equals("addons")) {
+        }else if(message.equals("PGD07")) {
             finish();
-        }else if(message.equals("stop")) {
+        }else if(message.equals("PGD01")) {
             finish();
         }else{
 
@@ -109,6 +159,14 @@ public class FourthActivity extends AppCompatActivity {
             new Thread(new FourthActivity.Thread1()).start();
         }
 
+    }
+
+    public void saveData(){                                                                         //save display: if 1 port 8080 if 2 port 8081
+        SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+        SharedPreferences.Editor myEdit = sharedPreferences.edit();
+
+        myEdit.putInt("port", SERVER_PORT);
+        myEdit.apply();
 
     }
 

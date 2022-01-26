@@ -457,20 +457,20 @@ public class SixthActivity extends AppCompatActivity {
 
         if(message.equals("null")) {
             new Thread(new SixthActivity.Thread1()).start();
-        }else if(message.equals("run")) {
+        }else if(message.equals("PGD02")) {
             finish();
-        }else if(message.equals("teach")) {
+        }else if(message.equals("PGD03")) {
             finish();
-        }else if(message.equals("hand")) {
+        }else if(message.equals("PGD04")) {
             finish();
-        }else if(message.equals("settings")) {
+        }else if(message.equals("PGD05")) {
             finish();
-        }else if(message.equals("monitor")) {
+        }else if(message.equals("PGD06")) {
             MyService.messageToActivity = "null";
             new Thread(new SixthActivity.Thread1()).start();
-        }else if(message.equals("addons")) {
+        }else if(message.equals("PGD07")) {
             finish();
-        }else if(message.equals("stop")) {
+        }else if(message.equals("PGD01")) {
             finish();
         }else if(referenceMessage.equals("TID")) {                                                       //if initial value of message = A => change button display settings
 

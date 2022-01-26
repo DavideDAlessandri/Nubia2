@@ -28,25 +28,6 @@
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/main_background" />
 
-        <Button
-            android:id="@+id/connectButton"
-            android:layout_width="241dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fontFamily="@font/frau_2"
-            android:padding="5dp"
-            android:rotation="90"
-            android:shadowColor="#000000"
-            android:shadowDx="3"
-            android:shadowDy="3"
-            android:shadowRadius="5"
-            android:text="Conn."
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
-            android:textSize="22sp"
-            android:background="#0000ffff"
-            android:translationX="-37dp"
-            android:translationY="-15dp" />
 
         <Button
             android:id="@+id/RunPage"
@@ -167,6 +148,16 @@
             android:translationY="238dp"
             android:layout_gravity="center"
             app:srcCompat="@drawable/add_ons" />
+
+        <ImageView
+            android:id="@+id/tryConnection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@android:drawable/stat_notify_sync"
+            android:rotation="90"
+            android:translationX="-54dp"
+            android:translationY="-60dp"
+            android:layout_gravity="center"/>
 
 
     </FrameLayout>

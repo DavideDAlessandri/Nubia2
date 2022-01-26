@@ -112,18 +112,18 @@ public class SecondActivity extends AppCompatActivity {
 
         String referenceMessage=message.substring(0,3);                                             //Identify message reference
 
-        if(message.equals("run")) {
+        if(message.equals("PGD02")) {
             MyService.messageToActivity="null";
             new Thread(new SecondActivity.Thread1()).start();
-        }else if(message.equals("teach")) {
+        }else if(message.equals("PGD03")) {
             finish();
-        }else if(message.equals("hand")) {
+        }else if(message.equals("PGD04")) {
             finish();
-        }else if(message.equals("settings")) {
+        }else if(message.equals("PGD05")) {
             finish();
-        }else if(message.equals("monitor")) {
+        }else if(message.equals("PGD06")) {
             finish();
-        }else if(message.equals("addons")) {
+        }else if(message.equals("PGD07")) {
             finish();
         }else if(message.equals("null")) {
             new Thread(new SecondActivity.Thread1()).start();
@@ -218,7 +218,7 @@ public class SecondActivity extends AppCompatActivity {
                 txtMarquee.setSelected(true);
                 color.clearAnimation();
             }
-            if (message.equals("stop")) {
+            if (message.equals("PGD01")) {
                 finish();
             }
 
