@@ -188,7 +188,12 @@ public class FifthActivity extends AppCompatActivity {
 
                 getProgressOVR();                                                                   //get new value
                 String progressOVRString =progressOVR.toString();                                   //convert int to string
-                new Thread(new FifthActivity.Thread2("OVR"+progressOVRString)).start();       // send value to server
+                if(progressOVR<100){
+                    new Thread(new FifthActivity.Thread2("OVR0"+progressOVRString)).start();       // send value to server
+                }else{
+                    new Thread(new FifthActivity.Thread2("OVR"+progressOVRString)).start();       // send value to server
+                }
+
 
             }
         });
@@ -368,49 +373,61 @@ public class FifthActivity extends AppCompatActivity {
             if (val7.equals("1")) {
                 checkBoxX.setChecked(true);                                                         //set check box
                 iLAxisX.setImageResource(lAxisX);                                                   //set axis image
+                X="1";                                                                              //update value to send
             } else {
                 checkBoxX.setChecked(false);
                 iLAxisX.setImageResource(0);                                                        //remove axis image
+                X="0";
             }
 
             if (val8.equals("1")) {
                 checkBoxY.setChecked(true);
                 iLAxisY.setImageResource(lAxisY);
+                Y="1";
             } else {
                 checkBoxY.setChecked(false);
                 iLAxisY.setImageResource(0);
+                Y="0";
             }
 
             if (val9.equals("1")) {
                 checkBoxZ.setChecked(true);
                 iLAxisZ.setImageResource(lAxisZ);
+                Z="1";
             } else {
                 checkBoxZ.setChecked(false);
                 iLAxisZ.setImageResource(0);
+                Z="0";
             }
 
             if (val10.equals("1")) {
                 checkBoxA.setChecked(true);
                 iRAxisX.setImageResource(rAxisX);
+                A="1";
             } else {
                 checkBoxA.setChecked(false);
                 iRAxisX.setImageResource(0);
+                A="0";
             }
 
             if (val11.equals("1")) {
                 checkBoxB.setChecked(true);
                 iRAxisY.setImageResource(rAxisY);
+                B="1";
             } else {
                 checkBoxB.setChecked(false);
                 iRAxisY.setImageResource(0);
+                B="0";
             }
 
             if (val12.equals("1")) {
                 checkBoxC.setChecked(true);
                 iRAxisZ.setImageResource(rAxisZ);
+                C="1";
             } else {
                 checkBoxC.setChecked(false);
                 iRAxisZ.setImageResource(0);
+                C="0";
             }
 
             MyService.messageToActivity = "null";

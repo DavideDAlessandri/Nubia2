@@ -59,7 +59,7 @@ public class SixthActivity extends AppCompatActivity {
         seekBarLimitA5.setVisibility(View.GONE);
         seekBarLimitA6.setVisibility(View.GONE);
 
-        A1="0";
+        A1="1";
         A2="0";
         A3="0";
         A4="0";
@@ -484,49 +484,61 @@ public class SixthActivity extends AppCompatActivity {
             if(ch1.equals("1")){
                 checkBoxA1.setChecked(true);
                 seekBarLimitA1.setVisibility(View.GONE);
+                A1="1";
             }else{
                 checkBoxA1.setChecked(false);
                 seekBarLimitA1.setVisibility(View.GONE);
+                A1="0";
             }
 
             if(ch2.equals("1")){
                 checkBoxA2.setChecked(true);
                 seekBarLimitA2.setVisibility(View.GONE);
+                A2="1";
             }else{
                 checkBoxA2.setChecked(false);
                 seekBarLimitA2.setVisibility(View.GONE);
+                A2="0";
             }
 
             if(ch3.equals("1")){
                 checkBoxA3.setChecked(true);
                 seekBarLimitA3.setVisibility(View.GONE);
+                A3="1";
             }else{
                 checkBoxA3.setChecked(false);
                 seekBarLimitA3.setVisibility(View.GONE);
+                A3="0";
             }
 
             if(ch4.equals("1")){
                 checkBoxA4.setChecked(true);
                 seekBarLimitA4.setVisibility(View.GONE);
+                A4="1";
             }else{
                 checkBoxA4.setChecked(false);
                 seekBarLimitA4.setVisibility(View.GONE);
+                A4="0";
             }
 
             if(ch5.equals("1")){
                 checkBoxA5.setChecked(true);
                 seekBarLimitA5.setVisibility(View.GONE);
+                A5="1";
             }else{
                 checkBoxA5.setChecked(false);
                 seekBarLimitA5.setVisibility(View.GONE);
+                A5="0";
             }
 
             if(ch6.equals("1")){
                 checkBoxA6.setChecked(true);
                 seekBarLimitA6.setVisibility(View.GONE);
+                A6="1";
             }else{
                 checkBoxA6.setChecked(false);
                 seekBarLimitA6.setVisibility(View.GONE);
+                A6="0";
             }
 
             MyService.messageToActivity = "null";
@@ -606,12 +618,26 @@ public class SixthActivity extends AppCompatActivity {
 
         }else if(referenceMessage.equals("TLD")){
 
-            //to-do
+            String ref=message.substring(3,4);
 
             String val7 = message.substring(4,7);                                                   //get ovr value
             int number7 = Integer.parseInt(val7);
             String number7S = String.valueOf(number7);                                              //remove the 0 (ex val7=050 => number7S=50)
             limitText.setText(number7S);
+
+            if(ref.equals("1")){
+                seekBarLimitA1.setProgress(number7);
+            }else if(ref.equals("2")){
+                seekBarLimitA2.setProgress(number7);
+            }else if(ref.equals("3")){
+                seekBarLimitA3.setProgress(number7);
+            }else if(ref.equals("4")){
+                seekBarLimitA4.setProgress(number7);
+            }else if(ref.equals("5")){
+                seekBarLimitA5.setProgress(number7);
+            }else if(ref.equals("6")){
+                seekBarLimitA6.setProgress(number7);
+            }
 
             MyService.messageToActivity = "null";
             new Thread(new SixthActivity.Thread1()).start();
@@ -625,7 +651,7 @@ public class SixthActivity extends AppCompatActivity {
 
     private void sendJointStatus(String A1, String A2, String A3, String A4, String A5, String A6){  //Send to robot hand guiding button status
 
-        new Thread(new SixthActivity.Thread2("HGR"+A1+A2+A3+A4+A5+A6)).start();                     //TIRnnnnnn
+        new Thread(new SixthActivity.Thread2("TIR"+A1+A2+A3+A4+A5+A6)).start();                     //TIRnnnnnn
 
     }
 
