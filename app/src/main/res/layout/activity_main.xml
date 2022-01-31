@@ -159,6 +159,16 @@
             android:translationY="-60dp"
             android:layout_gravity="center"/>
 
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:rotation="180"
+            android:translationX="-54dp"
+            android:translationY="-87dp"
+            app:srcCompat="@android:drawable/ic_delete" />
+
 
     </FrameLayout>
 

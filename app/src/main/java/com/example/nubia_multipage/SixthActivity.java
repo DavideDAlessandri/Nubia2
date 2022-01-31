@@ -248,11 +248,14 @@ public class SixthActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {
 
                 getProgressLimitA1();
+                MyService.limit1=progressA1;
                 String progressA1String=progressA1.toString();                                      //get new value
-                if(progressA1<100){                                                                 //if<100 send 0ss
+                if(progressA1>10 && progressA1<100){                                                                 //if<100 send 0ss
                     new Thread(new SixthActivity.Thread2("TLR10"+progressA1String)).start();        // send value to server
+                }else if(progressA1<10){
+                    new Thread(new SixthActivity.Thread2("TLR100"+progressA1String)).start();         // send value to server
                 }else{
-                    new Thread(new SixthActivity.Thread2("TLR1"+progressA1String)).start();         // send value to server
+                    new Thread(new SixthActivity.Thread2("TLR1"+progressA1String)).start();
                 }
             }
         });
@@ -276,12 +279,15 @@ public class SixthActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {
 
                 getProgressLimitA2();
+                MyService.limit2=progressA2;
                 String progressA2String=progressA2.toString();
                 limitText.setText(progressA2String);
-                if(progressA2<100){                                                                 //if<100 send 0ss
+                if(progressA2>10 && progressA2<100){                                                                 //if<100 send 0ss
                     new Thread(new SixthActivity.Thread2("TLR20"+progressA2String)).start();        // send value to server
+                }else if(progressA2<10){
+                    new Thread(new SixthActivity.Thread2("TLR200"+progressA2String)).start();         // send value to server
                 }else{
-                    new Thread(new SixthActivity.Thread2("TLR2"+progressA2String)).start();         // send value to server
+                    new Thread(new SixthActivity.Thread2("TLR2"+progressA2String)).start();
                 }
             }
         });
@@ -305,12 +311,15 @@ public class SixthActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {
 
                 getProgressLimitA3();
+                MyService.limit3=progressA3;
                 String progressA3String=progressA3.toString();
                 limitText.setText(progressA3String);
-                if(progressA3<100){                                                                 //if<100 send 0ss
+                if(progressA3>10 && progressA3<100){                                                                 //if<100 send 0ss
                     new Thread(new SixthActivity.Thread2("TLR30"+progressA3String)).start();        // send value to server
+                }else if(progressA1<10){
+                    new Thread(new SixthActivity.Thread2("TLR300"+progressA3String)).start();         // send value to server
                 }else{
-                    new Thread(new SixthActivity.Thread2("TLR3"+progressA3String)).start();         // send value to server
+                    new Thread(new SixthActivity.Thread2("TLR3"+progressA3String)).start();
                 }
             }
         });
@@ -334,13 +343,16 @@ public class SixthActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {
 
                 getProgressLimitA4();
+                MyService.limit4=progressA4;
                 String progressA4String=progressA4.toString();
                 limitText.setText(progressA4String);
 
-                if(progressA4<100){                                                                 //if<100 send 0ss
+                if(progressA4>10 && progressA4<100){                                                                 //if<100 send 0ss
                     new Thread(new SixthActivity.Thread2("TLR40"+progressA4String)).start();        // send value to server
+                }else if(progressA4<10){
+                    new Thread(new SixthActivity.Thread2("TLR400"+progressA4String)).start();         // send value to server
                 }else{
-                    new Thread(new SixthActivity.Thread2("TLR4"+progressA4String)).start();         // send value to server
+                    new Thread(new SixthActivity.Thread2("TLR4"+progressA4String)).start();
                 }
 
             }
@@ -365,12 +377,15 @@ public class SixthActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {
 
                 getProgressLimitA5();
+                MyService.limit5=progressA5;
                 String progressA5String=progressA5.toString();
                 limitText.setText(progressA5String);
-                if(progressA5<100){                                                                 //if<100 send 0ss
+                if(progressA5>10 && progressA5<100){                                                                 //if<100 send 0ss
                     new Thread(new SixthActivity.Thread2("TLR50"+progressA5String)).start();        // send value to server
+                }else if(progressA5<10){
+                    new Thread(new SixthActivity.Thread2("TLR500"+progressA5String)).start();         // send value to server
                 }else{
-                    new Thread(new SixthActivity.Thread2("TLR5"+progressA5String)).start();         // send value to server
+                    new Thread(new SixthActivity.Thread2("TLR5"+progressA5String)).start();
                 }
             }
         });
@@ -394,12 +409,15 @@ public class SixthActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {
 
                 getProgressLimitA6();
+                MyService.limit6=progressA6;
                 String progressA6String=progressA6.toString();
                 limitText.setText(progressA6String);
-                if(progressA6<100){                                                                 //if<100 send 0ss
+                if(progressA6>10 && progressA6<100){                                                                 //if<100 send 0ss
                     new Thread(new SixthActivity.Thread2("TLR60"+progressA6String)).start();        // send value to server
+                }else if(progressA6<10){
+                    new Thread(new SixthActivity.Thread2("TLR600"+progressA6String)).start();         // send value to server
                 }else{
-                    new Thread(new SixthActivity.Thread2("TLR6"+progressA6String)).start();         // send value to server
+                    new Thread(new SixthActivity.Thread2("TLR6"+progressA6String)).start();
                 }
             }
         });
@@ -412,6 +430,13 @@ public class SixthActivity extends AppCompatActivity {
         MainActivity.startStatus=false;                                                             //reset start status (stop when change activity)
         running=true;
         MyService.messageToActivity="null";
+
+        seekBarLimitA1.setProgress(MyService.limit1);
+        seekBarLimitA2.setProgress(MyService.limit2);
+        seekBarLimitA3.setProgress(MyService.limit3);
+        seekBarLimitA4.setProgress(MyService.limit4);
+        seekBarLimitA5.setProgress(MyService.limit5);
+        seekBarLimitA6.setProgress(MyService.limit6);
 
         if(MyService.connectStatus){                                                                // if tcp connected
             new Thread(new SixthActivity.Thread2("PGR06")).start();                       // send current page name to server
@@ -483,61 +508,49 @@ public class SixthActivity extends AppCompatActivity {
 
             if(ch1.equals("1")){
                 checkBoxA1.setChecked(true);
-                seekBarLimitA1.setVisibility(View.GONE);
                 A1="1";
             }else{
                 checkBoxA1.setChecked(false);
-                seekBarLimitA1.setVisibility(View.GONE);
                 A1="0";
             }
 
             if(ch2.equals("1")){
                 checkBoxA2.setChecked(true);
-                seekBarLimitA2.setVisibility(View.GONE);
                 A2="1";
             }else{
                 checkBoxA2.setChecked(false);
-                seekBarLimitA2.setVisibility(View.GONE);
                 A2="0";
             }
 
             if(ch3.equals("1")){
                 checkBoxA3.setChecked(true);
-                seekBarLimitA3.setVisibility(View.GONE);
                 A3="1";
             }else{
                 checkBoxA3.setChecked(false);
-                seekBarLimitA3.setVisibility(View.GONE);
                 A3="0";
             }
 
             if(ch4.equals("1")){
                 checkBoxA4.setChecked(true);
-                seekBarLimitA4.setVisibility(View.GONE);
                 A4="1";
             }else{
                 checkBoxA4.setChecked(false);
-                seekBarLimitA4.setVisibility(View.GONE);
                 A4="0";
             }
 
             if(ch5.equals("1")){
                 checkBoxA5.setChecked(true);
-                seekBarLimitA5.setVisibility(View.GONE);
                 A5="1";
             }else{
                 checkBoxA5.setChecked(false);
-                seekBarLimitA5.setVisibility(View.GONE);
                 A5="0";
             }
 
             if(ch6.equals("1")){
                 checkBoxA6.setChecked(true);
-                seekBarLimitA6.setVisibility(View.GONE);
                 A6="1";
             }else{
                 checkBoxA6.setChecked(false);
-                seekBarLimitA6.setVisibility(View.GONE);
                 A6="0";
             }
 
@@ -627,16 +640,58 @@ public class SixthActivity extends AppCompatActivity {
 
             if(ref.equals("1")){
                 seekBarLimitA1.setProgress(number7);
+                seekBarLimitA1.setVisibility(View.VISIBLE);
+                seekBarLimitA2.setVisibility(View.GONE);
+                seekBarLimitA3.setVisibility(View.GONE);
+                seekBarLimitA4.setVisibility(View.GONE);
+                seekBarLimitA5.setVisibility(View.GONE);
+                seekBarLimitA6.setVisibility(View.GONE);
+
             }else if(ref.equals("2")){
                 seekBarLimitA2.setProgress(number7);
+                seekBarLimitA1.setVisibility(View.GONE);
+                seekBarLimitA2.setVisibility(View.VISIBLE);
+                seekBarLimitA3.setVisibility(View.GONE);
+                seekBarLimitA4.setVisibility(View.GONE);
+                seekBarLimitA5.setVisibility(View.GONE);
+                seekBarLimitA6.setVisibility(View.GONE);
+
             }else if(ref.equals("3")){
                 seekBarLimitA3.setProgress(number7);
+                seekBarLimitA1.setVisibility(View.GONE);
+                seekBarLimitA2.setVisibility(View.GONE);
+                seekBarLimitA3.setVisibility(View.VISIBLE);
+                seekBarLimitA4.setVisibility(View.GONE);
+                seekBarLimitA5.setVisibility(View.GONE);
+                seekBarLimitA6.setVisibility(View.GONE);
+
             }else if(ref.equals("4")){
                 seekBarLimitA4.setProgress(number7);
+                seekBarLimitA1.setVisibility(View.GONE);
+                seekBarLimitA2.setVisibility(View.GONE);
+                seekBarLimitA3.setVisibility(View.GONE);
+                seekBarLimitA4.setVisibility(View.VISIBLE);
+                seekBarLimitA5.setVisibility(View.GONE);
+                seekBarLimitA6.setVisibility(View.GONE);
+
             }else if(ref.equals("5")){
                 seekBarLimitA5.setProgress(number7);
+                seekBarLimitA1.setVisibility(View.GONE);
+                seekBarLimitA2.setVisibility(View.GONE);
+                seekBarLimitA3.setVisibility(View.GONE);
+                seekBarLimitA4.setVisibility(View.GONE);
+                seekBarLimitA5.setVisibility(View.VISIBLE);
+                seekBarLimitA6.setVisibility(View.GONE);
+
             }else if(ref.equals("6")){
                 seekBarLimitA6.setProgress(number7);
+                seekBarLimitA1.setVisibility(View.GONE);
+                seekBarLimitA2.setVisibility(View.GONE);
+                seekBarLimitA3.setVisibility(View.GONE);
+                seekBarLimitA4.setVisibility(View.GONE);
+                seekBarLimitA5.setVisibility(View.GONE);
+                seekBarLimitA6.setVisibility(View.VISIBLE);
+
             }
 
             MyService.messageToActivity = "null";

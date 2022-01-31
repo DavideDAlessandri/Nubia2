@@ -127,7 +127,7 @@ public class SecondActivity extends AppCompatActivity {
             finish();
         }else if(message.equals("null")) {
             new Thread(new SecondActivity.Thread1()).start();
-        }else if(referenceMessage.equals("BAR")){
+        }else if(referenceMessage.equals("TXT")){
 
             String screenMessage = message.substring(5);                                              //Subtract initial value of message to find color and option (Ex: G1)
             String colorMessage = message.substring(3, 5);

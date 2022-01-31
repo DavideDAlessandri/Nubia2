@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     Button sixthPage;
     Button seventhPage;
     ImageView imageRun, imageTeach, imageHand, imageSettings, imageMonitor, imageAddOns;
-    ImageView tryConnection;
+    ImageView tryConnection, backButton;
     Boolean running=true;                                                                           //Thread 1 start/stop
 
     public static Boolean startStatus=false;                                                        //Stop activity when start another activity
@@ -50,6 +50,15 @@ public class MainActivity extends AppCompatActivity {
 
         tryConnection=findViewById(R.id.tryConnection);
         tryConnection.setVisibility(View.GONE);                                                     //Connection symbol
+        backButton=findViewById(R.id.backButton);
+        backButton.setVisibility(View.GONE);                                                        // Back symbol
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
 
         secondPage.setOnClickListener(new View.OnClickListener() {                                  //Change page buttons
@@ -284,12 +293,23 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     @Override
     protected void onStop() {
 
         super.onStop();
         running=false;                                                                              //When exit page stop thread 1
+    }
+
+    @Override
+    public void onBackPressed() {
+        backButton.setVisibility(View.VISIBLE);
+
+        Handler handler = new Handler();                                                            //Hide back button after 5 second
+        handler. postDelayed(new Runnable() {
+            public void run() {
+                backButton.setVisibility(View.GONE);
+            }
+        }, 5000); //10 seconds.
     }
 
 

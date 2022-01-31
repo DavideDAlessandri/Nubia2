@@ -26,6 +26,13 @@ public class MyService extends Service {
     public  static String messageToActivity;
     public static Boolean connectStatus=false;
 
+    //Memory for seekbar page6 monitor:
+    public static Integer limit1=0;
+    public static Integer limit2=0;
+    public static Integer limit3=0;
+    public static Integer limit4=0;
+    public static Integer limit5=0;
+    public static Integer limit6=0;
 
     @Override
     public void onCreate() {
