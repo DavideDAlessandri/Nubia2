@@ -172,8 +172,10 @@ public class MainActivity extends AppCompatActivity {
 
                     if(MyService.messageToActivity.equals("PGD02")){                                //If message = "start" change to activity 2 run
                         MyService.messageToActivity="null";
+                        running=false;
                         startStatus=true;                                                           //stop "old" activity
                         changeActivityTwo();
+
                         return;
                     }else if(MyService.messageToActivity.equals("PGD03")) {                         //teach
                         MyService.messageToActivity="null";

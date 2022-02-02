@@ -56,8 +56,8 @@ public class SecondActivity extends AppCompatActivity {
         running=true;
         changeColor("start");
 
-        if(MyService.connectStatus){                                                                //If tcp connected
-            new Thread(new SecondActivity.Thread2("PGR02")).start();                                // send current page name to server
+       if(MyService.connectStatus){                                                                //If tcp connected
+           new Thread(new SecondActivity.Thread2("PGR02")).start();                                // send current page name to server
         }
     }
 
