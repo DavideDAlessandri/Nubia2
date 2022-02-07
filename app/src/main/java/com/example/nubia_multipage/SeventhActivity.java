@@ -75,6 +75,7 @@ public class SeventhActivity extends AppCompatActivity {
     protected  void onResume(){
         super.onResume();
 
+        MainActivity.screenSaverOn=false;
         MainActivity.startStatus=false;                                                             //reset start status (stop when change activity)
         running=true;
         MyService.messageToActivity="null";

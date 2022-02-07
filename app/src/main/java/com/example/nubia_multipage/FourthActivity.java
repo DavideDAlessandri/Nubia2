@@ -64,6 +64,8 @@ public class FourthActivity extends AppCompatActivity {
     protected  void onResume(){
         super.onResume();
 
+        MainActivity.screenSaverOn=false;
+
         if (MyService.connectStatus.equals(true)) {
             connectedImage.setVisibility(View.VISIBLE);
         }else{

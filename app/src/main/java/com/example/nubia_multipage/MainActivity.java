@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     Boolean running=true;                                                                           //Thread 1 start/stop
 
     public static Boolean startStatus=false;                                                        //Stop activity when start another activity
+    public static Boolean screenSaverOn=false;
+    public static Boolean screenSaverIn=true;
 
 
     @Override
@@ -150,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected  void onResume(){                                                                     //When enter page:
         super.onResume();
+        screenSaverOn=true;
 
         if (MyService.connectStatus.equals(true)){                                                  //If server connected (background service)
 
@@ -159,6 +162,22 @@ public class MainActivity extends AppCompatActivity {
             new Thread(new MainActivity.Thread1()).start();                                         //Start thread 1
 
         }
+
+        if(screenSaverIn){
+            screenSaverIn=false;
+            Handler handler = new Handler();
+            handler. postDelayed(new Runnable() {
+                public void run() {
+
+                    if(screenSaverOn){
+                        screenSaver();
+                    }else{
+                        screenSaverIn=true;
+                    }
+                }
+            }, 30000); //10 seconds.                                                       //screensaver timer
+        }
+
     }
 
     class Thread1 implements Runnable {                                                             //Server message reader
@@ -267,6 +286,11 @@ public class MainActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);                    //start animation
     }
 
+    private void screenSaver(){
+        Intent Intent = new Intent(this,Screensaver.class);
+        startActivity(Intent);
+    }
+
 
     private void startService(){                                                                    //Start background service
         startService(new Intent(this, MyService.class));
@@ -291,7 +315,7 @@ public class MainActivity extends AppCompatActivity {
                     tryToConnect();
                 }
             }
-        }, 10000); //10 seconds.                                                              //try to connect every 2 second
+        }, 10000); //10 seconds.                                                              //try to connect every 10 second
 
     }
 
