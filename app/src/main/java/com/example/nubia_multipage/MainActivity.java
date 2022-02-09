@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     ImageView tryConnection, backButton;
     Boolean running=true;                                                                           //Thread 1 start/stop
 
+    Boolean test=false;
+
     public static Boolean startStatus=false;                                                        //Stop activity when start another activity
     public static Boolean screenSaverOn=false;
     public static Boolean screenSaverIn=true;
@@ -163,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        if(screenSaverIn){
+        if(screenSaverIn){ //test
             screenSaverIn=false;
             Handler handler = new Handler();
             handler. postDelayed(new Runnable() {
@@ -175,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
                         screenSaverIn=true;
                     }
                 }
-            }, 30000); //10 seconds.                                                       //screensaver timer
+            }, 120000); //2 min                                                            //screensaver timer
         }
 
     }
@@ -287,6 +289,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void screenSaver(){
+        new Thread(new MainActivity.Thread1()).start();
         Intent Intent = new Intent(this,Screensaver.class);
         startActivity(Intent);
     }
