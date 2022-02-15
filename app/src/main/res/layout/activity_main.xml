@@ -98,54 +98,42 @@
         <ImageView
             android:id="@+id/imageRun"
             android:layout_width="wrap_content"
-            android:layout_height="165dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:translationX="50dp"
-            android:translationY="-237dp"
             app:srcCompat="@drawable/run" />
 
         <ImageView
             android:id="@+id/imageTeach"
             android:layout_width="wrap_content"
-            android:layout_height="188dp"
-            android:translationX="-1dp"
-            android:translationY="-226dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             app:srcCompat="@drawable/teach" />
 
         <ImageView
             android:id="@+id/imageHand"
             android:layout_width="wrap_content"
-            android:layout_height="209dp"
-            android:translationX="-50dp"
-            android:translationY="-216dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             app:srcCompat="@drawable/hand_guide" />
 
         <ImageView
             android:id="@+id/imageSettings"
             android:layout_width="wrap_content"
-            android:layout_height="209dp"
-            android:translationX="50dp"
-            android:translationY="216dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             app:srcCompat="@drawable/settings" />
 
         <ImageView
             android:id="@+id/imageMonitor"
             android:layout_width="wrap_content"
-            android:layout_height="188dp"
-            android:translationX="0dp"
-            android:translationY="226dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             app:srcCompat="@drawable/monitor" />
 
         <ImageView
             android:id="@+id/imageAddOns"
             android:layout_width="wrap_content"
-            android:layout_height="165dp"
-            android:translationX="-50dp"
-            android:translationY="238dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             app:srcCompat="@drawable/add_ons" />
 
@@ -155,8 +143,8 @@
             android:layout_height="wrap_content"
             app:srcCompat="@android:drawable/stat_notify_sync"
             android:rotation="90"
-            android:translationX="-54dp"
-            android:translationY="-60dp"
+            android:translationX="47dp"
+            android:translationY="-52dp"
             android:layout_gravity="center"/>
 
         <ImageView
@@ -165,8 +153,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:rotation="180"
-            android:translationX="-54dp"
-            android:translationY="-87dp"
+            android:translationX="47dp"
+            android:translationY="-80dp"
             app:srcCompat="@android:drawable/ic_delete" />
 
 
