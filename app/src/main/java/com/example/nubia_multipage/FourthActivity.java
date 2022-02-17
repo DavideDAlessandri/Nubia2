@@ -1,9 +1,13 @@
 package com.example.nubia_multipage;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Paint;
+import android.os.BatteryManager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -25,8 +29,19 @@ public class FourthActivity extends AppCompatActivity {
     Boolean running=true;
     ToggleButton displayButton;
     ImageView connectedImage;
-    //TextView portView;
     public static int SERVER_PORT=8080;
+
+    TextView battery;
+
+    private BroadcastReceiver mBatInfoReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            int level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL,0);
+            battery.setText(String.valueOf(level)+"%");
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +52,9 @@ public class FourthActivity extends AppCompatActivity {
 
         displayButton=findViewById(R.id.displayButton);
         connectedImage=findViewById(R.id.connectedImage);
-        //portView=findViewById(R.id.portView);
+
+        battery=this.findViewById(R.id.battery);
+        this.registerReceiver(this.mBatInfoReceiver,new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
 
 
         displayButton.setOnClickListener(new View.OnClickListener() {
