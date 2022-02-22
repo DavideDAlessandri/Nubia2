@@ -1,9 +1,14 @@
 package com.example.nubia_multipage;
 
 import android.app.Service;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.os.BatteryManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.IBinder;
 
 
@@ -15,11 +20,13 @@ import java.net.Socket;
 
 public class MyService extends Service {
 
+
     Thread Thread1 = null;
-    //String SERVER_IP = "192.168.100.2";       //IP PC Davide
     String SERVER_IP = "192.168.100.100";       //IP Robot
     int port;
 
+    int level;
+    Boolean messageBatterySend=true;
 
     public static PrintWriter output;
     public static BufferedReader input;
@@ -34,8 +41,33 @@ public class MyService extends Service {
     public static Integer limit5=0;
     public static Integer limit6=0;
 
+    private BroadcastReceiver mBatInfoReceiver = new BroadcastReceiver() {                          //read battery level and send message to PLC
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL,0);
+
+            if(level==40){
+                if(!messageBatterySend){
+                    new Thread(new MyService.Thread3("start charge")).start();
+                    messageBatterySend=true;
+                }
+            }else if(level==80){
+                if(messageBatterySend){
+                    new Thread(new MyService.Thread3("stop charge")).start();
+                    messageBatterySend=false;
+                }
+            }
+
+        }
+    };
+
     @Override
     public void onCreate() {
+
+        //battery status register
+        this.registerReceiver(this.mBatInfoReceiver,new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+
     }
 
     @Override
@@ -46,6 +78,25 @@ public class MyService extends Service {
 
         Thread1 = new Thread(new MyService.Thread1());
         Thread1.start();
+
+
+        Handler handler = new Handler();        //wait until device is connected to the server
+        handler. postDelayed(new Runnable() {
+            public void run() {
+
+                if(connectStatus){
+
+                    //On start device is charging, if level > 80 stop charge
+                    if(level>80){
+                        new Thread(new MyService.Thread3("stop charge")).start();
+                        messageBatterySend=false;
+                    }
+                }
+
+            }
+        }, 10000);
+
+
     }
 
     @Override
@@ -85,6 +136,16 @@ public class MyService extends Service {
         }
     }
 
-
+    class Thread3 implements Runnable {                                                             //Phone message reader / sender
+        private String message;
+        Thread3(String message) {
+            this.message = message;
+        }
+        @Override
+        public void run() {
+            MyService.output.write(message);
+            MyService.output.flush();
+        }
+    }
 
 }
