@@ -228,6 +228,11 @@ public class MyService extends Service {
                 Intent intent7 = new Intent(this,SeventhActivity.class);
                 startActivity(intent7);
                 break;
+            case 8:
+                EightActivity.fa8.finish();
+                Intent intent8 = new Intent(this,EightActivity.class);
+                startActivity(intent8);
+                break;
 
         }
 

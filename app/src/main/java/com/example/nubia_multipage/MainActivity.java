@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
                 imageAddOns.startAnimation(animation);
 
                 running=false;                                                                      //Stop TCp listener
-                changeActivitySeven();
+                changeActivityEight();
             }
         });
 
@@ -231,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
                     }else if(MyService.messageToActivity.equals("PGD07")) {                         //add-ons
                         MyService.messageToActivity="null";
                         startStatus=true;
-                        changeActivitySeven();
+                        changeActivityEight();
                         return;
                     }else{
                         new Thread(new MainActivity.Thread1()).start();                             //Else restart thread
@@ -294,6 +294,13 @@ public class MainActivity extends AppCompatActivity {
     private void changeActivitySeven(){
         new Thread(new MainActivity.Thread1()).start();
         Intent Intent = new Intent(this,SeventhActivity.class);
+        startActivity(Intent);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);                    //start animation
+    }
+
+    private void changeActivityEight(){
+        new Thread(new MainActivity.Thread1()).start();
+        Intent Intent = new Intent(this,EightActivity.class);
         startActivity(Intent);
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);                    //start animation
     }

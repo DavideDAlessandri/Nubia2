@@ -29,6 +29,7 @@
         <activity android:name=".SixthActivity"/>
         <activity android:name=".SeventhActivity"/>
         <activity android:name=".Screensaver"/>
+        <activity android:name=".EightActivity"/>
 
         <service android:enabled="true" android:name=".MyService">
         </service>
