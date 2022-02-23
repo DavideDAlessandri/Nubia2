@@ -1,5 +1,6 @@
 package com.example.nubia_multipage;
 
+import android.app.Activity;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ public class SeventhActivity extends AppCompatActivity {
     MediaPlayer mp;
     Boolean running=true;
     Boolean pageL=false;
+    public static Activity fa7;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,8 @@ public class SeventhActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         setContentView(R.layout.seventh_ly_add_ons);
+
+        fa7=this; //assign name activity 7
 
         eyeR=findViewById(R.id.eyeR);
         eyeL=findViewById(R.id.eyeL);
@@ -74,6 +78,8 @@ public class SeventhActivity extends AppCompatActivity {
     @Override
     protected  void onResume(){
         super.onResume();
+
+        MyService.currentPage=7;
 
         MainActivity.screenSaverOn=false;
         MainActivity.startStatus=false;                                                             //reset start status (stop when change activity)

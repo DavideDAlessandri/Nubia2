@@ -59,6 +59,15 @@
             android:textSize="12sp"
             android:translationY="-100dp" />
 
+        <ImageView
+            android:id="@+id/charging"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@android:drawable/ic_lock_idle_charging"
+            android:layout_gravity="center"
+            android:rotation="90"
+            android:translationX="32dp"/>
+
 
     </FrameLayout>
 

@@ -1,6 +1,7 @@
 package com.example.nubia_multipage;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -22,6 +23,7 @@ public class SixthActivity extends AppCompatActivity {
     Integer progressA1, progressA2, progressA3, progressA4, progressA5, progressA6;
     String A1,A2,A3,A4,A5,A6;
 
+    public static Activity fa6;
     Boolean running=true;
 
     @Override
@@ -30,6 +32,8 @@ public class SixthActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         setContentView(R.layout.sixth_ly_monitor);
+
+        fa6=this; //assign name activity 6
 
         checkBoxA1=findViewById(R.id.checkBoxA1);
         checkBoxA2=findViewById(R.id.checkBoxA2);
@@ -426,6 +430,8 @@ public class SixthActivity extends AppCompatActivity {
     @Override
     protected  void onResume(){
         super.onResume();
+
+        MyService.currentPage=6;
 
         MainActivity.screenSaverOn=false;
         MainActivity.startStatus=false;                                                             //reset start status (stop when change activity)

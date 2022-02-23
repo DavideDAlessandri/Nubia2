@@ -1,6 +1,7 @@
 package com.example.nubia_multipage;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +25,7 @@ public class FifthActivity extends AppCompatActivity {
     TextView ovrText;
     String X,Y,Z,A,B,C;
 
+    public static Activity fa5;
     Boolean running=true;
 
     @Override
@@ -32,6 +34,8 @@ public class FifthActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         setContentView(R.layout.fifth_ly_hand);
+
+        fa5=this; //assign name activity 5
 
         progressBarOne=findViewById(R.id.progressBarOne5);
         progressBarTwo=findViewById(R.id.progressBarTwo5);
@@ -205,6 +209,8 @@ public class FifthActivity extends AppCompatActivity {
     @Override
     protected  void onResume(){
         super.onResume();
+
+        MyService.currentPage=5;
 
         MainActivity.screenSaverOn=false;
         MainActivity.startStatus=false;                                                             //reset start status (stop when change activity)

@@ -1,5 +1,6 @@
 package com.example.nubia_multipage;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -9,6 +10,7 @@ import android.content.SharedPreferences;
 import android.graphics.Paint;
 import android.os.BatteryManager;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -31,7 +33,10 @@ public class FourthActivity extends AppCompatActivity {
     ImageView connectedImage;
     public static int SERVER_PORT=8080;
 
+    public static Activity fa4;
+
     TextView battery;
+    ImageView chargingImage;
 
     private BroadcastReceiver mBatInfoReceiver = new BroadcastReceiver() {
         @Override
@@ -40,6 +45,20 @@ public class FourthActivity extends AppCompatActivity {
             int level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL,0);
             battery.setText(String.valueOf(level)+"%");
 
+
+            //See if in charge or not
+            IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+            Intent batteryStatus = context.registerReceiver(null, ifilter);
+
+            int status = batteryStatus.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
+            boolean isCharging = status == BatteryManager.BATTERY_STATUS_CHARGING ||
+                    status == BatteryManager.BATTERY_STATUS_FULL;
+
+            if(isCharging){
+                chargingImage.setVisibility(View.VISIBLE);
+            }else{
+                chargingImage.setVisibility(View.GONE);
+            }
         }
     };
 
@@ -50,12 +69,15 @@ public class FourthActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.fourth_ly_settings);
 
+        fa4=this; //assign name activity 4
+
         displayButton=findViewById(R.id.displayButton);
         connectedImage=findViewById(R.id.connectedImage);
+        chargingImage=findViewById(R.id.charging);
+        chargingImage.setVisibility(View.GONE);
 
         battery=this.findViewById(R.id.battery);
         this.registerReceiver(this.mBatInfoReceiver,new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
-
 
         displayButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +104,7 @@ public class FourthActivity extends AppCompatActivity {
         super.onResume();
 
         MainActivity.screenSaverOn=false;
+        MyService.currentPage=4;
 
         if (MyService.connectStatus.equals(true)) {
             connectedImage.setVisibility(View.VISIBLE);
@@ -202,6 +225,5 @@ public class FourthActivity extends AppCompatActivity {
         super.finish();
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);                     //animation out
     }
-
 
 }

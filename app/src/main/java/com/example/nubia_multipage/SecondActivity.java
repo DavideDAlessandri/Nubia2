@@ -1,5 +1,6 @@
 package com.example.nubia_multipage;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -19,6 +20,7 @@ public class SecondActivity extends AppCompatActivity {
     Boolean running=true;
     Boolean menuStatus=true;        //if menu status true => change color, if false => change numbers
     TextView step1, step2, etf;
+    public static Activity fa2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,8 @@ public class SecondActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         setContentView(R.layout.second_ly_run);
+
+        fa2=this; //assign name activity 2
 
         color= findViewById(R.id.color);
         menu=findViewById(R.id.menu);
@@ -51,6 +55,8 @@ public class SecondActivity extends AppCompatActivity {
     @Override
     protected  void onResume(){
         super.onResume();
+
+        MyService.currentPage=2;
 
         MainActivity.screenSaverOn=false;
         MainActivity.startStatus=false;                                                             //reset start status (stop when change activity)

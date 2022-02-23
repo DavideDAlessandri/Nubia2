@@ -10,6 +10,8 @@ import android.os.BatteryManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
+import android.view.KeyEvent;
+import android.view.View;
 
 
 import java.io.BufferedReader;
@@ -27,6 +29,8 @@ public class MyService extends Service {
 
     int level;
     Boolean messageBatterySend=true;
+    Boolean backIfCharging=true;
+    public static Integer currentPage;
 
     public static PrintWriter output;
     public static BufferedReader input;
@@ -47,18 +51,53 @@ public class MyService extends Service {
 
             level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL,0);
 
-            if(level==40){
+            if(level==20){
                 if(!messageBatterySend){
-                    new Thread(new MyService.Thread3("start charge")).start();
+                    new Thread(new MyService.Thread3("BTRstart")).start();
                     messageBatterySend=true;
                 }
-            }else if(level==80){
+            }else if(level==90){
                 if(messageBatterySend){
-                    new Thread(new MyService.Thread3("stop charge")).start();
+                    new Thread(new MyService.Thread3("BTRstop")).start();
                     messageBatterySend=false;
                 }
             }
 
+            //See if in charge or not
+            IntentFilter ifilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+            Intent batteryStatus = context.registerReceiver(null, ifilter);
+
+            int status = batteryStatus.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
+            boolean isCharging = status == BatteryManager.BATTERY_STATUS_CHARGING ||
+                    status == BatteryManager.BATTERY_STATUS_FULL;
+
+            if(isCharging && connectStatus){
+
+                Handler handler = new Handler();        //wait charging animation
+                handler. postDelayed(new Runnable() {
+                    public void run() {
+
+                        if(backIfCharging){
+                            goBack();
+                            backIfCharging=false;
+                        }
+
+                    }
+                }, 500);
+
+
+            }else{
+                Handler handler = new Handler();        //wait charging animation
+                handler. postDelayed(new Runnable() {
+                    public void run() {
+
+                        backIfCharging=true;
+
+                    }
+                }, 510);
+
+
+            }
         }
     };
 
@@ -86,9 +125,9 @@ public class MyService extends Service {
 
                 if(connectStatus){
 
-                    //On start device is charging, if level > 80 stop charge
-                    if(level>80){
-                        new Thread(new MyService.Thread3("stop charge")).start();
+                    //On start device is charging, if level > 90 stop charge
+                    if(level>90){
+                        new Thread(new MyService.Thread3("BTRstop")).start();
                         messageBatterySend=false;
                     }
                 }
@@ -129,6 +168,10 @@ public class MyService extends Service {
 
                     messageToActivity=message;
 
+                    if(messageToActivity.equals("back")){
+                        goBack();
+                    }
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -148,4 +191,45 @@ public class MyService extends Service {
         }
     }
 
+
+    private void goBack(){
+
+        switch (currentPage){
+            case 1:
+                MainActivity.fa1.finish();
+                Intent intent1 = new Intent(this,MainActivity.class);
+                startActivity(intent1);
+                break;
+            case 2:
+                SecondActivity.fa2.finish();
+                Intent intent2 = new Intent(this,SecondActivity.class);
+                startActivity(intent2);
+                break;
+            case 3:
+                //to-do
+                break;
+            case 4:
+                FourthActivity.fa4.finish();
+                Intent intent4 = new Intent(this,FourthActivity.class);
+                startActivity(intent4);
+                break;
+            case 5:
+                FifthActivity.fa5.finish();
+                Intent intent5 = new Intent(this,FifthActivity.class);
+                startActivity(intent5);
+                break;
+            case 6:
+                SixthActivity.fa6.finish();
+                Intent intent6 = new Intent(this,SixthActivity.class);
+                startActivity(intent6);
+                break;
+            case 7:
+                SeventhActivity.fa7.finish();
+                Intent intent7 = new Intent(this,SeventhActivity.class);
+                startActivity(intent7);
+                break;
+
+        }
+
+    }
 }

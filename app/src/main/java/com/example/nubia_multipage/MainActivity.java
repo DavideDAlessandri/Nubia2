@@ -3,6 +3,7 @@ package com.example.nubia_multipage;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     public static Boolean screenSaverOn=false;
     public static Boolean screenSaverIn=true;
 
+    public static Activity fa1;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -42,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
+
+        fa1=this; //assign name activity 1
 
         secondPage=findViewById(R.id.RunPage);
         thirdPage = findViewById(R.id.TeachPage);
@@ -160,6 +164,7 @@ public class MainActivity extends AppCompatActivity {
     protected  void onResume(){                                                                     //When enter page:
         super.onResume();
         screenSaverOn=true;
+        MyService.currentPage=1;
 
         if (MyService.connectStatus.equals(true)){                                                  //If server connected (background service)
 
