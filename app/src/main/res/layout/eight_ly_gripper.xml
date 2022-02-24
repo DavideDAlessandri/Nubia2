@@ -47,7 +47,7 @@
             android:layout_gravity="center"
             android:fontFamily="@font/downlink_bold"
             android:rotation="90"
-            android:text="30"
+            android:text="0"
             android:textColor="#00a8e8"
             android:textColorHint="#78c9fd"
             android:textSize="25sp"
@@ -61,7 +61,7 @@
             android:layout_gravity="center"
             android:fontFamily="@font/downlink_bold"
             android:rotation="90"
-            android:text="30"
+            android:text="0"
             android:textColor="#00a8e8"
             android:textColorHint="#78c9fd"
             android:textSize="25sp"
@@ -75,7 +75,7 @@
             android:layout_gravity="center"
             android:fontFamily="@font/downlink_bold"
             android:rotation="90"
-            android:text="30"
+            android:text="0"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:textSize="25sp"
@@ -89,7 +89,7 @@
             android:layout_gravity="center"
             android:fontFamily="@font/downlink_bold"
             android:rotation="90"
-            android:text="30"
+            android:text="0"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:textSize="25sp"
@@ -134,13 +134,137 @@
 
         <Button
             android:id="@+id/openButton"
-            android:layout_width="71dp"
-            android:layout_height="97dp"
+            android:layout_width="58dp"
+            android:layout_height="95dp"
             android:layout_gravity="center"
-            android:backgroundTint="#0000ffff"
-            android:text=""
-            android:translationX="20dp"
-            android:translationY="-280dp" />
+            android:background="@drawable/ripple_effect"
+            android:rotation="0"
+            android:translationX="35dp"
+            android:translationY="-273dp"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Button
+            android:id="@+id/closeButton"
+            android:layout_width="58dp"
+            android:layout_height="95dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ripple_effect"
+            android:rotation="0"
+            android:translationX="-35dp"
+            android:translationY="-273dp"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Button
+            android:id="@+id/goButton"
+            android:layout_width="37dp"
+            android:layout_height="99dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ripple_effect"
+            android:rotation="0"
+            android:translationX="-46dp"
+            android:translationY="5dp"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <ImageView
+            android:id="@+id/gripperR1"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:translationX="-27dp"
+            android:translationY="230dp"
+            app:srcCompat="@drawable/gripper_one" />
+
+        <ImageView
+            android:id="@+id/gripperL1"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:translationX="-27dp"
+            android:translationY="283dp"
+            app:srcCompat="@drawable/gripper_two" />
+
+        <ImageView
+            android:id="@+id/gripperR2"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:translationX="-27dp"
+            android:translationY="242dp"
+            app:srcCompat="@drawable/gripper_one" />
+
+        <ImageView
+            android:id="@+id/gripperL2"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:translationX="-27dp"
+            android:translationY="275dp"
+            app:srcCompat="@drawable/gripper_two" />
+
+        <ImageView
+            android:id="@+id/gripperR3"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:translationX="-27dp"
+            android:translationY="250dp"
+            app:srcCompat="@drawable/gripper_one" />
+
+        <ImageView
+            android:id="@+id/gripperL3"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:translationX="-27dp"
+            android:translationY="265dp"
+            app:srcCompat="@drawable/gripper_two" />
+
+        <ImageView
+            android:id="@+id/gripperR4"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:translationX="-27dp"
+            android:translationY="256dp"
+            app:srcCompat="@drawable/gripper_one" />
+
+        <ImageView
+            android:id="@+id/gripperL4"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:translationX="-27dp"
+            android:translationY="261dp"
+            app:srcCompat="@drawable/gripper_two" />
+
+        <ImageView
+            android:id="@+id/objectIn"
+            android:layout_width="26dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:translationX="-44dp"
+            android:translationY="257dp"
+            app:srcCompat="@drawable/obj_int" />
+
+        <ImageView
+            android:id="@+id/objectOutL"
+            android:layout_width="26dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:translationX="-44dp"
+            android:translationY="214dp"
+            app:srcCompat="@drawable/obj_ext" />
+
+        <ImageView
+            android:id="@+id/objectOutR"
+            android:layout_width="26dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:translationX="-44dp"
+            android:translationY="299dp"
+            android:rotation="180"
+            app:srcCompat="@drawable/obj_ext" />
+
 
     </FrameLayout>
 
