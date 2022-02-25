@@ -66,6 +66,27 @@ public class EightActivity extends AppCompatActivity {
         objectOutL.setVisibility(View.GONE);
         objectOutR.setVisibility(View.GONE);
 
+        openButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread(new EightActivity.Thread2("OPR")).start();
+            }
+        });
+
+        closeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread(new EightActivity.Thread2("CLR")).start();
+            }
+        });
+
+        goButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread(new EightActivity.Thread2("GOR")).start();
+            }
+        });
+
         seekBarForce.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -81,6 +102,16 @@ public class EightActivity extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
+
+                getProgressForce();                                                                   //get new value
+                String progressForceString =progressForceVal.toString();                                 //convert int to string
+                if(progressForceVal>10 && progressForceVal<100){                                              //if<100 send 0ss
+                    new Thread(new EightActivity.Thread2("FOR0"+progressForceString)).start();        // send value to server
+                }else if(progressForceVal<10){
+                    new Thread(new EightActivity.Thread2("FOR00"+progressForceString)).start();       // send value to server
+                }else{
+                    new Thread(new EightActivity.Thread2("FOR"+progressForceString)).start();
+                }
 
             }
         });
@@ -101,6 +132,15 @@ public class EightActivity extends AppCompatActivity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
 
+                getProgressSpeed();                                                                   //get new value
+                String progressSpeedString =progressSpeedVal.toString();                                //convert int to string
+                if(progressSpeedVal>10 && progressSpeedVal<100){                                              //if<100 send 0ss
+                    new Thread(new EightActivity.Thread2("SPR0"+progressSpeedString)).start();        // send value to server
+                }else if(progressSpeedVal<10){
+                    new Thread(new EightActivity.Thread2("SPR00"+progressSpeedString)).start();       // send value to server
+                }else{
+                    new Thread(new EightActivity.Thread2("SPR"+progressSpeedString)).start();
+                }
             }
         });
 
@@ -110,6 +150,48 @@ public class EightActivity extends AppCompatActivity {
                 getProgressPos();                                                                   //get new value
                 String progressPosString =progressPosVal.toString();                                   //convert int to string
                 posTxt.setText(progressPosString);
+                objectOutL.setVisibility(View.GONE);                                                //remove obj. detected
+                objectOutR.setVisibility(View.GONE);
+                objectIn.setVisibility(View.GONE);
+
+                if(progressPosVal<25){
+                    gripperL1.setVisibility(View.VISIBLE);
+                    gripperR1.setVisibility(View.VISIBLE);
+                    gripperR2.setVisibility(View.GONE);
+                    gripperL2.setVisibility(View.GONE);
+                    gripperR3.setVisibility(View.GONE);
+                    gripperL3.setVisibility(View.GONE);
+                    gripperR4.setVisibility(View.GONE);
+                    gripperL4.setVisibility(View.GONE);
+                }else if(progressPosVal>25 && progressPosVal<50){
+                    gripperL2.setVisibility(View.VISIBLE);
+                    gripperR2.setVisibility(View.VISIBLE);
+                    gripperR1.setVisibility(View.GONE);
+                    gripperL1.setVisibility(View.GONE);
+                    gripperR3.setVisibility(View.GONE);
+                    gripperL3.setVisibility(View.GONE);
+                    gripperR4.setVisibility(View.GONE);
+                    gripperL4.setVisibility(View.GONE);
+                }else if(progressPosVal>50 && progressPosVal<80){
+                    gripperL3.setVisibility(View.VISIBLE);
+                    gripperR3.setVisibility(View.VISIBLE);
+                    gripperR2.setVisibility(View.GONE);
+                    gripperL2.setVisibility(View.GONE);
+                    gripperR4.setVisibility(View.GONE);
+                    gripperL4.setVisibility(View.GONE);
+                    gripperR1.setVisibility(View.GONE);
+                    gripperL1.setVisibility(View.GONE);
+                }else if(progressPosVal>80){
+                    gripperL4.setVisibility(View.VISIBLE);
+                    gripperR4.setVisibility(View.VISIBLE);
+                    gripperR3.setVisibility(View.GONE);
+                    gripperL3.setVisibility(View.GONE);
+                    gripperR1.setVisibility(View.GONE);
+                    gripperL1.setVisibility(View.GONE);
+                    gripperR2.setVisibility(View.GONE);
+                    gripperL2.setVisibility(View.GONE);
+                }
+
             }
 
             @Override
@@ -120,6 +202,15 @@ public class EightActivity extends AppCompatActivity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
 
+                getProgressPos();                                                                   //get new value
+                String progressPosString =progressPosVal.toString();                                 //convert int to string
+                if(progressPosVal>10 && progressPosVal<100){                                              //if<100 send 0ss
+                    new Thread(new EightActivity.Thread2("POR0"+progressPosString)).start();        // send value to server
+                }else if(progressPosVal<10){
+                    new Thread(new EightActivity.Thread2("POR00"+progressPosString)).start();       // send value to server
+                }else{
+                    new Thread(new EightActivity.Thread2("POR"+progressPosString)).start();
+                }
             }
         });
     }
@@ -133,12 +224,149 @@ public class EightActivity extends AppCompatActivity {
         MainActivity.screenSaverOn=false;
         MainActivity.startStatus=false;                                                             //reset start status (stop when change activity)
         running=true;
+        MyService.messageToActivity="null";
 
         if(MyService.connectStatus){                                                                //If tcp connected
-            //new Thread(new SecondActivity.Thread2("PGR08")).start();                                // send current page name to server
+            new Thread(new EightActivity.Thread2("PGR08")).start();
+            new Thread(new EightActivity.Thread1()).start();
         }
     }
 
+    class Thread1 implements Runnable {                             //Server message reader
+        @Override
+        public void run() {
+
+            if (!running) return;                                   //Exit thread
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+
+                    receiveValue(MyService.messageToActivity);
+
+                }
+            });
+
+        }
+    }
+
+    class Thread2 implements Runnable {                             //Phone message reader / sender
+        private String message;
+        Thread2(String message) {
+            this.message = message;
+        }
+        @Override
+        public void run() {
+            MyService.output.write(message);
+            MyService.output.flush();
+        }
+    }
+
+    private  void receiveValue(String message) {
+
+        if (MainActivity.startStatus) {                                                               //if another activity is called stop this activity
+            finish();
+        }
+
+        String referenceMessage = message.substring(0, 3);
+
+        if (message.equals("null")) {
+            new Thread(new EightActivity.Thread1()).start();
+        } else if (message.equals("PGD02")) {
+            finish();
+        } else if (message.equals("PGD03")) {
+            finish();
+        } else if (message.equals("PGD05")) {
+            finish();
+            new Thread(new EightActivity.Thread1()).start();
+        } else if (message.equals("PGD04")) {
+            finish();
+        } else if (message.equals("PGD06")) {
+            finish();
+        } else if (message.equals("PGD08")) {
+            MyService.messageToActivity = "null";
+        } else if (message.equals("PGD01")) {
+            finish();
+        } else if (referenceMessage.equals("CPD")) {
+
+            String val1 = message.substring(3, 6);
+            int number1 = Integer.parseInt(val1);
+            String val1s = Integer.toString(number1);
+            curPosTxt.setText(val1s);
+
+            MyService.messageToActivity = "null";
+            new Thread(new EightActivity.Thread1()).start();
+
+        } else if (referenceMessage.equals("VLD")) {
+
+            String val1 = message.substring(3, 6);             //get progressbar 1 value
+            String val2 = message.substring(6, 9);             //get progressbar 2 value
+            String val3 = message.substring(9, 12);
+
+            int number1 = Integer.parseInt(val1);
+            seekBarForce.setProgress(number1);
+
+            int number2 = Integer.parseInt(val2);
+            seekBarSpeed.setProgress(number2);
+
+            int number3 = Integer.parseInt(val3);
+            seekBarPos.setProgress(number3);
+
+            MyService.messageToActivity = "null";
+            new Thread(new EightActivity.Thread1()).start();
+
+        } else if (referenceMessage.equals("STD")) {
+
+            String val1 = message.substring(3, 8);
+            if(val1.equals("inpos")){
+                statusTxt.setText("In Pos.");
+
+            }else if(val1.equals("inmov")){
+                statusTxt.setText("In motion");
+
+            }else if(val1.equals("objin")){
+                statusTxt.setText("Object det.");
+
+                gripperL2.setVisibility(View.VISIBLE);  //set object in graphic
+                gripperR2.setVisibility(View.VISIBLE);
+                gripperR1.setVisibility(View.GONE);
+                gripperL1.setVisibility(View.GONE);
+                gripperR3.setVisibility(View.GONE);
+                gripperL3.setVisibility(View.GONE);
+                gripperR4.setVisibility(View.GONE);
+                gripperL4.setVisibility(View.GONE);
+
+                objectIn.setVisibility(View.VISIBLE);
+                objectOutL.setVisibility(View.GONE);
+                objectOutR.setVisibility(View.GONE);
+
+
+            }else if(val1.equals("objou")){
+                statusTxt.setText("Object det.");
+
+                gripperL1.setVisibility(View.VISIBLE);  //set object out graphic
+                gripperR1.setVisibility(View.VISIBLE);
+                gripperR2.setVisibility(View.GONE);
+                gripperL2.setVisibility(View.GONE);
+                gripperR3.setVisibility(View.GONE);
+                gripperL3.setVisibility(View.GONE);
+                gripperR4.setVisibility(View.GONE);
+                gripperL4.setVisibility(View.GONE);
+
+                objectOutL.setVisibility(View.VISIBLE);
+                objectOutR.setVisibility(View.VISIBLE);
+                objectIn.setVisibility(View.GONE);
+
+            }
+
+            MyService.messageToActivity = "null";
+            new Thread(new EightActivity.Thread1()).start();
+
+        }else{
+            MyService.messageToActivity = "null";
+            new Thread(new EightActivity.Thread1()).start();
+
+        }
+    }
 
 
     private void getProgressForce(){

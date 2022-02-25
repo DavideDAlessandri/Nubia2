@@ -228,7 +228,7 @@ public class MainActivity extends AppCompatActivity {
                         startStatus=true;
                         changeActivitySix();
                         return;
-                    }else if(MyService.messageToActivity.equals("PGD07")) {                         //add-ons
+                    }else if(MyService.messageToActivity.equals("PGD08")) {                         //add-ons
                         MyService.messageToActivity="null";
                         startStatus=true;
                         changeActivityEight();

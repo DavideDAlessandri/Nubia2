@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:rotation="0"
+    android:rotation="180"
     android:keepScreenOn="true">
 
     <FrameLayout
@@ -33,7 +33,7 @@
             android:layout_gravity="center"
             android:fontFamily="@font/ehsmb"
             android:rotation="90"
-            android:text="IN POSITIO"
+            android:text="IN POS."
             android:textColor="#78c9fd"
             android:textColorHint="#78c9fd"
             android:textSize="36sp"

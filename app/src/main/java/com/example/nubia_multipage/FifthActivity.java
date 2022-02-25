@@ -192,10 +192,10 @@ public class FifthActivity extends AppCompatActivity {
 
                 getProgressOVR();                                                                   //get new value
                 String progressOVRString =progressOVR.toString();                                   //convert int to string
-                if(progressOVR>10 && progressOVR<100){                                                                 //if<100 send 0ss
+                if(progressOVR>10 && progressOVR<100){                                              //if<100 send 0ss
                     new Thread(new FifthActivity.Thread2("OVR0"+progressOVRString)).start();        // send value to server
                 }else if(progressOVR<10){
-                    new Thread(new FifthActivity.Thread2("OVR00"+progressOVRString)).start();         // send value to server
+                    new Thread(new FifthActivity.Thread2("OVR00"+progressOVRString)).start();       // send value to server
                 }else{
                     new Thread(new FifthActivity.Thread2("OVR"+progressOVRString)).start();
                 }
