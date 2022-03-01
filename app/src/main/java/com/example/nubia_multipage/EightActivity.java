@@ -105,7 +105,7 @@ public class EightActivity extends AppCompatActivity {
 
                 getProgressForce();                                                                   //get new value
                 String progressForceString =progressForceVal.toString();                                 //convert int to string
-                if(progressForceVal>10 && progressForceVal<100){                                              //if<100 send 0ss
+                if(progressForceVal>=10 && progressForceVal<100){                                              //if<100 send 0ss
                     new Thread(new EightActivity.Thread2("FOR0"+progressForceString)).start();        // send value to server
                 }else if(progressForceVal<10){
                     new Thread(new EightActivity.Thread2("FOR00"+progressForceString)).start();       // send value to server
@@ -134,7 +134,7 @@ public class EightActivity extends AppCompatActivity {
 
                 getProgressSpeed();                                                                   //get new value
                 String progressSpeedString =progressSpeedVal.toString();                                //convert int to string
-                if(progressSpeedVal>10 && progressSpeedVal<100){                                              //if<100 send 0ss
+                if(progressSpeedVal>=10 && progressSpeedVal<100){                                              //if<100 send 0ss
                     new Thread(new EightActivity.Thread2("SPR0"+progressSpeedString)).start();        // send value to server
                 }else if(progressSpeedVal<10){
                     new Thread(new EightActivity.Thread2("SPR00"+progressSpeedString)).start();       // send value to server
@@ -204,7 +204,7 @@ public class EightActivity extends AppCompatActivity {
 
                 getProgressPos();                                                                   //get new value
                 String progressPosString =progressPosVal.toString();                                 //convert int to string
-                if(progressPosVal>10 && progressPosVal<100){                                              //if<100 send 0ss
+                if(progressPosVal>=10 && progressPosVal<100){                                              //if<100 send 0ss
                     new Thread(new EightActivity.Thread2("POR0"+progressPosString)).start();        // send value to server
                 }else if(progressPosVal<10){
                     new Thread(new EightActivity.Thread2("POR00"+progressPosString)).start();       // send value to server

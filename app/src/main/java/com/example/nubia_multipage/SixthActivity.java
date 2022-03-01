@@ -254,7 +254,7 @@ public class SixthActivity extends AppCompatActivity {
                 getProgressLimitA1();
                 MyService.limit1=progressA1;
                 String progressA1String=progressA1.toString();                                      //get new value
-                if(progressA1>10 && progressA1<100){                                                                 //if<100 send 0ss
+                if(progressA1>=10 && progressA1<100){                                                                 //if<100 send 0ss
                     new Thread(new SixthActivity.Thread2("TLR10"+progressA1String)).start();        // send value to server
                 }else if(progressA1<10){
                     new Thread(new SixthActivity.Thread2("TLR100"+progressA1String)).start();         // send value to server
@@ -286,7 +286,7 @@ public class SixthActivity extends AppCompatActivity {
                 MyService.limit2=progressA2;
                 String progressA2String=progressA2.toString();
                 limitText.setText(progressA2String);
-                if(progressA2>10 && progressA2<100){                                                                 //if<100 send 0ss
+                if(progressA2>=10 && progressA2<100){                                                                 //if<100 send 0ss
                     new Thread(new SixthActivity.Thread2("TLR20"+progressA2String)).start();        // send value to server
                 }else if(progressA2<10){
                     new Thread(new SixthActivity.Thread2("TLR200"+progressA2String)).start();         // send value to server
@@ -318,7 +318,7 @@ public class SixthActivity extends AppCompatActivity {
                 MyService.limit3=progressA3;
                 String progressA3String=progressA3.toString();
                 limitText.setText(progressA3String);
-                if(progressA3>10 && progressA3<100){                                                                 //if<100 send 0ss
+                if(progressA3>=10 && progressA3<100){                                                                 //if<100 send 0ss
                     new Thread(new SixthActivity.Thread2("TLR30"+progressA3String)).start();        // send value to server
                 }else if(progressA1<10){
                     new Thread(new SixthActivity.Thread2("TLR300"+progressA3String)).start();         // send value to server
@@ -351,7 +351,7 @@ public class SixthActivity extends AppCompatActivity {
                 String progressA4String=progressA4.toString();
                 limitText.setText(progressA4String);
 
-                if(progressA4>10 && progressA4<100){                                                                 //if<100 send 0ss
+                if(progressA4>=10 && progressA4<100){                                                                 //if<100 send 0ss
                     new Thread(new SixthActivity.Thread2("TLR40"+progressA4String)).start();        // send value to server
                 }else if(progressA4<10){
                     new Thread(new SixthActivity.Thread2("TLR400"+progressA4String)).start();         // send value to server
@@ -384,7 +384,7 @@ public class SixthActivity extends AppCompatActivity {
                 MyService.limit5=progressA5;
                 String progressA5String=progressA5.toString();
                 limitText.setText(progressA5String);
-                if(progressA5>10 && progressA5<100){                                                                 //if<100 send 0ss
+                if(progressA5>=10 && progressA5<100){                                                                 //if<100 send 0ss
                     new Thread(new SixthActivity.Thread2("TLR50"+progressA5String)).start();        // send value to server
                 }else if(progressA5<10){
                     new Thread(new SixthActivity.Thread2("TLR500"+progressA5String)).start();         // send value to server
@@ -416,7 +416,7 @@ public class SixthActivity extends AppCompatActivity {
                 MyService.limit6=progressA6;
                 String progressA6String=progressA6.toString();
                 limitText.setText(progressA6String);
-                if(progressA6>10 && progressA6<100){                                                                 //if<100 send 0ss
+                if(progressA6>=10 && progressA6<100){                                                                 //if<100 send 0ss
                     new Thread(new SixthActivity.Thread2("TLR60"+progressA6String)).start();        // send value to server
                 }else if(progressA6<10){
                     new Thread(new SixthActivity.Thread2("TLR600"+progressA6String)).start();         // send value to server
