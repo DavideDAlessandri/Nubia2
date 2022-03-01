@@ -155,6 +155,7 @@ public class SecondActivity extends AppCompatActivity {
                 step1.setText(null);                                                                    //remove menu values
                 step2.setText(null);
                 etf.setText(null);
+                progressBarProximity.setProgress(0);
 
                 Animation animation = new AlphaAnimation(1, 0); //to change visibility from visible to invisible
                 animation.setDuration(1000); //1 second duration for each animation cycle
@@ -175,6 +176,7 @@ public class SecondActivity extends AppCompatActivity {
                 step1.setText(null);                                                                    //remove menu values
                 step2.setText(null);
                 etf.setText(null);
+                progressBarProximity.setProgress(0);
             }
 
             if (colorMessage.equals("g1")) {
@@ -198,6 +200,7 @@ public class SecondActivity extends AppCompatActivity {
                 step1.setText(null);                                                                    //remove menu values
                 step2.setText(null);
                 etf.setText(null);
+                progressBarProximity.setProgress(0);
             }
 
             MyService.messageToActivity = "null";

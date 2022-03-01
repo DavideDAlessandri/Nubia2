@@ -51,15 +51,17 @@ public class MyService extends Service {
 
             level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL,0);
 
-            if(level==20){
-                if(!messageBatterySend){
-                    new Thread(new MyService.Thread3("BTRstart")).start();
-                    messageBatterySend=true;
-                }
-            }else if(level==90){
-                if(messageBatterySend){
-                    new Thread(new MyService.Thread3("BTRstop")).start();
-                    messageBatterySend=false;
+            if (connectStatus) {
+                if(level==20){
+                    if(!messageBatterySend){
+                        new Thread(new MyService.Thread3("BTRstart")).start();
+                        messageBatterySend=true;
+                    }
+                }else if(level==90){
+                    if(messageBatterySend){
+                        new Thread(new MyService.Thread3("BTRstop")).start();
+                        messageBatterySend=false;
+                    }
                 }
             }
 
