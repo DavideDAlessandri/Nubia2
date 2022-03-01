@@ -9,17 +9,19 @@ import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SecondActivity extends AppCompatActivity {
 
-    ImageView color, menu, label;
+    ImageView color, menu, label, proximity;
     FrameLayout layout;
     Boolean running=true;
     Boolean menuStatus=true;        //if menu status true => change color, if false => change numbers
     TextView step1, step2, etf;
+    ProgressBar progressBarProximity;
     public static Activity fa2;
 
     @Override
@@ -34,10 +36,12 @@ public class SecondActivity extends AppCompatActivity {
         color= findViewById(R.id.color);
         menu=findViewById(R.id.menu);
         label=findViewById(R.id.label);
+        proximity=findViewById(R.id.proximity);
 
         step1 =findViewById(R.id.step1);
         step2= findViewById(R.id.step2);
         etf=findViewById(R.id.etf);
+        progressBarProximity=findViewById(R.id.progressBarProximity);
 
         layout=findViewById(R.id.layout2);
 
@@ -110,6 +114,7 @@ public class SecondActivity extends AppCompatActivity {
         int yellowColor = getResources().getIdentifier("@drawable/statusbar_yellow",null,this.getPackageName());
         int greenMenu = getResources().getIdentifier("@drawable/runtime_bg",null,this.getPackageName());
         int greenLabel= getResources().getIdentifier("@drawable/runtime_green",null,this.getPackageName());
+        int greenProximity= getResources().getIdentifier("@drawable/runtime_bar",null,this.getPackageName());
         int redLabel= getResources().getIdentifier("@drawable/runtime_red",null,this.getPackageName());
         int yellowLabel= getResources().getIdentifier("@drawable/runtime_yellow",null,this.getPackageName());
 
@@ -142,6 +147,7 @@ public class SecondActivity extends AppCompatActivity {
             if (colorMessage.equals("r2")) {
                 color.setImageResource(redColor);
                 menu.setImageResource(0);
+                proximity.setImageResource(0);
                 label.setImageResource(redLabel);
                 txtMarquee.setText(screenMessage + " " + screenMessage + " " + screenMessage + " ");
                 txtMarquee.setSelected(true);
@@ -161,6 +167,7 @@ public class SecondActivity extends AppCompatActivity {
             if (colorMessage.equals("r1")) {
                 color.setImageResource(redColor);
                 menu.setImageResource(0);
+                proximity.setImageResource(0);
                 label.setImageResource(redLabel);
                 txtMarquee.setText(screenMessage + " " + screenMessage + " " + screenMessage + " ");
                 txtMarquee.setSelected(true);
@@ -173,6 +180,7 @@ public class SecondActivity extends AppCompatActivity {
             if (colorMessage.equals("g1")) {
                 color.setImageResource(greenColor);
                 menu.setImageResource(greenMenu);
+                proximity.setImageResource(greenProximity);
                 label.setImageResource(greenLabel);
                 txtMarquee.setText(screenMessage + " " + screenMessage + " " + screenMessage + " ");
                 txtMarquee.setSelected(true);
@@ -182,6 +190,7 @@ public class SecondActivity extends AppCompatActivity {
             if (colorMessage.equals("y1")) {
                 color.setImageResource(yellowColor);
                 menu.setImageResource(0);
+                proximity.setImageResource(0);
                 label.setImageResource(yellowLabel);
                 txtMarquee.setText(screenMessage + " " + screenMessage + " " + screenMessage + " ");
                 txtMarquee.setSelected(true);
@@ -197,14 +206,26 @@ public class SecondActivity extends AppCompatActivity {
 
         }else if(referenceMessage.equals("INF")){
 
-            String stringMessage=message.substring(3);
-            String messageStep1 = stringMessage.substring(0, 2);                               //display menu info
-            String messageStep2 = stringMessage.substring(2, 4);
-            String messageEtf = stringMessage.substring(4);
+            String stringMessage=message.substring(3);                                              //display proximity info
+            String messageProximity = stringMessage.substring(0, 3);
+            String messageStep1 = stringMessage.substring(3, 5);                                    //display menu info
+            String messageStep2 = stringMessage.substring(5, 7);
+            String messageEtf = stringMessage.substring(7);
 
             step1.setText(messageStep1);
             step2.setText(messageStep2);
             etf.setText(messageEtf);
+
+            int messageProximityInt = Integer.parseInt(messageProximity);
+
+            progressBarProximity.setProgress(messageProximityInt);
+            if(messageProximityInt>=66){
+                progressBarProximity.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_red));
+            }else if(messageProximityInt>=33){
+                progressBarProximity.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_yellow));
+            }else if(messageProximityInt>=0){
+                progressBarProximity.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_green));
+            }
 
             MyService.messageToActivity = "null";
             new Thread(new SecondActivity.Thread1()).start();

@@ -41,8 +41,9 @@
         <ImageView
             android:id="@+id/menu"
             android:layout_width="match_parent"
-            android:layout_height="197dp"
-            android:translationY="448dp"
+            android:layout_height="190dp"
+            android:translationY="453dp"
+            android:translationX="-2dp"
             app:srcCompat="@drawable/runtime_bg" />
 
         <ImageView
@@ -62,39 +63,59 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="@font/frau_2"
+            android:fontFamily="@font/downlink_bold"
             android:rotation="90"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
-            android:translationY="166dp"
-            android:translationX="15dp"
-            android:textSize="50sp" />
+            android:textSize="25sp"
+            android:translationX="5dp"
+            android:translationY="166dp" />
 
         <TextView
             android:id="@+id/step2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="@font/frau_2"
+            android:fontFamily="@font/downlink_bold"
             android:rotation="90"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:translationY="204dp"
-            android:translationX="-15dp"
-            android:textSize="50sp" />
+            android:translationX="-25dp"
+            android:textSize="25sp" />
 
         <TextView
             android:id="@+id/etf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="@font/frau_2"
+            android:fontFamily="@font/downlink_bold"
             android:rotation="90"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
-            android:textSize="50sp"
-            android:translationX="15dp"
+            android:textSize="25sp"
+            android:translationX="8dp"
             android:translationY="280dp" />
+
+        <ImageView
+            android:id="@+id/proximity"
+            android:layout_width="30dp"
+            android:layout_height="432dp"
+            android:layout_gravity="center"
+            android:translationX="49dp"
+            android:translationY="-29dp"
+            app:srcCompat="@drawable/runtime_bar" />
+
+        <ProgressBar
+            android:id="@+id/progressBarProximity"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="295dp"
+            android:layout_height="5dp"
+            android:layout_gravity="center"
+            android:rotation="90"
+            android:progressDrawable="@drawable/custom_progress_bg_green"
+            android:translationX="60dp"
+            android:translationY="-28dp" />
 
 
     </FrameLayout>
