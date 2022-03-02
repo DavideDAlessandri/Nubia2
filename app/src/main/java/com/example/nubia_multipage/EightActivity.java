@@ -326,10 +326,15 @@ public class EightActivity extends AppCompatActivity {
 
             if(val1.equals("inpos")){
                 statusTxt.setText("In Pos.");
-                seekBarPos.setProgress(number2);
+                //seekBarPos.setProgress(number2);
+                objectIn.setVisibility(View.GONE);
+                objectOutL.setVisibility(View.GONE);
+                objectOutR.setVisibility(View.GONE);
+
 
             }else if(val1.equals("inmov")){
                 statusTxt.setText("In motion");
+                seekBarPos.setProgress(number2);
 
             }else if(val1.equals("objin")){
                 statusTxt.setText("Object det.");
