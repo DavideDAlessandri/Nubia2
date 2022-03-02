@@ -292,6 +292,7 @@ public class EightActivity extends AppCompatActivity {
             int number1 = Integer.parseInt(val1);
             String val1s = Integer.toString(number1);
             curPosTxt.setText(val1s);
+            seekBarPos.setProgress(number1);
 
             MyService.messageToActivity = "null";
             new Thread(new EightActivity.Thread1()).start();
