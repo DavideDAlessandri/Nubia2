@@ -318,8 +318,15 @@ public class EightActivity extends AppCompatActivity {
         } else if (referenceMessage.equals("STD")) {
 
             String val1 = message.substring(3, 8);
+            String val2 = message.substring(8, 11);
+
+            int number2 = Integer.parseInt(val2);
+            String val2s = Integer.toString(number2);
+            curPosTxt.setText(val2s);
+
             if(val1.equals("inpos")){
                 statusTxt.setText("In Pos.");
+                seekBarPos.setProgress(number2);
 
             }else if(val1.equals("inmov")){
                 statusTxt.setText("In motion");
