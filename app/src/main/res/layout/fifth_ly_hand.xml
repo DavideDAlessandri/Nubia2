@@ -37,8 +37,8 @@
             android:layout_gravity="center"
             android:max="300"
             android:progressDrawable="@drawable/custom_progress_bg_green"
-            android:translationX="1dp"
-            android:translationY="-67dp" />
+            android:translationX="6dp"
+            android:translationY="-69dp" />
 
         <ProgressBar
             android:id="@+id/progressBarTwo5"
@@ -48,8 +48,8 @@
             android:layout_gravity="center"
             android:progressDrawable="@drawable/custom_progress_bg_green"
             android:max="300"
-            android:translationX="1dp"
-            android:translationY="-29dp" />
+            android:translationX="6dp"
+            android:translationY="-30dp" />
 
         <ProgressBar
             android:id="@+id/progressBarThree5"
@@ -59,8 +59,8 @@
             android:layout_gravity="center"
             android:progressDrawable="@drawable/custom_progress_bg_green"
             android:max="300"
-            android:translationX="1dp"
-            android:translationY="9dp" />
+            android:translationX="6dp"
+            android:translationY="10dp" />
 
         <ProgressBar
             android:id="@+id/progressBarFour5"
@@ -70,8 +70,8 @@
             android:layout_gravity="center"
             android:progressDrawable="@drawable/custom_progress_bg_green"
             android:max="30"
-            android:translationX="1dp"
-            android:translationY="87dp" />
+            android:translationX="6dp"
+            android:translationY="85dp" />
 
         <ProgressBar
             android:id="@+id/progressBarFive5"
@@ -81,8 +81,8 @@
             android:layout_gravity="center"
             android:progressDrawable="@drawable/custom_progress_bg_green"
             android:max="30"
-            android:translationX="1dp"
-            android:translationY="125dp" />
+            android:translationX="6dp"
+            android:translationY="124dp" />
 
         <ProgressBar
             android:id="@+id/progressBarSix5"
@@ -92,8 +92,8 @@
             android:layout_gravity="center"
             android:progressDrawable="@drawable/custom_progress_bg_green"
             android:max="30"
-            android:translationX="1dp"
-            android:translationY="163dp" />
+            android:translationX="6dp"
+            android:translationY="165dp" />
 
         <ToggleButton
             android:id="@+id/checkBoxX"
@@ -224,29 +224,6 @@
             android:translationX="-28dp"
             android:translationY="-210dp" />
 
-        <ToggleButton
-            android:id="@+id/checkBoxN"
-            android:layout_width="117dp"
-            android:layout_height="29dp"
-            android:layout_gravity="center"
-            android:background="@drawable/custum_toggle_button1"
-            android:fontFamily="@font/skporsche"
-            android:gravity="center"
-            android:padding="5dp"
-            android:rotation="90"
-            android:shadowColor="#333333"
-            android:shadowDx="3"
-            android:shadowDy="3"
-            android:shadowRadius="5"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF"
-            android:textOff="Enable"
-            android:textOn="Enable"
-            android:textSize="12sp"
-            android:translationX="-49dp"
-            android:translationY="259dp" />
 
         <SeekBar
             android:id="@+id/seekBarOVR"
@@ -319,14 +296,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="@font/frau_2"
+            android:fontFamily="@font/downlink_bold"
             android:rotation="90"
             android:text="0"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
-            android:translationX="6dp"
-            android:translationY="289dp"
-            android:textSize="30sp" />
+            android:textSize="15sp"
+            android:translationX="-57dp"
+            android:translationY="297dp" />
+
+        <Button
+            android:id="@+id/zeroButton"
+            android:layout_width="20dp"
+            android:layout_height="59dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ripple_effect"
+            android:rotation="0"
+            android:translationX="-55dp"
+            android:translationY="45dp"
+            tools:ignore="SpeakableTextPresentCheck" />
 
 
     </FrameLayout>

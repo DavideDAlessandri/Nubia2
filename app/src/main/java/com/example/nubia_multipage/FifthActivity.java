@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -18,7 +19,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class FifthActivity extends AppCompatActivity {
 
     ProgressBar progressBarOne, progressBarTwo, progressBarThree, progressBarFour, progressBarFive, progressBarSix;
-    ToggleButton checkBoxX, checkBoxY, checkBoxZ, checkBoxA, checkBoxB, checkBoxC, checkBoxN;
+    ToggleButton checkBoxX, checkBoxY, checkBoxZ, checkBoxA, checkBoxB, checkBoxC;
+    Button zeroButton;
     SeekBar seekBarOVR;
     Integer progressOVR;
     ImageView iLAxisX, iLAxisY, iLAxisZ, iRAxisX, iRAxisY, iRAxisZ;
@@ -50,7 +52,7 @@ public class FifthActivity extends AppCompatActivity {
         checkBoxA=findViewById(R.id.checkBoxA);
         checkBoxB=findViewById(R.id.checkBoxB);
         checkBoxC=findViewById(R.id.checkBoxC);
-        checkBoxN=findViewById(R.id.checkBoxN);
+        zeroButton=findViewById(R.id.zeroButton);
 
         iLAxisX=findViewById(R.id.lAxisX);
         iLAxisY=findViewById(R.id.lAxisY);
@@ -75,6 +77,13 @@ public class FifthActivity extends AppCompatActivity {
         A="0";
         B="0";
         C="0";
+
+        zeroButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread(new FifthActivity.Thread2("RER")).start();
+            }
+        });
 
         checkBoxX.setOnClickListener(new View.OnClickListener() {
             @Override
