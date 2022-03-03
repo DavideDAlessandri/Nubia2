@@ -29,6 +29,7 @@ public class MyService extends Service {
 
     int level;
     Boolean messageBatterySend=true;
+    Boolean messageBatteryCharging=false;
     Boolean backIfCharging=true;
     public static Integer currentPage;
 
@@ -79,6 +80,11 @@ public class MyService extends Service {
                 handler. postDelayed(new Runnable() {
                     public void run() {
 
+                        if(!messageBatteryCharging){
+                            new Thread(new MyService.Thread3("BTRcharging")).start();
+                            messageBatteryCharging=true;
+                        }
+
                         if(backIfCharging){
                             goBack();
                             backIfCharging=false;
@@ -93,6 +99,7 @@ public class MyService extends Service {
                 handler. postDelayed(new Runnable() {
                     public void run() {
 
+                        messageBatteryCharging=false;
                         backIfCharging=true;
 
                     }
