@@ -2,7 +2,13 @@ package com.example.nubia_multipage;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 
@@ -10,10 +16,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ThirdActivity extends AppCompatActivity {
 
-    SeekBar seekBarOne;
-    ProgressBar progressBarOne, progressBarTwo, progressBarThree, progressBarFour, progressBarFive, progressBarSix;
-    Integer progressOne;
-
+    ImageView zoom1, zoom2;
+    Button zoomButton;
+    Boolean sw=true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,68 +27,59 @@ public class ThirdActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.third_ly_teach);
 
-        seekBarOne=findViewById(R.id.seekBarOne3);
-        progressBarOne=findViewById(R.id.progressBarOne3);
-        progressBarTwo=findViewById(R.id.progressBarTwo3);
-        progressBarThree=findViewById(R.id.progressBarThree3);
-        progressBarFour=findViewById(R.id.progressBarFour3);
-        progressBarFive=findViewById(R.id.progressBarFive3);
-        progressBarSix=findViewById(R.id.progressBarSix3);
+        zoom1=findViewById(R.id.zoom1);
+        zoom2=findViewById(R.id.zoom2);
+        zoomButton=findViewById(R.id.zoom);
 
+        zoom2.setVisibility(View.GONE);
 
-        seekBarOne.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @SuppressLint("UseCompatLoadingForDrawables")
+        zoomButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                getProgressOne();
-                progressBarOne.setProgress(progressOne);
-                progressBarTwo.setProgress(progressOne);
-                progressBarThree.setProgress(progressOne);
-                progressBarFour.setProgress(progressOne);
-                progressBarFive.setProgress(progressOne);
-                progressBarSix.setProgress(progressOne);
+            public void onClick(View v) {
 
-                if(progressOne>=66){
-                    progressBarOne.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_red));
-                    progressBarTwo.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_red));
-                    progressBarThree.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_red));
-                    progressBarFour.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_red));
-                    progressBarFive.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_red));
-                    progressBarSix.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_red));
-                }else if(progressOne>=33){
-                    progressBarOne.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_yellow));
-                    progressBarTwo.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_yellow));
-                    progressBarThree.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_yellow));
-                    progressBarFour.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_yellow));
-                    progressBarFive.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_yellow));
-                    progressBarSix.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_yellow));
-                }else if(progressOne>=0){
-                    progressBarOne.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_green));
-                    progressBarTwo.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_green));
-                    progressBarThree.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_green));
-                    progressBarFour.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_green));
-                    progressBarFive.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_green));
-                    progressBarSix.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_green));
+                if(sw){
+
+                    Animation animation = new AlphaAnimation(1, 0); //to change visibility from visible to invisible
+                    animation.setDuration(250); //1 second duration for each animation cycle
+                    animation.setInterpolator(new LinearInterpolator());
+
+                    zoom1.startAnimation(animation); //to start animation
+
+                    Animation animation2 = new AlphaAnimation(0, 1); //to change visibility from visible to invisible
+                    animation2.setDuration(500); //1 second duration for each animation cycle
+                    animation2.setInterpolator(new LinearInterpolator());
+
+                    zoom2.startAnimation(animation2); //to start animation
+
+                    zoom1.setVisibility(View.GONE);
+                    zoom2.setVisibility(View.VISIBLE);
+
+                    sw=false;
+                }else{
+
+                    Animation animation = new AlphaAnimation(0, 1); //to change visibility from visible to invisible
+                    animation.setDuration(500); //1 second duration for each animation cycle
+                    animation.setInterpolator(new LinearInterpolator());
+
+                    zoom1.startAnimation(animation); //to start animation
+
+                    Animation animation2 = new AlphaAnimation(1, 0); //to change visibility from visible to invisible
+                    animation2.setDuration(250); //1 second duration for each animation cycle
+                    animation2.setInterpolator(new LinearInterpolator());
+
+                    zoom2.startAnimation(animation2); //to start animation
+
+                    zoom1.setVisibility(View.VISIBLE);
+                    zoom2.setVisibility(View.GONE);
+                    sw=true;
                 }
-            }
-
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
 
             }
         });
 
+
     }
 
-    private void getProgressOne(){
-        progressOne=Integer.valueOf(seekBarOne.getProgress());
-    }
 
     @Override
     public void finish(){

@@ -60,7 +60,7 @@
             android:progressDrawable="@drawable/custom_progress_bg_green"
             android:max="300"
             android:translationX="6dp"
-            android:translationY="10dp" />
+            android:translationY="11dp" />
 
         <ProgressBar
             android:id="@+id/progressBarFour5"
@@ -93,7 +93,7 @@
             android:progressDrawable="@drawable/custom_progress_bg_green"
             android:max="30"
             android:translationX="6dp"
-            android:translationY="165dp" />
+            android:translationY="164dp" />
 
         <ToggleButton
             android:id="@+id/checkBoxX"
@@ -115,7 +115,7 @@
             android:textColorHint="#FFFFFF"
             android:textOff="X"
             android:textOn="X"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:translationX="50dp"
             android:translationY="-268dp" />
 
@@ -136,7 +136,7 @@
             android:textColorHint="#FFFFFF"
             android:textOff="Y"
             android:textOn="Y"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:translationX="11dp"
             android:translationY="-268dp" />
 
@@ -157,7 +157,7 @@
             android:textColorHint="#FFFFFF"
             android:textOff="Z"
             android:textOn="Z"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:translationX="-28dp"
             android:translationY="-268dp" />
 
@@ -178,7 +178,7 @@
             android:textColorHint="#FFFFFF"
             android:textOff="A"
             android:textOn="A"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:translationX="50dp"
             android:translationY="-210dp" />
 
@@ -199,7 +199,7 @@
             android:textColorHint="#FFFFFF"
             android:textOff="B"
             android:textOn="B"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:translationX="11dp"
             android:translationY="-210dp" />
 
@@ -220,7 +220,7 @@
             android:textColorHint="#FFFFFF"
             android:textOff="C"
             android:textOn="C"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:translationX="-28dp"
             android:translationY="-210dp" />
 
@@ -238,58 +238,58 @@
 
 
         <ImageView
-            android:id="@+id/rAxisY"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_gravity="center"
-            android:translationX="20dp"
-            android:translationY="222dp"
-            />
-
-        <ImageView
             android:id="@+id/rAxisZ"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
             android:layout_gravity="center"
-            android:translationX="-21dp"
+            android:translationX="-52dp"
             android:translationY="253dp"
-            />
+             />
 
         <ImageView
             android:id="@+id/lAxisX"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
             android:layout_gravity="center"
-            android:translationX="0dp"
-            android:translationY="237dp"
-            />
+            android:translationX="-23dp"
+            android:translationY="230dp"
+             />
 
         <ImageView
             android:id="@+id/lAxisY"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
             android:layout_gravity="center"
-            android:translationX="13dp"
-            android:translationY="237dp"
-            />
+            android:translationX="-22dp"
+            android:translationY="277dp"
+             />
 
         <ImageView
             android:id="@+id/lAxisZ"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
             android:layout_gravity="center"
-            android:translationX="-8dp"
-            android:translationY="251dp"
-            />
+            android:translationX="-45dp"
+            android:translationY="252dp"
+             />
 
         <ImageView
             android:id="@+id/rAxisX"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
             android:layout_gravity="center"
-            android:translationX="-8dp"
-            android:translationY="224dp"
-            />
+            android:translationX="-28dp"
+            android:translationY="218dp"
+             />
+
+        <ImageView
+            android:id="@+id/rAxisY"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center"
+            android:translationX="-24dp"
+            android:translationY="288dp"
+             />
 
         <TextView
             android:id="@+id/OVRText"
