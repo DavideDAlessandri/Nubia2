@@ -11,6 +11,7 @@ import android.graphics.Paint;
 import android.os.BatteryManager;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -32,6 +33,8 @@ public class FourthActivity extends AppCompatActivity {
     ToggleButton displayButton;
     ImageView connectedImage;
     public static int SERVER_PORT=8080;
+    View layout;
+    float x1,x2,y1,y2;
 
     public static Activity fa4;
 
@@ -79,6 +82,8 @@ public class FourthActivity extends AppCompatActivity {
         battery=this.findViewById(R.id.battery);
         this.registerReceiver(this.mBatInfoReceiver,new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
 
+        layout=findViewById(R.id.layout4);
+
         displayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,6 +99,27 @@ public class FourthActivity extends AppCompatActivity {
                     saveData();
 
                 }
+            }
+        });
+
+        layout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        x1=event.getX();
+                        y1=event.getY();
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        x2=event.getX();
+                        y2=event.getY();
+                        if(y2>y1){
+                            changeActivitySeven();
+                        }
+                        break;
+                }
+
+                return false;
             }
         });
 
@@ -226,4 +252,10 @@ public class FourthActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);                     //animation out
     }
 
+    private void changeActivitySeven() {
+        Intent Intent = new Intent(this, SeventhActivity.class);
+        startActivity(Intent);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);                    //start animation
+        finish();
+    }
 }

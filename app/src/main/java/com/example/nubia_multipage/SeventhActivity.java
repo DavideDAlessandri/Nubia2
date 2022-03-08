@@ -1,10 +1,12 @@
 package com.example.nubia_multipage;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.Layout;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.animation.AlphaAnimation;
@@ -12,6 +14,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,6 +27,11 @@ public class SeventhActivity extends AppCompatActivity {
     Boolean running=true;
     Boolean pageL=false;
     public static Activity fa7;
+
+    float x1,x2,y1,y2;
+    TextView xStatus;
+    TextView xStatus2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +49,9 @@ public class SeventhActivity extends AppCompatActivity {
         layout=findViewById(R.id.layout7);
         mp = MediaPlayer.create(this, R.raw.sound_1_retro);
 
+        xStatus=findViewById(R.id.xStatus);
+        xStatus2=findViewById(R.id.xStatus2);
+
         int eyeLeft = getResources().getIdentifier("@drawable/eye_l",null,this.getPackageName());
         int eyeRight = getResources().getIdentifier("@drawable/eye_r",null,this.getPackageName());
 
@@ -57,12 +68,28 @@ public class SeventhActivity extends AppCompatActivity {
             pageL=true;
         }
 
-
-        layout.setOnClickListener(new View.OnClickListener() {
+        layout.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        x1=event.getX();
+                        y1=event.getY();
+                        String x1s=Float.toString(x1);
+                        xStatus.setText(x1s);
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        x2=event.getX();
+                        y2=event.getY();
+                        String x2s=Float.toString(x2);
+                        xStatus2.setText(x2s);
+                        if(y2>y1){
+                            changeActivityFour();
+                        }
+                        break;
+                }
 
-                finish();
+                return false;
             }
         });
 
@@ -181,6 +208,10 @@ public class SeventhActivity extends AppCompatActivity {
         }
     }
 
-
-
+    private void changeActivityFour(){
+        Intent intent = new Intent(this,FourthActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);                    //start animation
+        finish();
+    }
 }

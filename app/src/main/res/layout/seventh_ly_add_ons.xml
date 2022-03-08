@@ -53,6 +53,29 @@
             android:rotation="90"
             android:layout_gravity="center"
             android:translationY="180dp" />
+
+        <TextView
+            android:id="@+id/xStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:rotation="90"
+            android:text="TextView"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/xStatus2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:rotation="90"
+            android:text="TextView"
+            android:textColor="#FFFFFF"
+            android:translationX="-20dp"
+            android:textColorHint="#FFFFFF" />
+
+
     </FrameLayout>
 
 </LinearLayout>

@@ -265,7 +265,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void changeActivityThree(){
         new Thread(new MainActivity.Thread1()).start();
-        Intent intent = new Intent(this,ThirdActivity.class);
+        Intent intent = new Intent(this,SeventhActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);                    //start animation
     }
