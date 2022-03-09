@@ -56,12 +56,12 @@ public class MyService extends Service {
                 if(level==20){
                     if(!messageBatterySend){
                         new Thread(new MyService.Thread3("BTRstart")).start();
-                        messageBatterySend=true;
+                        //messageBatterySend=true;
                     }
                 }else if(level==90){
                     if(messageBatterySend){
                         new Thread(new MyService.Thread3("BTRstop")).start();
-                        messageBatterySend=false;
+                        //messageBatterySend=false;
                     }
                 }
             }
@@ -73,6 +73,8 @@ public class MyService extends Service {
             int status = batteryStatus.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
             boolean isCharging = status == BatteryManager.BATTERY_STATUS_CHARGING ||
                     status == BatteryManager.BATTERY_STATUS_FULL;
+
+            messageBatterySend= isCharging;
 
             if(isCharging && connectStatus){
 
@@ -137,12 +139,12 @@ public class MyService extends Service {
                     //On start device is charging, if level > 90 stop charge
                     if(level>=90){
                         new Thread(new MyService.Thread3("BTRstop")).start();
-                        messageBatterySend=false;
+                        //messageBatterySend=false;
                     }
                     //On start device is not charging, if level < 20 stop charge
                     if(level<=20){
                         new Thread(new MyService.Thread3("BTRstart")).start();
-                        messageBatterySend=false;
+                        //messageBatterySend=true;
                     }
                 }
 
