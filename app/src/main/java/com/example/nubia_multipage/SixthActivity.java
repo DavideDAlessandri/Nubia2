@@ -2,7 +2,9 @@ package com.example.nubia_multipage;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -25,6 +27,8 @@ public class SixthActivity extends AppCompatActivity {
 
     public static Activity fa6;
     Boolean running=true;
+    View layout;
+    float x1,x2,y1,y2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -54,6 +58,7 @@ public class SixthActivity extends AppCompatActivity {
         progressBar5=findViewById(R.id.progressBarFive6);
         progressBar6=findViewById(R.id.progressBarSix6);
         limitText=findViewById(R.id.LimitText);
+        layout=findViewById(R.id.layout6);
 
         checkBoxA1.setChecked(true);                                                                //On start set checkBox A1 true
         seekBarLimitA1.setVisibility(View.VISIBLE);                                                 //and view seekbar 1
@@ -425,6 +430,27 @@ public class SixthActivity extends AppCompatActivity {
                 }
             }
         });
+
+        layout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+                        x1=event.getX();
+                        y1=event.getY();
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        x2=event.getX();
+                        y2=event.getY();
+                        if(x2>x1){
+                            changeActivityNine();
+                        }
+                        break;
+                }
+
+                return false;
+            }
+        });
     }
 
     @Override
@@ -741,6 +767,14 @@ public class SixthActivity extends AppCompatActivity {
         progressA6=Integer.valueOf(seekBarLimitA6.getProgress());
     }
 
+
+    private void changeActivityNine() {
+        Intent Intent = new Intent(this, NinthActivity.class);
+        startActivity(Intent);
+        finish();
+    }
+
+
     @Override
     protected void onStop() {
 
@@ -751,7 +785,7 @@ public class SixthActivity extends AppCompatActivity {
     @Override
     public void finish(){
         super.finish();
-        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);                     //animation out
+        overridePendingTransition(R.anim.slide_in_down,R.anim.slide_out_down);                     //animation out
     }
 
 

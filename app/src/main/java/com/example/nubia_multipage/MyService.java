@@ -135,8 +135,13 @@ public class MyService extends Service {
                 if(connectStatus){
 
                     //On start device is charging, if level > 90 stop charge
-                    if(level>90){
+                    if(level>=90){
                         new Thread(new MyService.Thread3("BTRstop")).start();
+                        messageBatterySend=false;
+                    }
+                    //On start device is not charging, if level < 20 stop charge
+                    if(level<=20){
+                        new Thread(new MyService.Thread3("BTRstart")).start();
                         messageBatterySend=false;
                     }
                 }
@@ -241,6 +246,16 @@ public class MyService extends Service {
                 EightActivity.fa8.finish();
                 Intent intent8 = new Intent(this,EightActivity.class);
                 startActivity(intent8);
+                break;
+            case 9:
+                NinthActivity.fa9.finish();
+                Intent intent9 = new Intent(this,NinthActivity.class);
+                startActivity(intent9);
+                break;
+            case 10:
+                TenthActivity.fa10.finish();
+                Intent intent10 = new Intent(this,TenthActivity.class);
+                startActivity(intent10);
                 break;
 
         }

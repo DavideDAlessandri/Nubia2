@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:rotation="90"
-            android:text="TextView"
+            android:text="x1"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF" />
 
@@ -70,9 +70,32 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:rotation="90"
-            android:text="TextView"
+            android:text="x2"
             android:textColor="#FFFFFF"
             android:translationX="-20dp"
+            android:textColorHint="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/yStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:rotation="90"
+            android:text="y1"
+            android:textColor="#FFFFFF"
+            android:translationY="60dp"
+            android:textColorHint="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/yStatus2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:rotation="90"
+            android:text="y2"
+            android:textColor="#FFFFFF"
+            android:translationX="-20dp"
+            android:translationY="60dp"
             android:textColorHint="#FFFFFF" />
 
 

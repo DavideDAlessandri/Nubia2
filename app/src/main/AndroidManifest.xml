@@ -30,6 +30,8 @@
         <activity android:name=".SeventhActivity"/>
         <activity android:name=".Screensaver"/>
         <activity android:name=".EightActivity"/>
+        <activity android:name=".NinthActivity"/>
+        <activity android:name=".TenthActivity"/>
 
         <service android:enabled="true" android:name=".MyService">
         </service>

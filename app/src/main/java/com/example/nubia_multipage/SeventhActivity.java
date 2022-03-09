@@ -29,8 +29,8 @@ public class SeventhActivity extends AppCompatActivity {
     public static Activity fa7;
 
     float x1,x2,y1,y2;
-    TextView xStatus;
-    TextView xStatus2;
+    TextView xStatus, xStatus2, yStatus, yStatus2;
+
 
 
     @Override
@@ -51,6 +51,8 @@ public class SeventhActivity extends AppCompatActivity {
 
         xStatus=findViewById(R.id.xStatus);
         xStatus2=findViewById(R.id.xStatus2);
+        yStatus=findViewById(R.id.yStatus);
+        yStatus2=findViewById(R.id.yStatus2);
 
         int eyeLeft = getResources().getIdentifier("@drawable/eye_l",null,this.getPackageName());
         int eyeRight = getResources().getIdentifier("@drawable/eye_r",null,this.getPackageName());
@@ -77,16 +79,20 @@ public class SeventhActivity extends AppCompatActivity {
                         y1=event.getY();
                         String x1s=Float.toString(x1);
                         xStatus.setText(x1s);
+                        String y1s=Float.toString(y1);
+                        yStatus.setText(y1s);
                         return true;
                     case MotionEvent.ACTION_UP:
                         x2=event.getX();
                         y2=event.getY();
                         String x2s=Float.toString(x2);
                         xStatus2.setText(x2s);
-                        if(y2>y1){
-                            changeActivityFour();
-                        }
-                        break;
+                        String y2s=Float.toString(y2);
+                        yStatus2.setText(y2s);
+                        //if(y2>y1){
+                            //changeActivityFour();
+                        //}
+                        return true;
                 }
 
                 return false;
