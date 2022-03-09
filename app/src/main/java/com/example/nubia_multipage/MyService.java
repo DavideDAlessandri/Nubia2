@@ -7,11 +7,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.BatteryManager;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
-import android.view.KeyEvent;
-import android.view.View;
 
 
 import java.io.BufferedReader;
@@ -28,7 +25,7 @@ public class MyService extends Service {
     int port;
 
     int level;
-    Boolean messageBatterySend=true;
+    Boolean batteryIsInCharge =true;
     Boolean messageBatteryCharging=false;
     Boolean backIfCharging=true;
     public static Integer currentPage;
@@ -54,12 +51,12 @@ public class MyService extends Service {
 
             if (connectStatus) {
                 if(level==20){
-                    if(!messageBatterySend){
+                    if(!batteryIsInCharge){
                         new Thread(new MyService.Thread3("BTRstart")).start();
                         //messageBatterySend=true;
                     }
                 }else if(level==90){
-                    if(messageBatterySend){
+                    if(batteryIsInCharge){
                         new Thread(new MyService.Thread3("BTRstop")).start();
                         //messageBatterySend=false;
                     }
@@ -74,7 +71,7 @@ public class MyService extends Service {
             boolean isCharging = status == BatteryManager.BATTERY_STATUS_CHARGING ||
                     status == BatteryManager.BATTERY_STATUS_FULL;
 
-            messageBatterySend= isCharging;
+            batteryIsInCharge = isCharging;
 
             if(isCharging && connectStatus){
 
