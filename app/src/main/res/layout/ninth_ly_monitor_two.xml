@@ -19,12 +19,164 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
-
         <ImageView
             android:id="@+id/imageView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/monitor_temp2" />
+            app:srcCompat="@drawable/monitor_temp" />
+
+        <ProgressBar
+            android:id="@+id/progressBarT1"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="81dp"
+            android:layout_height="10dp"
+            android:layout_gravity="center"
+            android:max="100"
+            android:progressDrawable="@drawable/custom_progress_bg_green"
+            android:translationX="1dp"
+            android:translationY="-124dp" />
+
+        <TextView
+            android:id="@+id/Temp1Txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/frau_2"
+            android:rotation="90"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:translationX="-53dp"
+            android:translationY="-124dp"
+            android:text="0"
+            android:textSize="30sp" />
+
+        <ProgressBar
+            android:id="@+id/progressBarT2"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="81dp"
+            android:layout_height="10dp"
+            android:layout_gravity="center"
+            android:progressDrawable="@drawable/custom_progress_bg_green"
+            android:max="100"
+            android:translationX="1dp"
+            android:translationY="-72dp" />
+
+        <TextView
+            android:id="@+id/Temp2Txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/frau_2"
+            android:rotation="90"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:translationX="-53dp"
+            android:translationY="-72dp"
+            android:text="0"
+            android:textSize="30sp" />
+
+        <ProgressBar
+            android:id="@+id/progressBarT3"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="81dp"
+            android:layout_height="10dp"
+            android:layout_gravity="center"
+            android:progressDrawable="@drawable/custom_progress_bg_green"
+            android:max="100"
+            android:translationX="1dp"
+            android:translationY="-19dp" />
+
+        <TextView
+            android:id="@+id/Temp3Txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/frau_2"
+            android:rotation="90"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:translationX="-53dp"
+            android:translationY="-19dp"
+            android:text="0"
+            android:textSize="30sp" />
+
+        <ProgressBar
+            android:id="@+id/progressBarT4"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="81dp"
+            android:layout_height="10dp"
+            android:layout_gravity="center"
+            android:progressDrawable="@drawable/custom_progress_bg_green"
+            android:max="100"
+            android:translationX="1dp"
+            android:translationY="35dp" />
+
+        <TextView
+            android:id="@+id/Temp4Txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/frau_2"
+            android:rotation="90"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:translationX="-53dp"
+            android:translationY="35dp"
+            android:text="0"
+            android:textSize="30sp" />
+
+        <ProgressBar
+            android:id="@+id/progressBarT5"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="81dp"
+            android:layout_height="10dp"
+            android:layout_gravity="center"
+            android:progressDrawable="@drawable/custom_progress_bg_green"
+            android:max="100"
+            android:translationX="1dp"
+            android:translationY="87dp" />
+
+        <TextView
+            android:id="@+id/Temp5Txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/frau_2"
+            android:rotation="90"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:translationX="-53dp"
+            android:translationY="87dp"
+            android:text="0"
+            android:textSize="30sp" />
+
+        <ProgressBar
+            android:id="@+id/progressBarT6"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="81dp"
+            android:layout_height="10dp"
+            android:layout_gravity="center"
+            android:progressDrawable="@drawable/custom_progress_bg_green"
+            android:max="100"
+            android:translationX="1dp"
+            android:translationY="140dp" />
+
+        <TextView
+            android:id="@+id/Temp6Txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/frau_2"
+            android:rotation="90"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:translationX="-53dp"
+            android:translationY="140dp"
+            android:text="0"
+            android:textSize="30sp" />
+
+
+
     </FrameLayout>
 
 </LinearLayout>
