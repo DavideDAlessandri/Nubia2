@@ -61,11 +61,6 @@ public class NinthActivity extends AppCompatActivity {
         running=true;
         MyService.messageToActivity="null";
 
-        //if(MyService.connectStatus){                                                                //if tcp connected
-        //    new Thread(new SeventhActivity.Thread2("PGR07")).start();                      // send current page name to server
-        //    new Thread(new SeventhActivity.Thread1()).start();
-        //}
-
 
     }
 
