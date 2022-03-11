@@ -26,6 +26,8 @@ public class MyService extends Service {
 
     int level;
     Boolean batteryIsInCharge =true;
+    Boolean batteryDiff20=true;
+    Boolean batteryDiff90=true;
     Boolean messageBatteryCharging=false;
     Boolean backIfCharging=true;
     public static Integer currentPage;
@@ -51,15 +53,21 @@ public class MyService extends Service {
 
             if (connectStatus) {
                 if(level==20){
-                    if(!batteryIsInCharge){
+                    if(batteryDiff20 && !batteryIsInCharge){
                         new Thread(new MyService.Thread3("BTRstart")).start();
-                        //messageBatterySend=true;
+                        batteryDiff20=false;
                     }
                 }else if(level==90){
-                    if(batteryIsInCharge){
+                    if(batteryDiff90 && batteryIsInCharge){
                         new Thread(new MyService.Thread3("BTRstop")).start();
-                        //messageBatterySend=false;
+                        batteryDiff90 = false;
                     }
+                }
+                if(level!=20) {
+                    batteryDiff20 = true;
+                }
+                if(level!=90){
+                    batteryDiff90 = true;
                 }
             }
 

@@ -61,9 +61,63 @@ public class TenthActivity extends AppCompatActivity {
         running=true;
         MyService.messageToActivity="null";
 
+        if(MyService.connectStatus){                                                                // if tcp connected
+            new Thread(new TenthActivity.Thread1()).start();
+        }
+
     }
 
-    private void changeActivitySix() {
+    class Thread1 implements Runnable {                                                             //Server message reader
+        @Override
+        public void run() {
+
+            if (!running) return;                                                                   //Exit thread
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+
+                    receiveValue(MyService.messageToActivity);
+
+                }
+            });
+
+        }
+    }
+
+    private  void receiveValue(String message) {
+
+        String referenceMessage = message.substring(0, 3);
+
+        if(message.equals("null")) {
+            new Thread(new TenthActivity.Thread1()).start();
+        }else if(message.equals("PGD02")) {
+            finish();
+        }else if(message.equals("PGD03")) {
+            finish();
+        }else if(message.equals("PGD04")) {
+            finish();
+        }else if(message.equals("PGD05")) {
+            finish();
+        }else if(message.equals("PGD06")) {
+            MyService.messageToActivity = "null";
+            new Thread(new TenthActivity.Thread1()).start();
+        }else if(message.equals("PGD07")) {
+            finish();
+        }else if(message.equals("PGD01")) {
+            finish();
+        }else if(referenceMessage.equals("TBD")) {
+            //to-do
+
+            MyService.messageToActivity = "null";
+            new Thread(new TenthActivity.Thread1()).start();
+        }else{
+            MyService.messageToActivity = "null";
+            new Thread(new TenthActivity.Thread1()).start();
+        }
+
+        }
+
+        private void changeActivitySix() {
         Intent Intent = new Intent(this, SixthActivity.class);
         startActivity(Intent);
         finish();
@@ -75,8 +129,6 @@ public class TenthActivity extends AppCompatActivity {
         super.onStop();
         running=false;                                                                              //Stop thread 1
     }
-
-
 
     @Override
     public void finish(){

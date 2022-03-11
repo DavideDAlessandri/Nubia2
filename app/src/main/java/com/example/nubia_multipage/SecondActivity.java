@@ -245,7 +245,7 @@ public class SecondActivity extends AppCompatActivity {
                 color.setImageResource(greenColor);
                 menu.setImageResource(greenMenu);
                 label.setImageResource(greenLabel);
-                txtMarquee.setText("Message Message Message");
+                txtMarquee.setText("Assembly Assembly Assembly");
                 txtMarquee.setSelected(true);
                 color.clearAnimation();
             }
