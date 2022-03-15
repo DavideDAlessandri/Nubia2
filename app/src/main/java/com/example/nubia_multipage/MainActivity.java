@@ -187,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
                         screenSaverIn=true;
                     }
                 }
-            }, 120000); //2 min                                                            //screensaver timer
+            }, 600000); //10 min                                                            //screensaver timer
         }
 
     }
