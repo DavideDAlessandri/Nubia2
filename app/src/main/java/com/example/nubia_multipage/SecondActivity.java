@@ -45,13 +45,13 @@ public class SecondActivity extends AppCompatActivity {
 
         layout=findViewById(R.id.layout2);
 
-        layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
+        //layout.setOnClickListener(new View.OnClickListener() {
+        //    @Override
+        //    public void onClick(View v) {
+        //        finish();
 
-            }
-        });
+        //    }
+        //});
 
 
         }
