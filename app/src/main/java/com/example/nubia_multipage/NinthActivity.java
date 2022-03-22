@@ -124,7 +124,7 @@ public class NinthActivity extends AppCompatActivity {
             finish();
         }else if(message.equals("PGD01")) {
             finish();
-        }else if(referenceMessage.equals("TBD")) { //TOD
+        }else if(referenceMessage.equals("TOD")) { //TOD
 
             String val1 = message.substring(21, 24);                                                  //get progressbar 1 value
             String val2 = message.substring(24, 27);                                                  //get progressbar 1 value

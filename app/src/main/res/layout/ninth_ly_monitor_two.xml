@@ -168,12 +168,12 @@
             android:layout_gravity="center"
             android:fontFamily="@font/frau_2"
             android:rotation="90"
+            android:text="0"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
+            android:textSize="30sp"
             android:translationX="-53dp"
-            android:translationY="140dp"
-            android:text="0"
-            android:textSize="30sp" />
+            android:translationY="140dp" />
 
 
 
