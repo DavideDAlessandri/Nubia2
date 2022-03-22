@@ -41,14 +41,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="@font/frau_2"
+            android:fontFamily="@font/downlink_bold"
             android:rotation="90"
+            android:text="0"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
-            android:translationX="-53dp"
-            android:translationY="-124dp"
-            android:text="0"
-            android:textSize="30sp" />
+            android:textSize="14sp"
+            android:translationX="-57dp"
+            android:translationY="-124dp" />
 
         <ProgressBar
             android:id="@+id/progressBarT2"
@@ -66,14 +66,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="@font/frau_2"
+            android:fontFamily="@font/downlink_bold"
             android:rotation="90"
+            android:text="0"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
-            android:translationX="-53dp"
-            android:translationY="-72dp"
-            android:text="0"
-            android:textSize="30sp" />
+            android:textSize="14sp"
+            android:translationX="-57dp"
+            android:translationY="-72dp" />
 
         <ProgressBar
             android:id="@+id/progressBarT3"
@@ -91,14 +91,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="@font/frau_2"
+            android:fontFamily="@font/downlink_bold"
             android:rotation="90"
+            android:text="0"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
-            android:translationX="-53dp"
-            android:translationY="-19dp"
-            android:text="0"
-            android:textSize="30sp" />
+            android:textSize="14sp"
+            android:translationX="-57dp"
+            android:translationY="-19dp" />
 
         <ProgressBar
             android:id="@+id/progressBarT4"
@@ -116,14 +116,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="@font/frau_2"
+            android:fontFamily="@font/downlink_bold"
             android:rotation="90"
+            android:text="0"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
-            android:translationX="-53dp"
-            android:translationY="35dp"
-            android:text="0"
-            android:textSize="30sp" />
+            android:textSize="14sp"
+            android:translationX="-57dp"
+            android:translationY="35dp" />
 
         <ProgressBar
             android:id="@+id/progressBarT5"
@@ -141,14 +141,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="@font/frau_2"
+            android:fontFamily="@font/downlink_bold"
             android:rotation="90"
+            android:text="0"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
-            android:translationX="-53dp"
-            android:translationY="87dp"
-            android:text="0"
-            android:textSize="30sp" />
+            android:textSize="14sp"
+            android:translationX="-57dp"
+            android:translationY="87dp" />
 
         <ProgressBar
             android:id="@+id/progressBarT6"
@@ -166,13 +166,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="@font/frau_2"
+            android:fontFamily="@font/downlink_bold"
             android:rotation="90"
             android:text="0"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
-            android:textSize="30sp"
-            android:translationX="-53dp"
+            android:textSize="14sp"
+            android:translationX="-57dp"
             android:translationY="140dp" />
 
 
