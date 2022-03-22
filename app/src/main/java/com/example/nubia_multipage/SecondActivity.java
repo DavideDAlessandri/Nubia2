@@ -1,7 +1,9 @@
 package com.example.nubia_multipage;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.Window;
 import android.view.animation.AlphaAnimation;
@@ -45,6 +47,7 @@ public class SecondActivity extends AppCompatActivity {
 
         layout=findViewById(R.id.layout2);
 
+        //close layout touching the screen
         //layout.setOnClickListener(new View.OnClickListener() {
         //    @Override
         //    public void onClick(View v) {
@@ -230,6 +233,20 @@ public class SecondActivity extends AppCompatActivity {
                 progressBarProximity.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_green));
             }
 
+            if(messageProximityInt==100){
+
+                Handler handler = new Handler();
+                handler. postDelayed(new Runnable() {
+                    public void run() {
+
+                        if(messageProximityInt==100){
+                            changeActivityFive();
+                        }
+
+                    }
+                }, 5000); //1 seconds.
+            }
+
             MyService.messageToActivity = "null";
             new Thread(new SecondActivity.Thread1()).start();
 
@@ -258,6 +275,14 @@ public class SecondActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    private void changeActivityFive(){
+        new Thread(new SecondActivity.Thread1()).start();
+        Intent intent = new Intent(this,FifthActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);                    //start animation
+        finish();
     }
 
     @Override
