@@ -45,6 +45,9 @@ public class MyService extends Service {
     public static Integer limit5=0;
     public static Integer limit6=0;
 
+    //Memory for seekbar page6 hand-guide:
+    public static Integer limitOvr=0;
+
     private BroadcastReceiver mBatInfoReceiver = new BroadcastReceiver() {                          //read battery level and send message to PLC
         @Override
         public void onReceive(Context context, Intent intent) {

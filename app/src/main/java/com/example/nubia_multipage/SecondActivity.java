@@ -233,19 +233,6 @@ public class SecondActivity extends AppCompatActivity {
                 progressBarProximity.setProgressDrawable(getDrawable(R.drawable.custom_progress_bg_green));
             }
 
-            if(messageProximityInt==100){
-
-                Handler handler = new Handler();
-                handler. postDelayed(new Runnable() {
-                    public void run() {
-
-                        if(messageProximityInt==100){
-                            changeActivityFive();
-                        }
-
-                    }
-                }, 5000); //1 seconds.
-            }
 
             MyService.messageToActivity = "null";
             new Thread(new SecondActivity.Thread1()).start();
@@ -277,13 +264,6 @@ public class SecondActivity extends AppCompatActivity {
 
     }
 
-    private void changeActivityFive(){
-        new Thread(new SecondActivity.Thread1()).start();
-        Intent intent = new Intent(this,FifthActivity.class);
-        startActivity(intent);
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);                    //start animation
-        finish();
-    }
 
     @Override
     protected void onStop() {

@@ -186,6 +186,7 @@ public class FifthActivity extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
                 getProgressOVR();                                                                   //get new value
+                MyService.limitOvr=progressOVR;
                 String progressOVRString =progressOVR.toString();                                   //convert int to string
                 ovrText.setText(progressOVRString);                                                 //display value
 
@@ -225,6 +226,8 @@ public class FifthActivity extends AppCompatActivity {
         MainActivity.startStatus=false;                                                             //reset start status (stop when change activity)
         running=true;
         MyService.messageToActivity="null";
+
+        seekBarOVR.setProgress(MyService.limitOvr);
 
         if(MyService.connectStatus){                                                                // if tcp connected
             new Thread(new FifthActivity.Thread2("PGR05")).start();                          // send current page name to server
