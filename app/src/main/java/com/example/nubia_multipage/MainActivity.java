@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     Button fifthPage;
     Button sixthPage;
     Button seventhPage;
-    ImageView imageRun, imageTeach, imageHand, imageSettings, imageMonitor, imageAddOns;
+    ImageView imageRun, imageTeach, imageHand, imageSettings, imageMonitor, imageAddOns, background;
     ImageView tryConnection, backButton;
     Boolean running=true;                                                                           //Thread 1 start/stop
 
@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         imageSettings=findViewById(R.id.imageSettings);
         imageMonitor=findViewById(R.id.imageMonitor);
         imageAddOns=findViewById(R.id.imageAddOns);
+        background=findViewById(R.id.Background);
 
         tryConnection=findViewById(R.id.tryConnection);
         tryConnection.setVisibility(View.GONE);                                                     //Connection symbol
@@ -166,6 +167,8 @@ public class MainActivity extends AppCompatActivity {
         screenSaverOn=true;
         MyService.currentPage=1;
 
+        buttonAnimation();
+
         if (MyService.connectStatus.equals(true)){                                                  //If server connected (background service)
 
             MyService.messageToActivity="null";
@@ -261,6 +264,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,SecondActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);                     //animation out
+        removeButton();
     }
 
     private void changeActivityThree(){
@@ -268,6 +272,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,SeventhActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);                    //start animation
+        removeButton();
     }
 
     private void changeActivityFour(){
@@ -275,6 +280,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,FourthActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);                    //start animation
+        removeButton();
     }
 
     private void changeActivityFive(){
@@ -282,6 +288,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,FifthActivity.class);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);                    //start animation
+        removeButton();
     }
 
     private void changeActivitySix(){
@@ -289,6 +296,7 @@ public class MainActivity extends AppCompatActivity {
         Intent Intent = new Intent(this,SixthActivity.class);
         startActivity(Intent);
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);                    //start animation
+        removeButton();
     }
 
     private void changeActivitySeven(){
@@ -296,6 +304,7 @@ public class MainActivity extends AppCompatActivity {
         Intent Intent = new Intent(this,SeventhActivity.class);
         startActivity(Intent);
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);                    //start animation
+        removeButton();
     }
 
     private void changeActivityEight(){
@@ -303,14 +312,62 @@ public class MainActivity extends AppCompatActivity {
         Intent Intent = new Intent(this,EightActivity.class);
         startActivity(Intent);
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);                    //start animation
+        removeButton();
     }
 
     private void screenSaver(){
         new Thread(new MainActivity.Thread1()).start();
         Intent Intent = new Intent(this,Screensaver.class);
         startActivity(Intent);
+        removeButton();
     }
 
+    private void buttonAnimation(){
+
+        imageRun.setVisibility(View.VISIBLE);
+        imageTeach.setVisibility(View.VISIBLE);
+        imageHand.setVisibility(View.VISIBLE);
+        imageSettings.setVisibility(View.VISIBLE);
+        imageMonitor.setVisibility(View.VISIBLE);
+        imageAddOns.setVisibility(View.VISIBLE);
+        background.setVisibility(View.VISIBLE);
+
+        Animation animation;
+        animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.appear);
+        background.startAnimation(animation);
+
+        Animation animation1;
+        animation1=AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_in_left_slow);
+        imageRun.startAnimation(animation1);
+        imageTeach.startAnimation(animation1);
+        imageHand.startAnimation(animation1);
+
+        Animation animation2;
+        animation2=AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_in_right_slow);
+        imageSettings.startAnimation(animation2);
+        imageMonitor.startAnimation(animation2);
+        imageAddOns.startAnimation(animation2);
+    }
+
+    private void removeButton(){
+
+        Handler handler = new Handler();
+        handler. postDelayed(new Runnable() {
+            public void run() {
+
+                imageRun.setVisibility(View.GONE);
+                imageTeach.setVisibility(View.GONE);
+                imageHand.setVisibility(View.GONE);
+                imageSettings.setVisibility(View.GONE);
+                imageMonitor.setVisibility(View.GONE);
+                imageAddOns.setVisibility(View.GONE);
+                background.setVisibility(View.GONE);
+
+            }
+        }, 1000); //1 seconds.
+
+
+    }
 
     private void startService(){                                                                    //Start background service
         startService(new Intent(this, MyService.class));
@@ -344,6 +401,7 @@ public class MainActivity extends AppCompatActivity {
 
         super.onStop();
         running=false;                                                                              //When exit page stop thread 1
+
     }
 
     @Override
