@@ -1,5 +1,6 @@
 package com.example.nubia_multipage;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -14,6 +15,7 @@ public class Screensaver extends AppCompatActivity {
 
     View layout;
     ImageView screensaverColor;
+    public static Activity ssActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +23,8 @@ public class Screensaver extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         setContentView(R.layout.screensaver);
+
+        ssActivity=this; //assign name screen saver activity
 
         layout=findViewById(R.id.layoutS);
         screensaverColor=findViewById(R.id.screensaverColor);
