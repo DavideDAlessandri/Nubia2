@@ -47,16 +47,6 @@ public class SecondActivity extends AppCompatActivity {
 
         layout=findViewById(R.id.layout2);
 
-        //close layout touching the screen
-        //layout.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-        //    public void onClick(View v) {
-        //        finish();
-
-        //    }
-        //});
-
-
         }
 
     @Override
