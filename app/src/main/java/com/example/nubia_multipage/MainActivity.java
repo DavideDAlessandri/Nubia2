@@ -208,6 +208,11 @@ public class MainActivity extends AppCompatActivity {
                         MyService.messageToActivity="null";
                         running=false;
                         startStatus=true;                                                           //stop "old" activity
+
+                        if (Screensaver.inScreenSaver){
+                            Screensaver.ssActivity.finish();
+                        }
+
                         changeActivityTwo();
 
                         return;
@@ -260,7 +265,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void changeActivityTwo(){                                                               //Change activity
-        Screensaver.ssActivity.finish();
         new Thread(new MainActivity.Thread1()).start();
         Intent intent = new Intent(this,SecondActivity.class);
         startActivity(intent);
@@ -269,7 +273,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void changeActivityThree(){
-        Screensaver.ssActivity.finish();
         new Thread(new MainActivity.Thread1()).start();
         Intent intent = new Intent(this,SeventhActivity.class);
         startActivity(intent);
@@ -278,7 +281,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void changeActivityFour(){
-        Screensaver.ssActivity.finish();
         new Thread(new MainActivity.Thread1()).start();
         Intent intent = new Intent(this,FourthActivity.class);
         startActivity(intent);
@@ -287,7 +289,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void changeActivityFive(){
-        Screensaver.ssActivity.finish();
         new Thread(new MainActivity.Thread1()).start();
         Intent intent = new Intent(this,FifthActivity.class);
         startActivity(intent);
@@ -296,7 +297,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void changeActivitySix(){
-        Screensaver.ssActivity.finish();
         new Thread(new MainActivity.Thread1()).start();
         Intent Intent = new Intent(this,SixthActivity.class);
         startActivity(Intent);
@@ -305,7 +305,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void changeActivitySeven(){
-        Screensaver.ssActivity.finish();
         new Thread(new MainActivity.Thread1()).start();
         Intent Intent = new Intent(this,SeventhActivity.class);
         startActivity(Intent);
@@ -314,7 +313,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void changeActivityEight(){
-        Screensaver.ssActivity.finish();
         new Thread(new MainActivity.Thread1()).start();
         Intent Intent = new Intent(this,EightActivity.class);
         startActivity(Intent);

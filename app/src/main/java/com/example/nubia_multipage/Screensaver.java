@@ -16,6 +16,7 @@ public class Screensaver extends AppCompatActivity {
     View layout;
     ImageView screensaverColor;
     public static Activity ssActivity;
+    public static Boolean inScreenSaver=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,16 @@ public class Screensaver extends AppCompatActivity {
     protected  void onResume(){                                                                     //When enter page:
         super.onResume();
 
+        inScreenSaver=true;
         MainActivity.screenSaverIn=true;
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        inScreenSaver=false;
 
     }
 
