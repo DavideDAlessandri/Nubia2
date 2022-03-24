@@ -249,7 +249,7 @@ public class SecondActivity extends AppCompatActivity {
                 color.setImageResource(greenColor);
                 menu.setImageResource(greenMenu);
                 label.setImageResource(greenLabel);
-                txtMarquee.setText("Assembly Assembly Assembly");
+                txtMarquee.setText("Ready Ready Ready");
                 txtMarquee.setSelected(true);
                 color.clearAnimation();
             }
