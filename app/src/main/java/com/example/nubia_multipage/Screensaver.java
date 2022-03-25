@@ -48,6 +48,7 @@ public class Screensaver extends AppCompatActivity {
     @Override
     protected  void onResume(){                                                                     //When enter page:
         super.onResume();
+        MyService.currentPage=100;
 
         inScreenSaver=true;
         MainActivity.screenSaverIn=true;

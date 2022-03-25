@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView imageRun, imageTeach, imageHand, imageSettings, imageMonitor, imageAddOns, background;
     ImageView tryConnection, backButton;
     Boolean running=true;                                                                           //Thread 1 start/stop
+    Boolean inActivityTwo =false;
 
     Boolean test=false;
 
@@ -166,6 +167,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         screenSaverOn=true;
         MyService.currentPage=1;
+        inActivityTwo=false;
 
         buttonAnimation();
 
@@ -190,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
                         screenSaverIn=true;
                     }
                 }
-            }, 600000); //10 min                                                            //screensaver timer
+            }, 600000); //10 min = 600000                                                            //screensaver timer
         }
 
     }
@@ -209,38 +211,69 @@ public class MainActivity extends AppCompatActivity {
                         running=false;
                         startStatus=true;                                                           //stop "old" activity
 
-                        if (Screensaver.inScreenSaver){
+                        if (Screensaver.inScreenSaver){                                             //stop screensaver if active
                             Screensaver.ssActivity.finish();
                         }
 
                         changeActivityTwo();
 
-                        return;
                     }else if(MyService.messageToActivity.equals("PGD03")) {                         //teach
                         MyService.messageToActivity="null";
                         startStatus=true;
+
+                        if (Screensaver.inScreenSaver){                                             //stop screensaver if active
+                            Screensaver.ssActivity.finish();
+                        }
+
                         changeActivityThree();
-                        return;
                     }else if(MyService.messageToActivity.equals("PGD05")) {                         //hand guide
                         MyService.messageToActivity="null";
                         startStatus=true;
+
+                        if (Screensaver.inScreenSaver){                                             //stop screensaver if active
+                            Screensaver.ssActivity.finish();
+                        }
+
                         changeActivityFive();
-                        return;
                     }else if(MyService.messageToActivity.equals("PGD04")) {                         //settings
                         MyService.messageToActivity="null";
                         startStatus=true;
+
+                        if (Screensaver.inScreenSaver){                                             //stop screensaver if active
+                            Screensaver.ssActivity.finish();
+                        }
+
                         changeActivityFour();
-                        return;
+
                     }else if(MyService.messageToActivity.equals("PGD06")) {                         //monitor
                         MyService.messageToActivity="null";
                         startStatus=true;
+
+                        if (Screensaver.inScreenSaver){                                             //stop screensaver if active
+                            Screensaver.ssActivity.finish();
+                        }
+
                         changeActivitySix();
-                        return;
+
                     }else if(MyService.messageToActivity.equals("PGD08")) {                         //add-ons
                         MyService.messageToActivity="null";
                         startStatus=true;
+
+                        if (Screensaver.inScreenSaver){                                             //stop screensaver if active
+                            Screensaver.ssActivity.finish();
+                        }
+
                         changeActivityEight();
-                        return;
+
+                    }else if(MyService.messageToActivity.equals("PGD01")){
+
+                        MyService.messageToActivity="null";
+
+                        if (Screensaver.inScreenSaver){                                             //stop screensaver if active
+                            Screensaver.ssActivity.finish();
+                        }
+                        new Thread(new MainActivity.Thread1()).start();
+
                     }else{
                         new Thread(new MainActivity.Thread1()).start();                             //Else restart thread
                     }
@@ -265,11 +298,16 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void changeActivityTwo(){                                                               //Change activity
-        new Thread(new MainActivity.Thread1()).start();
-        Intent intent = new Intent(this,SecondActivity.class);
-        startActivity(intent);
-        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);                     //animation out
-        removeButton();
+
+        if(!inActivityTwo){
+            new Thread(new MainActivity.Thread1()).start();
+            Intent intent = new Intent(this,SecondActivity.class);
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);                     //animation out
+            removeButton();
+            inActivityTwo=true;
+        }
+
     }
 
     private void changeActivityThree(){

@@ -31,7 +31,6 @@
             android:rotation="90"
             android:scrollHorizontally="true"
             android:singleLine="true"
-            android:text="Assembly assembly"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:textSize="70sp"

@@ -37,6 +37,9 @@ public class MyService extends Service {
     public  static String messageToActivity;
     public static Boolean connectStatus=false;
 
+    //Memory for page2 status
+    public static String pg2Message= "start";
+
     //Memory for seekbar page6 monitor:
     public static Integer limit1=0;
     public static Integer limit2=0;
@@ -268,6 +271,11 @@ public class MyService extends Service {
                 startActivity(intent10);
                 break;
 
+            case 100:
+                Screensaver.ssActivity.finish();
+                Intent intent100 = new Intent(this,Screensaver.class);
+                startActivity(intent100);
+                break;
         }
 
     }

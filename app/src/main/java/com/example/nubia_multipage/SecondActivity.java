@@ -58,7 +58,7 @@ public class SecondActivity extends AppCompatActivity {
         MainActivity.screenSaverOn=false;
         MainActivity.startStatus=false;                                                             //reset start status (stop when change activity)
         running=true;
-        changeColor("start");
+        changeColor(MyService.pg2Message);                                                          //resume the page on the last status
 
        if(MyService.connectStatus){                                                                //If tcp connected
            new Thread(new SecondActivity.Thread2("PGR02")).start();                                // send current page name to server
@@ -133,6 +133,8 @@ public class SecondActivity extends AppCompatActivity {
         }else if(message.equals("null")) {
             new Thread(new SecondActivity.Thread1()).start();
         }else if(referenceMessage.equals("TXT")){
+
+            MyService.pg2Message=message;                                                           //Save old message in case of reentering the page
 
             String screenMessage = message.substring(5);                                              //Subtract initial value of message to find color and option (Ex: G1)
             String colorMessage = message.substring(3, 5);
