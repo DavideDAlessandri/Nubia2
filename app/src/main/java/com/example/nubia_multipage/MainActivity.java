@@ -176,6 +176,67 @@ public class MainActivity extends AppCompatActivity {
             MyService.messageToActivity="null";
             running=true;
             new Thread(new MainActivity.Thread2("PGR01")).start();                                  // send current page name to server
+
+            Handler handler = new Handler();
+            handler. postDelayed(new Runnable() {
+                public void run() {
+
+                    if(screenSaverOn){
+
+                        new Thread(new MainActivity.Thread2("PGR01")).start();                          // resend current page name to server
+                    }
+
+                }
+            }, 900);
+
+            Handler handler2 = new Handler();
+            handler2. postDelayed(new Runnable() {
+                public void run() {
+
+                    if(screenSaverOn){
+
+                        new Thread(new MainActivity.Thread2("PGR01")).start();                          // resend current page name to server
+                    }
+
+                }
+            }, 1500);
+
+            Handler handler3 = new Handler();
+            handler3. postDelayed(new Runnable() {
+                public void run() {
+
+                    if(screenSaverOn){
+
+                        new Thread(new MainActivity.Thread2("PGR01")).start();                          // resend current page name to server
+                    }
+
+                }
+            }, 2000);
+
+            Handler handler4 = new Handler();
+            handler4. postDelayed(new Runnable() {
+                public void run() {
+
+                    if(screenSaverOn){
+
+                        new Thread(new MainActivity.Thread2("PGR01")).start();                          // resend current page name to server
+                    }
+
+                }
+            }, 2500);
+
+            Handler handler5 = new Handler();
+            handler5. postDelayed(new Runnable() {
+                public void run() {
+
+                    if(screenSaverOn){
+
+                        new Thread(new MainActivity.Thread2("PGR01")).start();                          // resend current page name to server
+                    }
+
+                }
+            }, 3000);
+
             new Thread(new MainActivity.Thread1()).start();                                         //Start thread 1
 
         }
