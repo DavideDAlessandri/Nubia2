@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                screenSaverOn=false;
                 Animation animation;                                                                //button animation
                 animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_l);
                 imageRun.startAnimation(animation);
@@ -93,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                screenSaverOn=false;
                 Animation animation;                                                                //button animation
                 animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_l);
                 imageTeach.startAnimation(animation);
@@ -106,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                screenSaverOn=false;
                 Animation animation;                                                                //button animation
                 animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_r);
                 imageSettings.startAnimation(animation);
@@ -119,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                screenSaverOn=false;
                 Animation animation;                                                                //button animation
                 animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_l);
                 imageHand.startAnimation(animation);
@@ -132,6 +136,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                screenSaverOn=false;
                 Animation animation;                                                                //button animation
                 animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_r);
                 imageMonitor.startAnimation(animation);
@@ -145,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                screenSaverOn=false;
                 Animation animation;                                                                //button animation
                 animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fade_out_r);
                 imageAddOns.startAnimation(animation);
@@ -468,7 +474,7 @@ public class MainActivity extends AppCompatActivity {
                 background.setVisibility(View.GONE);
 
             }
-        }, 1000); //1 seconds.
+        }, 700); //0.7 seconds.
 
 
     }
