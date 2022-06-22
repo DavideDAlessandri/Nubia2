@@ -5,11 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.Settings;
 import android.view.View;
 import android.view.Window;
 import android.view.animation.Animation;
@@ -29,8 +27,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView tryConnection, backButton;
     Boolean running=true;                                                                           //Thread 1 start/stop
     Boolean inActivityTwo =false;
-
-    Boolean test=false;
+    Boolean notReceivedPage1 =true;
 
     public static Boolean startStatus=false;                                                        //Stop activity when start another activity
     public static Boolean screenSaverOn=false;
@@ -172,6 +169,7 @@ public class MainActivity extends AppCompatActivity {
     protected  void onResume(){                                                                     //When enter page:
         super.onResume();
         screenSaverOn=true;
+        notReceivedPage1=true;
         MyService.currentPage=1;
         inActivityTwo=false;
 
@@ -187,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
             handler. postDelayed(new Runnable() {
                 public void run() {
 
-                    if(screenSaverOn){
+                    if(screenSaverOn && notReceivedPage1){
 
                         new Thread(new MainActivity.Thread2("PGR01")).start();                          // resend current page name to server
                     }
@@ -199,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
             handler2. postDelayed(new Runnable() {
                 public void run() {
 
-                    if(screenSaverOn){
+                    if(screenSaverOn && notReceivedPage1){
 
                         new Thread(new MainActivity.Thread2("PGR01")).start();                          // resend current page name to server
                     }
@@ -211,7 +209,7 @@ public class MainActivity extends AppCompatActivity {
             handler3. postDelayed(new Runnable() {
                 public void run() {
 
-                    if(screenSaverOn){
+                    if(screenSaverOn && notReceivedPage1){
 
                         new Thread(new MainActivity.Thread2("PGR01")).start();                          // resend current page name to server
                     }
@@ -223,7 +221,7 @@ public class MainActivity extends AppCompatActivity {
             handler4. postDelayed(new Runnable() {
                 public void run() {
 
-                    if(screenSaverOn){
+                    if(screenSaverOn && notReceivedPage1){
 
                         new Thread(new MainActivity.Thread2("PGR01")).start();                          // resend current page name to server
                     }
@@ -235,7 +233,7 @@ public class MainActivity extends AppCompatActivity {
             handler5. postDelayed(new Runnable() {
                 public void run() {
 
-                    if(screenSaverOn){
+                    if(screenSaverOn && notReceivedPage1){
 
                         new Thread(new MainActivity.Thread2("PGR01")).start();                          // resend current page name to server
                     }
@@ -339,6 +337,11 @@ public class MainActivity extends AppCompatActivity {
                         if (Screensaver.inScreenSaver){                                             //stop screensaver if active
                             Screensaver.ssActivity.finish();
                         }
+
+                        if(MyService.currentPage==1){                                               //in page 1 received PGD01
+                            notReceivedPage1 =false;
+                        }
+
                         new Thread(new MainActivity.Thread1()).start();
 
                     }else{
