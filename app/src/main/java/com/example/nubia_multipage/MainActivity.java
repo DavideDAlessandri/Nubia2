@@ -191,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                 }
-            }, 900);
+            }, 100);
 
             Handler handler2 = new Handler();
             handler2. postDelayed(new Runnable() {
@@ -203,7 +203,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                 }
-            }, 1500);
+            }, 200);
 
             Handler handler3 = new Handler();
             handler3. postDelayed(new Runnable() {
@@ -215,7 +215,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                 }
-            }, 2000);
+            }, 300);
 
             Handler handler4 = new Handler();
             handler4. postDelayed(new Runnable() {
@@ -227,7 +227,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                 }
-            }, 2500);
+            }, 400);
 
             Handler handler5 = new Handler();
             handler5. postDelayed(new Runnable() {
@@ -239,7 +239,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                 }
-            }, 3000);
+            }, 500);
 
             new Thread(new MainActivity.Thread1()).start();                                         //Start thread 1
 
